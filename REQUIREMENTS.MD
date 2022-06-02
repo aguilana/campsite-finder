@@ -2,7 +2,7 @@
 #### Seed
 <details>
 
-- [ ] Write a sync function which sync's and seeds your database when your application starts 
+- [ ] Write a function which sync's and seeds your database when your application starts 
 
 </details>
 
@@ -98,6 +98,7 @@
   - [ ] Remove the student from the list of students without needing to refresh the page
 
 </details>
+
 ### Tier 5: Updating a Campus and Updating a Student (9/59)
 
 
@@ -126,6 +127,7 @@
 
 
 #### Finishing Touches
+
 <details>
 
 - [ ] If a user attempts to add a new student or campus without a required field, a helpful message should be displayed
@@ -137,6 +139,7 @@
 </details>
 
 #### Ordering
+
 <details>
 
 - [ ] Create option for students to be ordered based on lastName on all-students view
