@@ -3,6 +3,9 @@ node_modules/*
 
 dist/
 
+public/bundle.js
+public/bundle.js.map
+
 # NPM errors
 npm-debug.log
 

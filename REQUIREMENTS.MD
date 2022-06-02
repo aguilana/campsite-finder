@@ -1,16 +1,25 @@
 
 #### Seed
+<details>
 
 - [ ] Write a sync function which sync's and seeds your database when your application starts 
 
+</details>
+
 ### Tier 1: All Campuses and Students (26/59)
+
+<details>
 
 - [ ] Display the campuses component when the url matches `/campuses`
 - [ ] This component should display a list of all campuses
 - [ ] Display the students component when the url matches `/students`
 - [ ] Add a links to the navbar that can be used to navigate to the campuses view and the students view
 
+</details>
+
 #### Backend Requirements
+
+<details>
 
 - Write a `campuses` model with the following information:
   - [ ] name - not empty or null
@@ -25,9 +34,11 @@
   - [ ] gpa - decimal between 0.0 and 4.0
 - [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
+</details>
 
 ### Tier 2: Single Student and Single Campus (10/59)
 
+<details>
 
 - Write a component to display a single campus with the following information:
   - [ ] The campus's name, image, address and description
@@ -44,11 +55,13 @@
 - [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 - [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
 
+</details>
 
 ### Tier 3: Adding a Campus and Adding a Student (8/59)
 
 
 #### Frontend
+<details>
 
 - [ ] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
 - [ ] Display this component as part of the campuses view, alongside the list of campuses
@@ -63,12 +76,15 @@
   - [ ] Make an AJAX request that causes the new student to be persisted in the database
   - [ ] Add the new student to the list of students without needing to refresh the page
 
+</details>
 
 
 ### Tier 4: Removing a Campus and Removing a Student (6/59)
 
 
 #### Frontend
+
+<details>
 
 - [ ] In the campuses view, include an `X` button next to each campus
 - Clicking the `X` button should:
@@ -81,11 +97,13 @@
   - [ ] Make an AJAX request that causes that student to be removed from database
   - [ ] Remove the student from the list of students without needing to refresh the page
 
-
+</details>
 ### Tier 5: Updating a Campus and Updating a Student (9/59)
 
 
 #### Frontend
+
+<details>
 
 - [ ] Write a component to display a form updating _at least_ a campus's name and address
 - [ ] Display this component as part of the campus view
@@ -100,6 +118,7 @@
   - [ ] Make an AJAX request that causes that student to be updated in the database
   - [ ] Update the student in the current view without needing to refresh the page
 
+</details>
 
 
 ### Bonus Tier: Finishing Touches (15 EC)
@@ -107,6 +126,7 @@
 
 
 #### Finishing Touches
+<details>
 
 - [ ] If a user attempts to add a new student or campus without a required field, a helpful message should be displayed
 - [ ] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
@@ -114,24 +134,37 @@
 - [ ] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
 - [ ] Overall, the app is spectacularly styled and visually stunning
 
+</details>
+
 #### Ordering
+<details>
 
 - [ ] Create option for students to be ordered based on lastName on all-students view
 - [ ] Create option for students to be ordered based on GPA on all-students view
 - [ ] Create option for campuses to be ordered based on number of enrolled students on all-campuses view
 
+</details>
+
 #### Filtering
+
+<details>
 
 - [ ] Create a filter on all-students view to only show students who are not registered to a campus
 - [ ] Create a filter on the all-campuses view to only show campuses that do not have any registered students
 
+</details>
+
 #### Seeding & Pagination
+
+<details>
 
 - [ ] Seed 100+ students and 100+ campuses
 - [ ] Implement _front-end_ pagination for the students view (e.g. `/students?page=1` renders the first ten students, and `/students?page=2` renders students 11-20)
 - [ ] Implement _front-end_ pagination for the campuses view (e.g. `/campuses?page=1` renders the first ten campuses, and `/campuses?page=2` renders campuses 11-20)
 - [ ] Implement _back-end_ pagination for students (e.g. `/api/students?page=1` returns the first ten students' data, and `/api/students?page=2` returns students 11-20)
 - [ ] Implement _back-end_ pagination for campuses (e.g. `/api/campuses?page=1` returns the first ten campuses' data, and `/api/campuses?page=2` returns campuses 11-20)
+
+</details>
 
 
 * `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
