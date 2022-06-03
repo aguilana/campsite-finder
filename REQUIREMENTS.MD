@@ -76,10 +76,14 @@
 
 </details>  
 
-### Tier 2: Single Student and Single Campus (10/59)
+## Tier 2: Single Student and Single Campus (10/59)
 
 <details>
 
+### Frontend
+
+<details>
+  
 #### Single Campus
   
 <details>
@@ -108,6 +112,10 @@
 
 </details>
 
+</details>
+
+### Backend
+  
 </details>
 
 ### Tier 3: Adding a Campus and Adding a Student (8/59)
