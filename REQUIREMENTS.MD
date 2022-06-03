@@ -202,7 +202,9 @@
 </details>
 
 ## Tier 4: Removing a Campus and Removing a Student (6/59)
+
 <details>
+  
 ### Frontend
 
 <details>
@@ -243,7 +245,7 @@
   
   <details>
     
-    - [ ] Write a route to remove a campus (based on its id)
+  - [ ] Write a route to remove a campus (based on its id)
     
   </details>
   
@@ -251,7 +253,7 @@
   
   <details>
     
-    - [ ] Write a route to remove a student (based on their id)
+  - [ ] Write a route to remove a student (based on their id)
     
   </details>
   
