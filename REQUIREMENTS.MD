@@ -8,13 +8,48 @@
 
 ### Tier 1: All Campuses and Students (26/59)
 
+
+
+#### Frontend
+
+### Campus
+
 <details>
+- [ ] Write a component to display a list of all campuses (at least their names and images)
+- [ ] Write a campuses sub-reducer to manage campuses in your Redux store
+- [ ] Display the all-campuses component when the url matches `/campuses`
+</details>
 
-- [ ] Display the campuses component when the url matches `/campuses`
-- [ ] This component should display a list of all campuses
-- [ ] Display the students component when the url matches `/students`
-- [ ] Add a links to the navbar that can be used to navigate to the campuses view and the students view
+### Students
 
+<details>
+- [ ] Write a component to display a list of all students (at least their names)
+- [ ] Write a students sub-reducer to manage students in your Redux store
+- [ ] Display the all-students component when the url matches `/students`
+</details>
+
+### Navbar
+
+<details>
+- [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
+</details>
+#### Backend
+
+- [ ] Write a route to serve up all students
+- [ ] Write a route to serve up all campuses
+
+- Write a `campuses` model with the following information:
+  - [ ] name - not empty or null
+  - [ ] imageUrl - with a default value
+  - [ ] address - not empty or null
+  - [ ] description - extremely large text
+- Write a `students` model with the following information:
+  - [ ] firstName - not empty or null
+  - [ ] lastName - not empty or null
+  - [ ] email - not empty or null; must be a valid email
+  - [ ] imageUrl - with a default value
+  - [ ] gpa - decimal between 0.0 and 4.0
+- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 </details>
 
 #### Backend Requirements
