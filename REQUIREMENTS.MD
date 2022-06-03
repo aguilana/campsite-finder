@@ -122,9 +122,9 @@
 
 <details>
   
-</details>
-  
    - [ ] Write a route to serve up a single student (based on their id), _including that student's campus_
+  
+</details>
   
 </details>
   
