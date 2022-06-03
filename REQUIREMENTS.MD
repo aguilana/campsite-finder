@@ -31,9 +31,11 @@
 - [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
 
 </details>
+
 ### Backend
 
 #### Seed
+
 <details>
 
 - [ ] Write a function which sync's and seeds your database when your application starts 
