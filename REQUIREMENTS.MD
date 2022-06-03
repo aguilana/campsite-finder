@@ -1,4 +1,3 @@
-
 ## Tier 1: All Campuses and Students (26/59)
 
 <details>
@@ -7,78 +6,79 @@
 
 #### Campus
 
-<details>
+  <details>
 
-  - [ ] Write a component to display a list of all campuses (at least their names and images)
-  - [ ] Write a campuses sub-reducer to manage campuses in your Redux store
-  - [ ] Display the all-campuses component when the url matches `/campuses`
+- [ ] Write a component to display a list of all campuses (at least their names and images)
+- [ ] Write a campuses sub-reducer to manage campuses in your Redux store
+- [ ] Display the all-campuses component when the url matches `/campuses`
 
-</details>
+  </details>
 
 #### Students
 
-<details>
+  <details>
 
-  - [ ] Write a component to display a list of all students (at least their names)
-  - [ ] Write a students sub-reducer to manage students in your Redux store
-  - [ ] Display the all-students component when the url matches `/students`
+- [ ] Write a component to display a list of all students (at least their names)
+- [ ] Write a students sub-reducer to manage students in your Redux store
+- [ ] Display the all-students component when the url matches `/students`
 
-</details>
+  </details>
 
 #### Navbar
 
-<details>
+  <details>
 
-  - [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
+- [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
 
-</details>
+  </details>
 
 ### Backend
 
 #### Seed
 
-<details>
+  <details>
 
-  - [ ] Write a function which sync's and seeds your database when your application starts 
+- [ ] Write a function which sync's and seeds your database when your application starts
 
-</details>
+  </details>
 
 #### Campus
 
-<details>
+  <details>
   
   - [ ] Write a route to serve up all campuses
 
-  - Write a `campuses` model with the following information:
-    - [ ] name - not empty or null
-    - [ ] imageUrl - with a default value
-    - [ ] address - not empty or null
-    - [ ] description - extremely large text
+- Write a `campuses` model with the following information:
+  - [ ] name - not empty or null
+  - [ ] imageUrl - with a default value
+  - [ ] address - not empty or null
+  - [ ] description - extremely large text
 
-</details>
+  </details>
 
 #### Students
 
-<details>
+  <details>
   
   - [ ] Write a route to serve up all students
 
-  - Write a `students` model with the following information:
-    - [ ] firstName - not empty or null
-    - [ ] lastName - not empty or null
-    - [ ] email - not empty or null; must be a valid email
-    - [ ] imageUrl - with a default value
-    - [ ] gpa - decimal between 0.0 and 4.0
+- Write a `students` model with the following information:
 
-  - [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
-  
+  - [ ] firstName - not empty or null
+  - [ ] lastName - not empty or null
+  - [ ] email - not empty or null; must be a valid email
+  - [ ] imageUrl - with a default value
+  - [ ] gpa - decimal between 0.0 and 4.0
+
+- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
+
+  </details>
+
 </details>
-
-</details>  
 
 ## Tier 2: Single Student and Single Campus (10/59)
 
-<details>
+
 
 ### Frontend
 
@@ -86,7 +86,7 @@
   
 #### Single Campus
   
-<details>
+  <details>
   
   - Write a component to display a single campus with the following information:
     - [ ] The campus's name, image, address and description
@@ -94,12 +94,12 @@
   - [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
   - [ ] Clicking on a campus from the campuses view should navigate to show that campus
 
-  - [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
+- [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 
-</details>
+  </details>
 
 #### Single Students
-  
+
 <details>
   
   - Write a component to display a single student with the following information:
@@ -108,14 +108,14 @@
   - [ ] Display the appropriate student when the url matches `/students/:studentId`
   - [ ] Clicking on a student from the students view should navigate to show that student
 
-  - [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
+- [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
 
 </details>
 
 </details>
 
 ### Backend
-  
+
 <details>
   
 #### Campus
@@ -125,9 +125,7 @@
    - [ ] Write a route to serve up a single student (based on their id), _including that student's campus_
   
 </details>
-  
-</details>
-  
+
 #### Students
   
 <details>
@@ -137,11 +135,15 @@
 </details>
   
 </details>
+  
+
+  
+</details>
 
 ### Tier 3: Adding a Campus and Adding a Student (8/59)
 
-
 #### Frontend
+
 <details>
 
 - [ ] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
@@ -159,9 +161,7 @@
 
 </details>
 
-
 ### Tier 4: Removing a Campus and Removing a Student (6/59)
-
 
 #### Frontend
 
@@ -182,7 +182,6 @@
 
 ### Tier 5: Updating a Campus and Updating a Student (9/59)
 
-
 #### Frontend
 
 <details>
@@ -202,10 +201,7 @@
 
 </details>
 
-
 ### Bonus Tier: Finishing Touches (15 EC)
-
-
 
 #### Finishing Touches
 
@@ -250,12 +246,7 @@
 
 </details>
 
-
-* `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
-
-
-
-
+- `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
 
 ## Evaluation
 
