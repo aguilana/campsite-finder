@@ -126,8 +126,6 @@
   
 </details>
   
-</details>
-  
 #### Students
   
 <details>
