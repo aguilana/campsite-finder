@@ -1,13 +1,5 @@
 
-#### Seed
-<details>
-
-- [ ] Write a function which sync's and seeds your database when your application starts 
-
-</details>
-
-### Tier 1: All Campuses and Students (26/59)
-
+## Tier 1: All Campuses and Students (26/59)
 
 
 ### Frontend
@@ -39,9 +31,19 @@
 - [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
 
 </details>
-#### Backend
+### Backend
 
-- [ ] Write a route to serve up all students
+#### Seed
+<details>
+
+- [ ] Write a function which sync's and seeds your database when your application starts 
+
+</details>
+
+#### Campus
+
+<detail>
+  
 - [ ] Write a route to serve up all campuses
 
 - Write a `campuses` model with the following information:
@@ -49,33 +51,25 @@
   - [ ] imageUrl - with a default value
   - [ ] address - not empty or null
   - [ ] description - extremely large text
+  
+</detail>
+
+#### Students
+
+<detail>
+  
+- [ ] Write a route to serve up all students
+
 - Write a `students` model with the following information:
   - [ ] firstName - not empty or null
   - [ ] lastName - not empty or null
   - [ ] email - not empty or null; must be a valid email
   - [ ] imageUrl - with a default value
   - [ ] gpa - decimal between 0.0 and 4.0
+
 - [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
-</details>
-
-#### Backend Requirements
-
-<details>
-
-- Write a `campuses` model with the following information:
-  - [ ] name - not empty or null
-  - [ ] imageUrl - string can be null 
-  - [ ] address - not empty or null
-  - [ ] description - extremely large text
-- Write a `students` model with the following information:
-  - [ ] firstName - not empty or null
-  - [ ] lastName - not empty or null
-  - [ ] email - not empty or null; must be a valid email
-  - [ ] imageUrl - string can be null 
-  - [ ] gpa - decimal between 0.0 and 4.0
-- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
-
-</details>
+  
+</detail>
 
 ### Tier 2: Single Student and Single Campus (10/59)
 
