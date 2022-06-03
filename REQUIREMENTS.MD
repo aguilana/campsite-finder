@@ -261,7 +261,7 @@
   
 </details>
 
-### Tier 5: Updating a Campus and Updating a Student (9/59)
+## Tier 5: Updating a Campus and Updating a Student (9/59)
 
 <details>
 
@@ -320,7 +320,7 @@
   
 </details>
 
-### Bonus Tier: Finishing Touches (15 EC)
+## Bonus Tier: Finishing Touches (15 EC)
 
 <details>
 
