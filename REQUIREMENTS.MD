@@ -184,7 +184,7 @@
   
   <details>
   
-    - [ ] Write a route to add a new campus
+  - [ ] Write a route to add a new campus
     
   </details>
   
@@ -192,7 +192,7 @@
   
   <details>
     
-    - [ ] Write a route to add a new student
+  - [ ] Write a route to add a new student
     
   </details>
   
