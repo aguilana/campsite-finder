@@ -78,7 +78,7 @@
 
 ## Tier 2: Single Student and Single Campus (10/59)
 
-
+<details>
 
 ### Frontend
 
@@ -133,10 +133,10 @@
    - [ ] Write a route to serve up a single campus (based on its id), _including that campuses' students_
   
 </details>
-  
+
 </details>
   
-
+</details>
   
 </details>
 
