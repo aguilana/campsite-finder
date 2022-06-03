@@ -201,23 +201,62 @@
   
 </details>
 
-### Tier 4: Removing a Campus and Removing a Student (6/59)
-
-#### Frontend
+## Tier 4: Removing a Campus and Removing a Student (6/59)
+<details>
+### Frontend
 
 <details>
 
-- [ ] In the campuses view, include an `X` button next to each campus
-- Clicking the `X` button should:
+ #### Campus
+  
+  <details>
+    
+  - [ ] In the campuses view, include an `X` button next to each campus
+  - Clicking the `X` button should:
 
-  - [ ] Make an AJAX request that causes that campus to be removed from database
-  - [ ] Remove the campus from the list of campuses without needing to refresh the page
+    - [ ] Make an AJAX request that causes that campus to be removed from database
+    - [ ] Remove the campus from the list of campuses without needing to refresh the page
+    
+  </details>
+  
+ #### Student
+  
+  <details>
+    
+  - [ ] In the students view, include an `X` button next to each student
+  - Clicking the `X` button should:
+  
+    - [ ] Make an AJAX request that causes that student to be removed from database
+    - [ ] Remove the student from the list of students without needing to refresh the page
 
-- [ ] In the students view, include an `X` button next to each student
-- Clicking the `X` button should:
-  - [ ] Make an AJAX request that causes that student to be removed from database
-  - [ ] Remove the student from the list of students without needing to refresh the page
+  
+  </details>
 
+
+</details>
+  
+### Backend
+
+<details>
+  
+  #### Campus
+  
+  <details>
+    
+    - [ ] Write a route to remove a campus (based on its id)
+    
+  </details>
+  
+  #### Student
+  
+  <details>
+    
+    - [ ] Write a route to remove a student (based on their id)
+    
+  </details>
+  
+</details>
+  
 </details>
 
 ### Tier 5: Updating a Campus and Updating a Student (9/59)
