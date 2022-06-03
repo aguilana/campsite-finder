@@ -178,6 +178,27 @@
   
 ### Backend
   
+<details>
+  
+#### Campus
+  
+  <details>
+  
+    - [ ] Write a route to add a new campus
+    
+  </details>
+  
+#### Student
+  
+  <details>
+    
+    - [ ] Write a route to add a new student
+    
+  </details>
+  
+ 
+</details>
+  
 </details>
 
 ### Tier 4: Removing a Campus and Removing a Student (6/59)
