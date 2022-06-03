@@ -10,9 +10,9 @@
 
 
 
-#### Frontend
+### Frontend
 
-### Campus
+#### Campus
 
 <details>
 
@@ -22,7 +22,7 @@
 
 </details>
 
-### Students
+#### Students
 
 <details>
 
@@ -32,7 +32,7 @@
 
 </details>
 
-### Navbar
+#### Navbar
 
 <details>
 
