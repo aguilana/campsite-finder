@@ -322,6 +322,8 @@
 
 ### Bonus Tier: Finishing Touches (15 EC)
 
+<details>
+
 #### Finishing Touches
 
 <details>
@@ -363,6 +365,8 @@
 - [ ] Implement _back-end_ pagination for students (e.g. `/api/students?page=1` returns the first ten students' data, and `/api/students?page=2` returns students 11-20)
 - [ ] Implement _back-end_ pagination for campuses (e.g. `/api/campuses?page=1` returns the first ten campuses' data, and `/api/campuses?page=2` returns campuses 11-20)
 
+</details>
+  
 </details>
 
 - `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
