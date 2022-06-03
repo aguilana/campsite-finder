@@ -44,7 +44,7 @@
 
 #### Campus
 
-<detail>
+<details>
   
 - [ ] Write a route to serve up all campuses
 
@@ -54,11 +54,11 @@
   - [ ] address - not empty or null
   - [ ] description - extremely large text
   
-</detail>
+</details>
 
 #### Students
 
-<detail>
+<details>
   
 - [ ] Write a route to serve up all students
 
@@ -71,7 +71,7 @@
 
 - [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
   
-</detail>
+</details>
 
 ### Tier 2: Single Student and Single Campus (10/59)
 
