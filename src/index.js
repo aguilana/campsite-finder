@@ -1,5 +1,7 @@
 import { createRoot } from "react-dom/client";
-/* Import app and anything else you may need here */
+
+/* Import and destructure main from src/component/index.js 
+and anything else you may need here */
 
 
 const container = document.getElementById("root")
