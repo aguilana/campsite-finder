@@ -1,6 +1,7 @@
 
 ## Tier 1: All Campuses and Students (26/59)
 
+<details>
 
 ### Frontend
 
@@ -72,6 +73,8 @@
 - [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
   
 </details>
+
+</details>  
 
 ### Tier 2: Single Student and Single Campus (10/59)
 
