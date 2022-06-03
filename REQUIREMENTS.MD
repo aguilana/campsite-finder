@@ -9,9 +9,9 @@
 
 <details>
 
-- [ ] Write a component to display a list of all campuses (at least their names and images)
-- [ ] Write a campuses sub-reducer to manage campuses in your Redux store
-- [ ] Display the all-campuses component when the url matches `/campuses`
+  - [ ] Write a component to display a list of all campuses (at least their names and images)
+  - [ ] Write a campuses sub-reducer to manage campuses in your Redux store
+  - [ ] Display the all-campuses component when the url matches `/campuses`
 
 </details>
 
@@ -19,9 +19,9 @@
 
 <details>
 
-- [ ] Write a component to display a list of all students (at least their names)
-- [ ] Write a students sub-reducer to manage students in your Redux store
-- [ ] Display the all-students component when the url matches `/students`
+  - [ ] Write a component to display a list of all students (at least their names)
+  - [ ] Write a students sub-reducer to manage students in your Redux store
+  - [ ] Display the all-students component when the url matches `/students`
 
 </details>
 
@@ -29,7 +29,7 @@
 
 <details>
 
-- [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
+  - [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
 
 </details>
 
@@ -39,7 +39,7 @@
 
 <details>
 
-- [ ] Write a function which sync's and seeds your database when your application starts 
+  - [ ] Write a function which sync's and seeds your database when your application starts 
 
 </details>
 
@@ -47,30 +47,30 @@
 
 <details>
   
-- [ ] Write a route to serve up all campuses
+  - [ ] Write a route to serve up all campuses
 
-- Write a `campuses` model with the following information:
-  - [ ] name - not empty or null
-  - [ ] imageUrl - with a default value
-  - [ ] address - not empty or null
-  - [ ] description - extremely large text
-  
+  - Write a `campuses` model with the following information:
+    - [ ] name - not empty or null
+    - [ ] imageUrl - with a default value
+    - [ ] address - not empty or null
+    - [ ] description - extremely large text
+
 </details>
 
 #### Students
 
 <details>
   
-- [ ] Write a route to serve up all students
+  - [ ] Write a route to serve up all students
 
-- Write a `students` model with the following information:
-  - [ ] firstName - not empty or null
-  - [ ] lastName - not empty or null
-  - [ ] email - not empty or null; must be a valid email
-  - [ ] imageUrl - with a default value
-  - [ ] gpa - decimal between 0.0 and 4.0
+  - Write a `students` model with the following information:
+    - [ ] firstName - not empty or null
+    - [ ] lastName - not empty or null
+    - [ ] email - not empty or null; must be a valid email
+    - [ ] imageUrl - with a default value
+    - [ ] gpa - decimal between 0.0 and 4.0
 
-- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
+  - [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
   
 </details>
 
@@ -88,13 +88,13 @@
   
 <details>
   
-- Write a component to display a single campus with the following information:
-  - [ ] The campus's name, image, address and description
-  - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
-- [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
-- [ ] Clicking on a campus from the campuses view should navigate to show that campus
-  
-- [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
+  - Write a component to display a single campus with the following information:
+    - [ ] The campus's name, image, address and description
+    - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
+  - [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
+  - [ ] Clicking on a campus from the campuses view should navigate to show that campus
+
+  - [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 
 </details>
 
@@ -102,19 +102,39 @@
   
 <details>
   
-- Write a component to display a single student with the following information:
-  - [ ] The student's full name, email, image, and gpa
-  - [ ] The name of their campus (or a helpful message if they don't have one)
-- [ ] Display the appropriate student when the url matches `/students/:studentId`
-- [ ] Clicking on a student from the students view should navigate to show that student
+  - Write a component to display a single student with the following information:
+    - [ ] The student's full name, email, image, and gpa
+    - [ ] The name of their campus (or a helpful message if they don't have one)
+  - [ ] Display the appropriate student when the url matches `/students/:studentId`
+  - [ ] Clicking on a student from the students view should navigate to show that student
 
-- [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
+  - [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
 
 </details>
 
 </details>
 
 ### Backend
+  
+<details>
+  
+#### Campus
+
+<details>
+  
+</details>
+  
+   - [ ] Write a route to serve up a single student (based on their id), _including that student's campus_
+  
+</details>
+  
+#### Students
+  
+<details>
+  
+   - [ ] Write a route to serve up a single campus (based on its id), _including that campuses' students_
+  
+</details>
   
 </details>
 
