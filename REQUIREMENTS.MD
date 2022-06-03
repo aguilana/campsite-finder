@@ -140,25 +140,43 @@
   
 </details>
 
-### Tier 3: Adding a Campus and Adding a Student (8/59)
-
-#### Frontend
+## Tier 3: Adding a Campus and Adding a Student (8/59)
 
 <details>
 
-- [ ] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
+### Frontend
+
+<details>
+
+#### Campus
+  
+  <details>
+    
+    - [ ] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
 - [ ] Display this component as part of the campuses view, alongside the list of campuses
 - Submitting the form with a valid name/address should:
 
   - [ ] Make an AJAX request that causes the new campus to be persisted in the database
   - [ ] Add the new campus to the list of campuses without needing to refresh the page
 
+  </details>
+  
+#### Student
+  
+  <details>
+    
 - [ ] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
 - [ ] Display this component as part of the students view, alongside the list of students
 - Submitting the form with a valid first name/last name/email should:
   - [ ] Make an AJAX request that causes the new student to be persisted in the database
   - [ ] Add the new student to the list of students without needing to refresh the page
+  
+  </details>
 
+</details>
+  
+### Backend
+  
 </details>
 
 ### Tier 4: Removing a Campus and Removing a Student (6/59)
