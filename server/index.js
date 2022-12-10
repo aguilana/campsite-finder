@@ -1,4 +1,8 @@
+const { db } = require('./db')
 const port = process.env.PORT || 3000;
-const app = require('./app');
+const app = require("./app");
 
-app.listen(port, ()=> console.log(`listening on port ${port}`));
+db.sync().then(() => {
+    console.log('db synced')
+  app.listen(port, () => console.log(`listening on port ${port}`));
+});
