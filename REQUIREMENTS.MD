@@ -46,7 +46,7 @@
 
   <details>
   
-  - [ ] Write a route to serve up all campuses
+  - [x] Write a route to serve up all campuses
 
 - Write a `campuses` model with the following information:
   - [x] name - not empty or null
@@ -60,7 +60,7 @@
 
   <details>
   
-  - [ ] Write a route to serve up all students
+  - [x] Write a route to serve up all students
 
 - Write a `students` model with the following information:
 
@@ -70,7 +70,7 @@
   - [x] imageUrl - with a default value
   - [x] gpa - decimal between 0.0 and 4.0
 
-- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
+- [x] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
   </details>
 

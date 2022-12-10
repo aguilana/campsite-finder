@@ -52,7 +52,6 @@ const seed = async () => {
       lastName: "Finley",
       email: "lenora@gmail.com",
       image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
-      address: "123 Main St",
       gpa: Math.random() * 4,
       campusId: campus1.id,
     });
@@ -61,7 +60,6 @@ const seed = async () => {
       lastName: "Briggs",
       email: "elma@gmail.com",
       image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
-      address: "456 Boulevard",
       gpa: Math.random() * 4,
       campusId: campus3.id,
     });
@@ -70,7 +68,6 @@ const seed = async () => {
       lastName: "Santos",
       email: "tricia@gmail.com",
       image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
-      address: "789 Ct",
       gpa: Math.random() * 4,
       campusId: campus2.id,
     });
@@ -79,22 +76,10 @@ const seed = async () => {
       lastName: "Tanner",
       email: "carmen@gmail.com",
       image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
-      address: "1000 State St",
       gpa: Math.random() * 4,
       campusId: campus4.id,
     });
 
-    // await Promise.all(
-    //   students.map((student) => {
-    //     return Student.create(student);
-    //   })
-    // );
-
-    // await Promise.all(
-    //   campuses.map((campus) => {
-    //     return Campus.create(campus);
-    //   })
-    // );
 
     console.log(green("Seeding success!!"));
     db.close();
