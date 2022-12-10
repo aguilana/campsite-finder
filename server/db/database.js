@@ -2,7 +2,6 @@
 
 const chalk = require('chalk');
 const Sequelize = require('sequelize');
-// const pkg = require('../../package-lock.json')
 
 console.log(chalk.yellow('opening database connection'))
 

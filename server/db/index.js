@@ -1,15 +1,13 @@
 const db = require('./database')
 
-// put models here
-// i.e. const Puppy = require('./puppy')
-// i.e. const Candy = require('./models/candy')
-
+// DEFINED MODELS
 const Student = require('./models/Student')
 const Campus = require('./models/Campus')
 
 
-// after require model establish associations here
-
+// MODEL ASSOCIATIONS
+Campus.hasMany(Student)
+Student.belongsTo(Campus)
 
 module.exports = {
     db,

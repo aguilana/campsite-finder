@@ -4,9 +4,10 @@
   "description": "A review time project",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build-watch & npm run start-server ",
+    "start:dev": "npm run build-watch & npm run start-server ",
     "build-watch": "webpack -w",
     "start-server": "nodemon --watch server -e js,html server/index.js",
+    "start": "echo 'Running server for production - developers, use npm run start:dev for development' && node main",
     "seed": "node seed.js"
   },
   "keywords": [],
@@ -35,6 +36,7 @@
     "@babel/preset-react": "7.16.7",
     "@babel/preset-stage-2": "^7.8.3",
     "babel-loader": "8.2.5",
+    "eslint": "^8.29.0",
     "volleyball": "^1.5.1",
     "webpack": "^5.72.0",
     "webpack-dev-server": "^4.7.3"
