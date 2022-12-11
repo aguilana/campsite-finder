@@ -18,9 +18,9 @@
 
   <details>
 
-- [ ] Write a component to display a list of all students (at least their names)
-- [ ] Write a students sub-reducer to manage students in your Redux store
-- [ ] Display the all-students component when the url matches `/students`
+- [x] Write a component to display a list of all students (at least their names)
+- [x] Write a students sub-reducer to manage students in your Redux store
+- [x] Display the all-students component when the url matches `/students`
 
   </details>
 
