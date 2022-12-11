@@ -7,7 +7,7 @@ const Campuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
   console.log(campuses);
-  const { id, name, imageUrl, address, description } = campuses
+
 
   useEffect(() => {
     dispatch(fetchAllCampuses());
@@ -21,7 +21,7 @@ const Campuses = () => {
           ? campuses.map((campus) => {
               return (
                 <li key={campus.id}>
-                    <img src={campus.imageUrl} alt={campus.name} />
+                    <img src={campus.imageUrl} alt={campus.name} style={{width: 250, height: 250}}/>
                     <div>
                     <h3>{campus.name}</h3>
                     <h4>{campus.address}</h4>
