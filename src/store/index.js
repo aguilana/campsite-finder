@@ -1,12 +1,10 @@
-/* Here is where you will configure the store 
-
-*/ 
-
 import { configureStore } from "@reduxjs/toolkit";
-
+import campusesReducer from "../features/CampusesSlice";
 
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    campuses: campusesReducer,
+  },
 });
 
 export default store;

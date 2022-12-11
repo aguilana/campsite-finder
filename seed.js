@@ -81,10 +81,10 @@ const seed = async () => {
     });
 
 
-    console.log(green("Seeding success!!"));
+    console.log(green(" 🌱🌱🌱 ---- Seeding success!! ---- 🌱🌱🌱"));
     db.close();
   } catch (err) {
-    console.error(red("Oh damn! Something went wrong"));
+    console.error(red(" ☣ ☣ ☣  ---- Oh damn! Something went wrong ---- ☣ ☣ ☣ "));
     console.error(err);
     db.close();
   }
