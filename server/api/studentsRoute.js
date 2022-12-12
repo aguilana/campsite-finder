@@ -37,4 +37,14 @@ studentsRouter.get("/:id", async (req, res, next) => {
   }
 });
 
+// POST /api/students
+studentsRouter.post("/", async (req, res, next) => {
+  try {
+    res.status(201).send(await Student.create(req.body))
+  }
+  catch(err){
+    next(err)
+  }
+})
+
 module.exports = studentsRouter;
