@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCampuses, selectCampuses } from "../features/CampusesSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import AddCampusForm from "./AddCampusForm";
 
 const Campuses = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Campuses = () => {
   return (
     <Container>
       <h1>ALL CAMPUSES</h1>
+      < AddCampusForm />
       <Ul>
         {campuses
           ? campuses.map((campus) => {
@@ -24,7 +26,6 @@ const Campuses = () => {
                   <img
                     src={campus.imageUrl}
                     alt={campus.name}
-                    style={{ width: 250, height: 250 }}
                   />
                   <div>
                     <Link to={`/campuses/${campus.id}`}>
@@ -62,18 +63,20 @@ const Ul = styled.ul`
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
-  justify-content: center;
+  justify-content: space-evenly;
   align-content: center;
   padding: 50px;
   li {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-content: center;
     gap: 1rem;
     padding: 10px 20px;
+    width: 100%;
     img {
       border-radius: 40%;
-      align-self: center;
+      width: 250px;
+      height: 250px;
     }
     div {
       display: flex;
