@@ -1,17 +1,28 @@
-const router = require('express').Router();
-const { Campus } = require('../db')
+const campusRouter = require("express").Router();
+const { Campus } = require("../db");
 
 // GET /api/campuses
-router.get('/', async (req, res, next) => {
-    try {
-        const campuses = await Campus.findAll({
-            attributes: ['id', 'name', 'imageUrl', 'address', 'description']
-        })
-        res.send(campuses)
-    }
-    catch(error){
-        next(err)
-    }
+campusRouter.get("/", async (req, res, next) => {
+  try {
+    const campuses = await Campus.findAll({
+      attributes: ["id", "name", "imageUrl", "address", "description"],
+    });
+    res.send(campuses);
+  } catch (error) {
+    next(err);
+  }
 });
 
-module.exports = router
+// GET /api/campuses/:id
+campusRouter.get("/:id", async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.id, {
+      attributes: ["id", "name", "imageUrl", "address", "description"],
+    });
+    res.send(campus);
+  } catch (err) {
+    next(err)
+  }
+});
+
+module.exports = campusRouter;

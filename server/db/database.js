@@ -1,5 +1,3 @@
-
-
 const chalk = require('chalk');
 const Sequelize = require('sequelize');
 
