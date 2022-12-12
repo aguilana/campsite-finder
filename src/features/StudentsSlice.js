@@ -11,6 +11,7 @@ export const fetchAllStudents = createAsyncThunk("students/fetchAllStudents", as
     }
 })
 
+
 export const studentsSlice = createSlice({
     name: "students",
     initialState: [],

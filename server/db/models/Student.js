@@ -20,7 +20,7 @@ module.exports = db.define("student", {
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue:
-      "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages4.fanpop.com%2Fimage%2Fphotos%2F17500000%2Fcool-backgrounds-random-17514363-800-640.jpg&f=1&nofb=1&ipt=662e7efa5e29f0825acd91409c1f6c5adf7a383112323ce2b46ac6d42317c80d&ipo=images",
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
     validate: {
       isUrl: true,
     },
