@@ -19,7 +19,7 @@ const Students = () => {
         {students
           ? students.map((student) => {
               return (
-                <li>
+                <li key={student.id}>
                   <img
                     src={student.imageUrl}
                     alt={`This is a picture student ${student.firstName} who currently attends ${student.campus.name}`}
