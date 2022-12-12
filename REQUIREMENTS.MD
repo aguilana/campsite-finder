@@ -122,7 +122,7 @@
 
 <details>
   
-   - [ ] Write a route to serve up a single student (based on their id), _including that student's campus_
+   - [x] Write a route to serve up a single student (based on their id), _including that student's campus_
   
 </details>
 
@@ -130,7 +130,7 @@
   
 <details>
   
-   - [ ] Write a route to serve up a single campus (based on its id), _including that campuses' students_
+   - [x] Write a route to serve up a single campus (based on its id), _including that campuses' students_
   
 </details>
 

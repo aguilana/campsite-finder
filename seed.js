@@ -79,12 +79,62 @@ const seed = async () => {
       gpa: Math.random() * 4,
       campusId: campus4.id,
     });
+    await Student.create({
+      firstName: "Carmen",
+      lastName: "Tanner",
+      email: "carmen@gmail.com",
+      image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
+      gpa: Math.random() * 4,
+      campusId: campus4.id,
+    });
+    await Student.create({
+      firstName: "Oscar",
+      lastName: "Fowler",
+      email: "a.fowler@aol.com",
+      image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
+      gpa: Math.random() * 4,
+      campusId: campus4.id,
+    });
+    await Student.create({
+      firstName: "Adam",
+      lastName: "Wells",
+      email: "a.higgens@randata.com",
+      image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
+      gpa: Math.random() * 4,
+      campusId: campus2.id,
+    });
+    await Student.create({
+      firstName: "Lily",
+      lastName: "Chapman",
+      email: "l.chapman@randata.com",
+      image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
+      gpa: Math.random() * 4,
+      campusId: campus1.id,
+    });
+    await Student.create({
+      firstName: "Camila",
+      lastName: "Hamilton",
+      email: "c.hamilton@randata.com",
+      image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
+      gpa: Math.random() * 4,
+      campusId: campus2.id,
+    });
 
+    await Student.create({
+      firstName: "Samantha",
+      lastName: "Grant",
+      email: "s.grant@randata.com",
+      image: "http://www.clipartbest.com/cliparts/dir/7L7/dir7L7ki9.png",
+      gpa: Math.random() * 4,
+      campusId: campus3.id,
+    });
 
     console.log(green(" 🌱🌱🌱 ---- Seeding success!! ---- 🌱🌱🌱"));
     db.close();
   } catch (err) {
-    console.error(red(" ☣ ☣ ☣  ---- Oh damn! Something went wrong ---- ☣ ☣ ☣ "));
+    console.error(
+      red(" ☣ ☣ ☣  ---- Oh damn! Something went wrong ---- ☣ ☣ ☣ ")
+    );
     console.error(err);
     db.close();
   }
