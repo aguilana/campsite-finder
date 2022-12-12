@@ -94,7 +94,7 @@
   - [x] Display the appropriate campus's info when the url matches `/campuses/:campusId`
   - [x] Clicking on a campus from the campuses view should navigate to show that campus
 
-- [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
+- [x] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 
   </details>
 

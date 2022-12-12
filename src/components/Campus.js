@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchSingleCampus, selectCampus } from "../features/CampusSlice";
+import { Link } from "react-router-dom";
 
 const Campus = () => {
   const { campusId } = useParams();
@@ -27,9 +28,11 @@ const Campus = () => {
           {students && students.length
             ? students.map((student) => {
                 return (
-                  <li>
-                    {student.firstName} {student.lastName}
-                  </li>
+                  <Link to={`/students/${student.id}`} key={student.id}>
+                    <li>
+                      {student.firstName} {student.lastName}
+                    </li>
+                  </Link>
                 );
               })
             : "Campus does not have any students :("}
