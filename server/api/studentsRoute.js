@@ -41,6 +41,7 @@ studentsRouter.get("/:id", async (req, res, next) => {
 studentsRouter.post("/", async (req, res, next) => {
   try {
     res.status(201).send(await Student.create(req.body))
+    console.log('student route req.body', req.body)
   }
   catch(err){
     next(err)
