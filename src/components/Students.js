@@ -25,7 +25,7 @@ const Students = () => {
                   <img
                     src={student.imageUrl}
                     alt={`This is a picture student ${student.firstName} who currently attends ${student.campus.name}`}
-                    style={{ width: 250, height: 250 }}
+                    style={{ width: 300, height: 250 }}
                   />
                   <span>
                     <h3>

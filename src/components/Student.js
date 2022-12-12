@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleStudent, selectStudent } from "../features/StudentSlice";
+import styled from "styled-components";
 
 const Student = () => {
   const { studentId } = useParams();
@@ -17,18 +18,11 @@ const Student = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <Container>
       <h1>
         {firstName} {lastName}
       </h1>
-      <img
-        src={imageUrl}
-        alt={`this is an image of the student ${firstName}, ${lastName}`}
-        style={{ width: 250, height: 250 }}
-      />
-      <h2>EMAIL: {email}</h2>
-      <h2>GPA: {gpa}</h2>
-      <h5>
+      <h2>
         {student.campus ? (
           <Link to={`/campuses/${campus.id}`}>
             {firstName} {lastName} attends {student.campus.name}
@@ -36,9 +30,44 @@ const Student = () => {
         ) : (
           `${firstName} is currently not associated with any campus!`
         )}
-      </h5>
-    </>
+      </h2>
+      <Section>
+        <img
+          src={imageUrl}
+          alt={`this is an image of the student ${firstName}, ${lastName}`}
+          style={{ width: 350, height: 350, borderRadius: 50 }}
+        />
+        <DivInfo>
+          <h2>EMAIL: {email}</h2>
+          <h2>GPA: {gpa}</h2>
+        </DivInfo>
+      </Section>
+    </Container>
   );
 };
 
 export default Student;
+
+const Section = styled.section`
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+`;
+const DivInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 2rem;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 50px;
+  height: 100%;
+  h1,h2 {
+    align-self: center;
+  }
+`;
