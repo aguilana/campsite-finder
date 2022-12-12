@@ -89,7 +89,7 @@
   <details>
   
   - Write a component to display a single campus with the following information:
-    - [ ] The campus's name, image, address and description
+    - [x] The campus's name, image, address and description
     - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
   - [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
   - [ ] Clicking on a campus from the campuses view should navigate to show that campus
@@ -106,9 +106,9 @@
     - [x] The student's full name, email, image, and gpa
     - [x] The name of their campus (or a helpful message if they don't have one)
   - [x] Display the appropriate student when the url matches `/students/:studentId`
-  - [ ] Clicking on a student from the students view should navigate to show that student
+  - [x] Clicking on a student from the students view should navigate to show that student
 
-- [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
+- [x] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
 
 </details>
 
