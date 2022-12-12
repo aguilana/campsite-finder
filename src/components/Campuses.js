@@ -12,21 +12,18 @@ const Campuses = () => {
 
   useEffect(() => {
     dispatch(fetchAllCampuses());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Container>
       <h1>ALL CAMPUSES</h1>
-      < AddCampusForm />
+      <AddCampusForm />
       <Ul>
-        {campuses
+        {campuses && campuses.length
           ? campuses.map((campus) => {
               return (
                 <li key={campus.id}>
-                  <img
-                    src={campus.imageUrl}
-                    alt={campus.name}
-                  />
+                  <img src={campus.imageUrl} alt={campus.name} />
                   <div>
                     <Link to={`/campuses/${campus.id}`}>
                       <h3>{campus.name}</h3>
@@ -45,7 +42,7 @@ const Campuses = () => {
 
 export default Campuses;
 
-const Container = styled.div` 
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,7 +50,7 @@ const Container = styled.div`
   gap: 2rem;
   padding: 80px;
   width: 100%;
-  h1{
+  h1 {
     align-self: center;
     font-size: 3rem;
   }

@@ -16,6 +16,7 @@ export const fetchAllCampuses = createAsyncThunk(
 export const addCampusAsync = createAsyncThunk("/campuses/addCampus", async({name, address}) => {
   try{
     const { data } = await axios.post("/api/campuses", {name, address})
+    console.log('data from form CAMPUSES: ', data)
     return data
   }
   catch(err){
@@ -33,7 +34,7 @@ export const campusesSlice = createSlice({
     });
 
     builder.addCase(addCampusAsync.fulfilled, (state, { payload }) => {
-      return payload
+      state.push(payload)
     })
   },
 });

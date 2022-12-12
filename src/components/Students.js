@@ -15,8 +15,8 @@ const Students = () => {
   const students = useSelector(selectStudents);
 
   useEffect(() => {
-    dispatch(fetchAllStudents());
-  }, [dispatch]);
+      dispatch(fetchAllStudents());
+  }, []);
 
 
   return (

@@ -6,7 +6,6 @@ import { addStudentAsync } from '../features/StudentsSlice';
 
 const AddStudentForm = () => {
 
-      // need to create 3 useStates - firstname, lastname, email, campuses?
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,11 +14,18 @@ const AddStudentForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    try{e.preventDefault();
     console.log("form submitted");
-    dispatch(addStudentAsync({ firstName, lastName, email, gpa }));
-    navigate("/students")
+    await dispatch(addStudentAsync({ firstName, lastName, email, gpa }));
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setGpa(0)
+    navigate("/students")}
+    catch(err){
+      console.log(err.message)
+    }
   };
 
   return (

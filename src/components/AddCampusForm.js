@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { addCampusAsync } from "../features/CampusesSlice";
 
 const AddCampusForm = () => {
+
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(addCampusAsync({ name, address }));
-    navigate("/campuses");
-    setName("");
-    setAddress("");
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      await dispatch(addCampusAsync({ name, address }));
+      setName("");
+      setAddress("");
+      navigate("/campuses")
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
@@ -26,7 +31,7 @@ const AddCampusForm = () => {
         type="text"
         placeholder="name of campus"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {setName(e.target.value)}}
         name="name"
       />
       <label htmlFor="address"></label>
@@ -34,7 +39,7 @@ const AddCampusForm = () => {
         type="text"
         placeholder="address of campus"
         value={address}
-        onChange={(e) => setAddress(e.target.value)}
+        onChange={(e) => {setAddress(e.target.value)}}
         name="address"
       />
       <button type="submit">Create Campus</button>
