@@ -5,3 +5,4 @@ export { default as Students } from "./Students";
 export { default as NavBar } from "./NavBar"
 export { default as Student } from "./Student"
 export { default as Campus } from "./Campus"
+export { default as AddStudentForm } from "./AddStudentForm"
