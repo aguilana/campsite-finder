@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchSingleCampus, selectCampus } from "../features/CampusSlice";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Campus = () => {
   const { campusId } = useParams();
@@ -17,11 +18,18 @@ const Campus = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <img src={imageUrl} alt={name} />
-      <h4>{address}</h4>
-      <p>{description}</p>
+    <Container>
+      <Section>
+        <img src={imageUrl} alt={name} style={{ width: 300, height: 300, borderRadius: 50}} />
+        <DivInfo>
+          <h1>{name}</h1>
+          <h4>{address}</h4>
+        </DivInfo>
+      </Section>
+      <section>
+        <h4>Campus Information: </h4>
+        <p>{description}</p>
+      </section>
       <div>
         <h3>List of attending students</h3>
         <ul>
@@ -38,8 +46,29 @@ const Campus = () => {
             : "Campus does not have any students :("}
         </ul>
       </div>
-    </div>
+    </Container>
   );
 };
 
 export default Campus;
+
+const Section = styled.section`
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+`;
+const DivInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 2rem;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 50px;
+  height: 100%;
+`;
