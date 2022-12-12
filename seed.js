@@ -53,7 +53,7 @@ const seed = async () => {
       email: "lenora@gmail.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 3.33,
       campusId: campus1.id,
     });
     await Student.create({
@@ -62,7 +62,7 @@ const seed = async () => {
       email: "elma@gmail.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 3.67,
       campusId: campus3.id,
     });
     await Student.create({
@@ -71,16 +71,16 @@ const seed = async () => {
       email: "tricia@gmail.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 2.55,
       campusId: campus2.id,
     });
     await Student.create({
-      firstName: "Carmen",
-      lastName: "Tanner",
-      email: "carmen@gmail.com",
+      firstName: "Norman",
+      lastName: "Reed",
+      email: "n.reed@gmail.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 3.01,
       campusId: campus4.id,
     });
     await Student.create({
@@ -89,7 +89,7 @@ const seed = async () => {
       email: "carmen@gmail.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 2.22,
       campusId: campus4.id,
     });
     await Student.create({
@@ -98,7 +98,7 @@ const seed = async () => {
       email: "a.fowler@aol.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 3.97,
       campusId: campus4.id,
     });
     await Student.create({
@@ -107,7 +107,7 @@ const seed = async () => {
       email: "a.higgens@randata.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 1.99,
       campusId: campus2.id,
     });
     await Student.create({
@@ -116,7 +116,7 @@ const seed = async () => {
       email: "l.chapman@randata.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 3.21,
       campusId: campus1.id,
     });
     await Student.create({
@@ -125,7 +125,7 @@ const seed = async () => {
       email: "c.hamilton@randata.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 3.66,
       campusId: campus2.id,
     });
 
@@ -135,7 +135,7 @@ const seed = async () => {
       email: "s.grant@randata.com",
       image:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F81-813810_transparent-group-of-students-png-college-student-cartoon.png&f=1&nofb=1&ipt=bf172ecef81476de06e3b8ea71d1d8633b7e543297f975e401e3c48351d40398&ipo=images",
-      gpa: Math.random() * 4,
+      gpa: 2.84,
       campusId: campus3.id,
     });
 
