@@ -9,7 +9,7 @@ const AddStudentForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [gpa, setGpa] = useState(0)
+  const [gpa, setGpa] = useState()
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

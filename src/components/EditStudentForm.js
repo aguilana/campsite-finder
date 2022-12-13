@@ -16,6 +16,10 @@ const EditStudentForm = ({ studentId }) => {
       e.preventDefault();
       const updatedStudent = { studentId, firstName, lastName, email, gpa };
       await dispatch(editSingleStudent(updatedStudent));
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setGpa();
     } catch (err) {
       console.log(err);
     }
