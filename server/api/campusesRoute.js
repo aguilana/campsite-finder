@@ -20,7 +20,7 @@ campusRouter.get("/", async (req, res, next) => {
         },
       ],
     });
-    res.send(campuses);
+    res.status(200).res.send(campuses);
   } catch (error) {
     next(err);
   }
@@ -45,7 +45,7 @@ campusRouter.get("/:id", async (req, res, next) => {
         },
       ],
     });
-    res.send(campus);
+    res.status(200).send(campus);
   } catch (err) {
     next(err);
   }
@@ -58,6 +58,18 @@ campusRouter.post("/", async (req, res, next) => {
   }
   catch(err){
     next(err)
+  }
+});
+
+//  DELETE /api/campuses/:id
+campusRouter.delete("/:id", async (req, res, next) => {
+  try{
+    const campus = await Campus.findByPk(req.params.id)
+    campus.destroy();
+    res.status(200).send(campus)
+  }
+  catch(err){
+    console.log(err)
   }
 })
 

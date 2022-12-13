@@ -245,7 +245,7 @@
   
   <details>
     
-  - [ ] Write a route to remove a campus (based on its id)
+  - [x] Write a route to remove a campus (based on its id)
     
   </details>
   
@@ -253,7 +253,7 @@
   
   <details>
     
-  - [ ] Write a route to remove a student (based on their id)
+  - [x] Write a route to remove a student (based on their id)
     
   </details>
   

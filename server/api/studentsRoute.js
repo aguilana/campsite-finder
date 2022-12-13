@@ -13,7 +13,7 @@ studentsRouter.get("/", async (req, res, next) => {
         },
       ],
     });
-    res.send(students);
+    res.status(200).send(students);
   } catch (err) {
     next(err);
   }
@@ -31,7 +31,7 @@ studentsRouter.get("/:id", async (req, res, next) => {
         },
       ],
     });
-    res.send(student);
+    res.status(200).send(student);
   } catch (err) {
     next(err);
   }
@@ -42,6 +42,17 @@ studentsRouter.post("/", async (req, res, next) => {
   try {
     res.status(201).send(await Student.create(req.body))
     console.log('student route req.body', req.body)
+  }
+  catch(err){
+    next(err)
+  }
+});
+
+studentsRouter.delete("/:id", async (req, res, next) => {
+  try{
+    const student = await Student.findByPk(req.params.id);
+    student.destroy();
+    res.status(200).send(student)
   }
   catch(err){
     next(err)
