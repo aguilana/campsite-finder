@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleStudent, selectStudent } from "../features/StudentSlice";
 import styled from "styled-components";
+import EditStudentForm from "./EditStudentForm";
 
 const Student = () => {
   const { studentId } = useParams();
@@ -40,6 +41,7 @@ const Student = () => {
         <DivInfo>
           <h2>EMAIL: {email}</h2>
           <h2>GPA: {gpa}</h2>
+          <EditStudentForm studentId={studentId}/>
         </DivInfo>
       </Section>
     </Container>

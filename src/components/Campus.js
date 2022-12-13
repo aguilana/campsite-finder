@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { fetchSingleCampus, selectCampus } from "../features/CampusSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import EditCampusForm from "./EditCampusForm";
 
 const Campus = () => {
   const { campusId } = useParams();
@@ -20,10 +21,15 @@ const Campus = () => {
   return (
     <Container>
       <Section>
-        <img src={imageUrl} alt={name} style={{ width: 300, height: 300, borderRadius: 50}} />
+        <img
+          src={imageUrl}
+          alt={name}
+          style={{ width: 300, height: 300, borderRadius: 50 }}
+        />
         <DivInfo>
           <h1>{name}</h1>
           <h4>{address}</h4>
+          < EditCampusForm campusId={campusId} />
         </DivInfo>
       </Section>
       <section>

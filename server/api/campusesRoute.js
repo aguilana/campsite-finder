@@ -78,6 +78,7 @@ campusRouter.delete("/:id", async (req, res, next) => {
 campusRouter.put("/:id", async (req, res, next) => {
   try {
     const campus = await Campus.findByPk(req.params.id);
+    console.log('req.body in server', req.body)
     res.status(200).send( await campus.update(req.body))
   }
   catch(err){

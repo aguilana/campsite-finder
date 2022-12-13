@@ -60,7 +60,7 @@ studentsRouter.delete("/:id", async (req, res, next) => {
   }
 })
 
-// PUT /api/students/:id
+// PUT /api/students/:id/update
 studentsRouter.put("/:id", async (req, res, next) => {
   try{
     const student = await Student.findByPk(req.params.id)

@@ -304,7 +304,7 @@
   
 <details>
   
-- [ ] Write a route to update an existing campus
+- [x] Write a route to update an existing campus
   
 </details>
 
@@ -312,7 +312,7 @@
   
 <details>
   
-- [ ] Write a route to update an existing student
+- [x] Write a route to update an existing student
   
 </details>  
   

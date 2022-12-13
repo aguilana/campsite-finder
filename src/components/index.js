@@ -2,8 +2,10 @@ export { default as Main } from "./Main.js";
 export { default as Campuses } from "./Campuses";
 export { default as Home } from "./Home";
 export { default as Students } from "./Students";
-export { default as NavBar } from "./NavBar"
-export { default as Student } from "./Student"
-export { default as Campus } from "./Campus"
-export { default as AddStudentForm } from "./AddStudentForm"
-export { default as AddCampusForm } from  "./AddCampusForm"
+export { default as NavBar } from "./NavBar";
+export { default as Student } from "./Student";
+export { default as Campus } from "./Campus";
+export { default as AddStudentForm } from "./AddStudentForm";
+export { default as AddCampusForm } from  "./AddCampusForm";
+export { default as EditCampusForm } from "./EditCampusForm";
+export { default as EditStudentForm } from "./EditStudentForm" 
