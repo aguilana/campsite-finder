@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllCampuses, selectCampuses } from "../features/CampusesSlice";
+import { deleteCampusAsync, fetchAllCampuses, selectCampuses } from "../features/CampusesSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AddCampusForm from "./AddCampusForm";
@@ -13,6 +13,15 @@ const Campuses = () => {
   useEffect(() => {
     dispatch(fetchAllCampuses());
   }, []);
+
+  const handleClick = async (e) => {
+    try {
+      await dispatch(deleteCampusAsync(e.target.value))
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <Container>
@@ -31,6 +40,7 @@ const Campuses = () => {
                     <h4>Address: {campus.address}</h4>
                     <p>{campus.description}</p>
                   </div>
+                  <button value={campus.id} onClick={handleClick}>✖</button>
                 </li>
               );
             })

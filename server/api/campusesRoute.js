@@ -20,8 +20,8 @@ campusRouter.get("/", async (req, res, next) => {
         },
       ],
     });
-    res.status(200).res.send(campuses);
-  } catch (error) {
+    res.status(200).send(campuses);
+  } catch (err) {
     next(err);
   }
 });
@@ -69,6 +69,7 @@ campusRouter.delete("/:id", async (req, res, next) => {
     res.status(200).send(campus)
   }
   catch(err){
+    next(err)
     console.log(err)
   }
 })

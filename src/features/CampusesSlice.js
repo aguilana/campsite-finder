@@ -13,10 +13,20 @@ export const fetchAllCampuses = createAsyncThunk(
   }
 );
 
-export const addCampusAsync = createAsyncThunk("/campuses/addCampus", async({name, address}) => {
+export const addCampusAsync = createAsyncThunk("campuses/addCampus", async({name, address}) => {
   try{
     const { data } = await axios.post("/api/campuses", {name, address})
     console.log('data from form CAMPUSES: ', data)
+    return data
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
+export const deleteCampusAsync = createAsyncThunk("campuses/deleteCampus", async(id) => {
+  try{
+    const { data } = await axios.delete(`/api/campuses/${id}`)
     return data
   }
   catch(err){
@@ -35,6 +45,10 @@ export const campusesSlice = createSlice({
 
     builder.addCase(addCampusAsync.fulfilled, (state, { payload }) => {
       state.push(payload)
+    })
+
+    builder.addCase(deleteCampusAsync.fulfilled, (state, { payload }) => {
+      return state.filter(campus=>campus.id !== payload.id)
     })
   },
 });

@@ -50,8 +50,8 @@ const Students = () => {
                         {student.firstName} {student.lastName}
                       </Link>
                     </h3>
+                  <button value={student.id} onClick={handleClick}>✖</button>
                   </span>
-                  <button value={student.id} onClick={handleClick}>X</button>
                 </li>
               );
             })
