@@ -1,30 +1,41 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteStudentAsync,
   fetchAllStudents,
   selectStudents,
 } from "../features/StudentsSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import AddStudentForm from "./AddStudentForm";
 
 const Students = () => {
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const students = useSelector(selectStudents);
+  console.log("STUDENTS IN STATE: ", students)
 
   useEffect(() => {
       dispatch(fetchAllStudents());
   }, []);
 
+  const handleClick = async (e) => {
+    try{
+      await dispatch(deleteStudentAsync(e.target.value))
+      navigate("/students")
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <Container>
       <h1>All Students</h1>
       < AddStudentForm />
       <Ul>
-        {students
+        {students && students.length
           ? students.map((student) => {
               return (
                 <li key={student.id}>
@@ -40,10 +51,11 @@ const Students = () => {
                       </Link>
                     </h3>
                   </span>
+                  <button value={student.id} onClick={handleClick}>X</button>
                 </li>
               );
             })
-          : "no students to display"}
+          : <h4 style={{fontSize: 40}}>Oops...no students to display 😦 </h4>}
       </Ul>
     </Container>
   );

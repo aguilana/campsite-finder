@@ -225,11 +225,11 @@
   
   <details>
     
-  - [ ] In the students view, include an `X` button next to each student
+  - [x] In the students view, include an `X` button next to each student
   - Clicking the `X` button should:
   
-    - [ ] Make an AJAX request that causes that student to be removed from database
-    - [ ] Remove the student from the list of students without needing to refresh the page
+    - [x] Make an AJAX request that causes that student to be removed from database
+    - [x] Remove the student from the list of students without needing to refresh the page
 
   
   </details>
