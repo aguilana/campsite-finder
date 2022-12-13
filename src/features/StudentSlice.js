@@ -23,6 +23,7 @@ export const editSingleStudent = createAsyncThunk(
         email,
         gpa,
       });
+      console.log(data)
       return data;
     } catch (err) {
       console.log(err);
