@@ -8,7 +8,7 @@
     "build-watch": "webpack -w",
     "start-server": "nodemon --watch server -e js,html server/index.js",
     "start": "echo 'Running server for production - developers, use npm run start:dev for development' && node main",
-    "seed": "node seed.js"
+    "seed": "node ./bin/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +16,11 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
+    "casual": "^1.6.2",
     "chalk": "^2.4.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "images-scraper": "^6.4.2",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "react": "^18.1.0",
@@ -35,8 +37,10 @@
     "@babel/preset-env": "7.17.10",
     "@babel/preset-react": "7.16.7",
     "@babel/preset-stage-2": "^7.8.3",
+    "@faker-js/faker": "^7.6.0",
     "babel-loader": "8.2.5",
     "eslint": "^8.29.0",
+    "lorem-hipsum": "^0.1.7",
     "volleyball": "^1.5.1",
     "webpack": "^5.72.0",
     "webpack-dev-server": "^4.7.3"

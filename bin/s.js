@@ -1,12 +1,13 @@
 // write seed file here
 
-const { db } = require("./server/db");
+const { db } = require("../server/db");
 const { green, red } = require("chalk");
+
 
 // require models here
 
-const Student = require("./server/db/models/Student");
-const Campus = require("./server/db/models/Campus");
+const Student = require("../server/db/models/Student");
+const Campus = require("../server/db/models/Campus");
 
 // sample data
 
