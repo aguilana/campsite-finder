@@ -62,5 +62,23 @@ const Form = styled.form`
   align-self: center;
   flex-direction: column;
   gap: 0.8rem;
-  width: 40%;
+  width: 300px;
+  input {
+    height: 20px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  button {
+    border: none;
+    width: 100px;
+    height: 25px;
+    align-self: center;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    &:hover {
+      color: white;
+      background: darkblue;
+      cursor: pointer;
+    }
+  }
 `;

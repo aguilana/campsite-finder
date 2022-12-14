@@ -1,22 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchSingleCampus, selectCampus } from "../features/CampusSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  fetchSingleCampus,
+  selectCampus,
+  unregisterStudentAsync,
+} from "../features/CampusSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import EditCampusForm from "./EditCampusForm";
 
 const Campus = () => {
-  const { campusId } = useParams();
+  const { theCampusId } = useParams();
   const dispatch = useDispatch();
 
+
   const campus = useSelector(selectCampus);
-  console.log("this is the campus selected", campus);
   const { name, imageUrl, address, description, students } = campus;
+  // console.log("THIS IS THE CAMPUS", campus);
+  // console.log("THESE ARE ATTENDEES: ", campus.students);
+
+  // function to handle un-assigning students to the campus with this view
+  const unregisterStudent = async (student) => {
+    await dispatch(unregisterStudentAsync(student))
+    dispatch(fetchSingleCampus(theCampusId))
+  };
 
   useEffect(() => {
-    dispatch(fetchSingleCampus(campusId));
-  }, [dispatch]);
+    dispatch(fetchSingleCampus(theCampusId));
+  }, []);
 
   return (
     <Container>
@@ -29,7 +41,7 @@ const Campus = () => {
         <DivInfo>
           <h1>{name}</h1>
           <h4>{address}</h4>
-          < EditCampusForm campusId={campusId} />
+          <EditCampusForm theCampusId={theCampusId} />
         </DivInfo>
       </Section>
       <section>
@@ -42,11 +54,18 @@ const Campus = () => {
           {students && students.length
             ? students.map((student) => {
                 return (
-                  <Link to={`/students/${student.id}`} key={student.id}>
+                  <Span key={student.id}>
                     <li>
-                      {student.firstName} {student.lastName}
+                      <Link to={`/students/${student.id}`}>
+                        {student.firstName} {student.lastName}
+                      </Link>
                     </li>
-                  </Link>
+                    <button
+                      onClick={()=>unregisterStudent(student)}
+                    >
+                      Unregister
+                    </button>
+                  </Span>
                 );
               })
             : "Campus does not have any students :("}
@@ -77,4 +96,10 @@ const Container = styled.div`
   gap: 3rem;
   padding: 50px;
   height: 100%;
+`;
+
+const Span = styled.span`
+  display: flex;
+  gap: 1rem;
+  padding: 5px;
 `;

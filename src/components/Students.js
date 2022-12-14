@@ -50,7 +50,7 @@ const Students = () => {
                         {student.firstName} {student.lastName}
                       </Link>
                     </h3>
-                  <button value={student.id} onClick={handleClick}>✖</button>
+                  <Button value={student.id} onClick={handleClick}>✖</Button>
                   </span>
                 </li>
               );
@@ -110,5 +110,19 @@ const Ul = styled.ul`
   }
   span {
     align-self: center;
+  }
+`;
+
+const Button = styled.button`
+  font-size: 1.5rem;
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+  &:hover {
+    color: white;
+    background: darkblue;
+    cursor: pointer;
   }
 `;

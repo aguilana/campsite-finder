@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCampusAsync, fetchAllCampuses, selectCampuses } from "../features/CampusesSlice";
+import {
+  deleteCampusAsync,
+  fetchAllCampuses,
+  selectCampuses,
+} from "../features/CampusesSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AddCampusForm from "./AddCampusForm";
@@ -12,16 +16,15 @@ const Campuses = () => {
 
   useEffect(() => {
     dispatch(fetchAllCampuses());
-  }, []);
+  }, [dispatch]);
 
   const handleClick = async (e) => {
     try {
-      await dispatch(deleteCampusAsync(e.target.value))
+      await dispatch(deleteCampusAsync(e.target.value));
+    } catch (err) {
+      console.log(err);
     }
-    catch(err){
-      console.log(err)
-    }
-  }
+  };
 
   return (
     <Container>
@@ -34,13 +37,15 @@ const Campuses = () => {
                 <li key={campus.id}>
                   <img src={campus.imageUrl} alt={campus.name} />
                   <div>
-                    <Link to={`/campuses/${campus.id}`}>
-                      <h3>{campus.name}</h3>
-                    </Link>
+                    <h3>
+                      <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
+                    </h3>
                     <h4>Address: {campus.address}</h4>
                     <p>{campus.description}</p>
+                    <Button value={campus.id} onClick={handleClick}>
+                      ✖
+                    </Button>
                   </div>
-                  <button value={campus.id} onClick={handleClick}>✖</button>
                 </li>
               );
             })
@@ -92,6 +97,29 @@ const Ul = styled.ul`
     }
     h3 {
       font-size: 2rem;
+      a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+          border-radius: 10px;
+          background: darkgray;
+          color: brown;
+        }
+      }
     }
+  }
+`;
+
+const Button = styled.button`
+  font-size: 1.5rem;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+  &:hover {
+    color: white;
+    background: darkblue;
+    cursor: pointer;
   }
 `;

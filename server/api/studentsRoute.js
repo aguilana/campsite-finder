@@ -60,16 +60,29 @@ studentsRouter.delete("/:id", async (req, res, next) => {
   }
 })
 
-// PUT /api/students/:id/update
+// PUT /api/students/:id/
 studentsRouter.put("/:id", async (req, res, next) => {
   try{
     const student = await Student.findByPk(req.params.id)
+    console.log(student)
+    console.log(req.body)
     res.status(200).send( await student.update(req.body))
   }
   catch(err){
     next(err)
   }
 })
+
+// studentsRouter.put("/:id/", async (req, res, next) => {
+//   try {
+//     const student = await Student.findByPk(req.params.id)
+//     console.log("req.body", req.body)
+//     res.status(200).send( await student.update(req.body))
+//   }
+//   catch(err){
+//     next(err)
+//   }
+// })
 
 
 module.exports = studentsRouter;

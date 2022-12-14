@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { editSingleCampus } from "../features/CampusSlice";
 
-const EditCampusForm = ({campusId}) => {
-    console.log("this is campus id in edit form", campusId)
+const EditCampusForm = ({theCampusId}) => {
 
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
@@ -16,7 +15,7 @@ const EditCampusForm = ({campusId}) => {
     const handleChange = async (e) => {
         try {e.preventDefault();
         console.log('submitted change')
-        const updatedCampus = {campusId, name, address}
+        const updatedCampus = {theCampusId, name, address}
         await dispatch(editSingleCampus(updatedCampus))
         setName("");
         setAddress("")}
@@ -45,5 +44,23 @@ const Form = styled.form`
   align-self: center;
   flex-direction: column;
   gap: 0.8rem;
-  width: 40%;
+  width: 300px;
+  input {
+    height: 20px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  button {
+    border: none;
+    width: 100px;
+    height: 25px;
+    align-self: center;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    &:hover {
+      color: white;
+      background: darkblue;
+      cursor: pointer;
+    }
+  }
 `;

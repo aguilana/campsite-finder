@@ -41,6 +41,7 @@ const Student = () => {
         <DivInfo>
           <h2>EMAIL: {email}</h2>
           <h2>GPA: {gpa}</h2>
+          {/* ---- edit student form ---- */}
           <EditStudentForm studentId={studentId}/>
         </DivInfo>
       </Section>

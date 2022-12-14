@@ -41,6 +41,7 @@ campusRouter.get("/:id", async (req, res, next) => {
             "email",
             "imageUrl",
             "gpa",
+            "campusId"
           ],
         },
       ],

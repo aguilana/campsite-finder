@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 const NavBar = () => {
+
+  const dispatch = useDispatch()
+
+  useEffect
+  
+
   return (
     <nav id='navbar'>
         <ul id='nav-list'>
