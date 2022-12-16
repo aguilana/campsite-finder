@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <BodyContainer>
+        {/* <BodyContainer> */}
           <Main />
-        </BodyContainer>
+        {/* </BodyContainer> */}
       </Router>
     </Provider>
   </React.StrictMode>

@@ -9,4 +9,4 @@ export { default as AddStudentForm } from "./AddStudentForm";
 export { default as AddCampusForm } from  "./AddCampusForm";
 export { default as EditCampusForm } from "./EditCampusForm";
 export { default as EditStudentForm } from "./EditStudentForm";
-export { default as NotFound } from "./NotFound"
+export { default as PageNotFound } from "./PageNotFound"

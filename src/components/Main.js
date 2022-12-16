@@ -7,7 +7,7 @@ import {
   Students,
   Campus,
   Student,
-  NotFound,
+  PageNotFound
 } from "./";
 import { Route, Routes } from "react-router-dom";
 
@@ -23,9 +23,7 @@ const Main = () => {
         <Route exact path="/students" element={<Students />} />
         <Route exact path="/campuses/:theCampusId" element={<Campus />} />
         <Route exact path="/students/:studentId" element={<Student />} />
-        <Route path="/*" element={ <NotFound />} />
-        <Route path="/campuses/*" element={ <NotFound />} />
-        <Route path="/students/*" element={ <NotFound />} />
+        <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </>
   );
