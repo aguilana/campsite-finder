@@ -14,6 +14,7 @@ import {
 } from "../styles/Form/form";
 
 const EditCampusForm = ({ theCampusId }) => {
+  console.log("campus id", theCampusId)
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
@@ -23,6 +24,7 @@ const EditCampusForm = ({ theCampusId }) => {
     try {
       e.preventDefault();
       const updatedCampus = { theCampusId, name, address };
+      console.log(updatedCampus)
       await dispatch(editSingleCampus(updatedCampus));
       setName("");
       setAddress("");

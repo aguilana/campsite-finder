@@ -30,9 +30,9 @@ export const unregisterStudentAsync = createAsyncThunk(
 
 export const editSingleCampus = createAsyncThunk(
   "campus/editCampus",
-  async ({ campusId, name, address }) => {
+  async ({ theCampusId, name, address }) => {
     try {
-      const { data } = await axios.put(`/api/campuses/${campusId}`, {
+      const { data } = await axios.put(`/api/campuses/${theCampusId}`, {
         name,
         address,
       });

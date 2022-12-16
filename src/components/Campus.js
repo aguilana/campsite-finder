@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   fetchSingleCampus,
   selectCampus,
@@ -30,6 +30,7 @@ const Campus = () => {
 
   // function to handle un-assigning students to the campus with this view
   const unregisterStudent = async (student) => {
+    alert(`${student.firstName} is now unregistered`)
     await dispatch(unregisterStudentAsync(student));
     dispatch(fetchSingleCampus(theCampusId));
   };

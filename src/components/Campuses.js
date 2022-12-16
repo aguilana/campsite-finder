@@ -45,7 +45,7 @@ const Campuses = () => {
           <Button
             onClick={handleClick}
             variant="contained"
-            style={{ width: 250 }}
+            style={{ width: 250, alignSelf: "center"}}
           >
             {btnText}
           </Button>
@@ -97,11 +97,9 @@ export default Campuses;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
   gap: 2rem;
   padding: 80px;
-  width: 100%;
+  width: 100vw;
 `;
 
 const Title = styled.h1`
@@ -112,15 +110,16 @@ const Title = styled.h1`
 
 const Ul = styled.ul`
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   gap: 1rem;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: center;
   padding: 50px;
   li {
     display: flex;
     justify-content: space-around;
     align-content: center;
+    width: 100%;
     gap: 1rem;
     padding: 10px 20px;
     color: black;

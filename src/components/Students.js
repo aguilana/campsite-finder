@@ -47,7 +47,7 @@ const Students = () => {
       <Button
         onClick={handleClick}
         variant="contained"
-        style={{width: 250}}
+        style={{width: 250, alignSelf: "center"}}
       >
         {btnText}
       </Button>
