@@ -75,6 +75,7 @@ export const FormButton = styled.button`
   border: 1px solid hsl(200, 100%, 50%);
   border-radius: .25em;
   outline: none;
+  align-self: center;
   cursor: pointer;
   &:hover,
   &:focus {

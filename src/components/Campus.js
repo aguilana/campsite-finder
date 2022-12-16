@@ -9,6 +9,8 @@ import {
 import { Link } from "react-router-dom";
 import EditCampusForm from "./EditCampusForm";
 import { Section, DivInfo, Container, Span } from "../styles/singleView/section";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Campus = () => {
   const { theCampusId } = useParams();
@@ -47,22 +49,25 @@ const Campus = () => {
         <p>{description}</p>
       </section>
       <div>
-        <h3>List of attending students</h3>
+        <h3>Enrollees: </h3>
         <ul>
           {students && students.length
             ? students.map((student) => {
                 return (
-                  <Span key={student.id}>
+                  <Span key={student.id} style={{width: 400}}>
                     <li>
-                      <Link to={`/students/${student.id}`}>
+                      <Link style={{fontSize: 20}} to={`/students/${student.id}`}>
                         {student.firstName} {student.lastName}
                       </Link>
                     </li>
-                    <button
-                      onClick={()=>unregisterStudent(student)}
-                    >
-                      Unregister
-                    </button>
+                    <Button
+                        onClick={()=>unregisterStudent(student)}
+                        variant="contained"
+                        startIcon={<DeleteIcon />}
+                      >
+                        Unregister
+                      </Button>
+
                   </Span>
                 );
               })

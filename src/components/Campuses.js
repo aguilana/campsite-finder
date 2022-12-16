@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteCampusAsync,
@@ -10,10 +10,14 @@ import styled from "styled-components";
 import AddCampusForm from "./AddCampusForm";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Campuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
+  const [showForm, setShowForm] = useState(false);
+  const [btnText, setBtnText] = useState("Add A Campus");
 
   useEffect(() => {
     dispatch(fetchAllCampuses());
@@ -23,12 +27,29 @@ const Campuses = () => {
     dispatch(deleteCampusAsync(id));
   };
 
+  const handleClick = () => {
+    if (showForm === false) {
+      setShowForm(!showForm);
+      setBtnText("Collapse");
+    } else {
+      setShowForm(false);
+      setBtnText("Add A Campus");
+    }
+  };
+
   return (
     <>
       {
         <Container>
-          <h1>ALL CAMPUSES</h1>
-          <AddCampusForm />
+          <Title>ALL CAMPUSES</Title>
+          <Button
+            onClick={handleClick}
+            variant="contained"
+            style={{ width: 250 }}
+          >
+            {btnText}
+          </Button>
+          {showForm ? <AddCampusForm /> : ""}
           <Ul>
             {campuses && campuses.length ? (
               campuses.map((campus) => {
@@ -41,8 +62,13 @@ const Campuses = () => {
                       </h3>
                       <h4>Address: {campus.address}</h4>
                       <p>{campus.description}</p>
-                      <Button value={campus.id} onClick={()=>handleDelete(campus.id)}>
-                        ✖
+                      <Button
+                        value={campus.id}
+                        onClick={() => handleDelete(campus.id)}
+                        variant="contained"
+                        startIcon={<DeleteIcon />}
+                      >
+                        DELETE
                       </Button>
                     </div>
                   </li>
@@ -76,10 +102,12 @@ const Container = styled.div`
   gap: 2rem;
   padding: 80px;
   width: 100%;
-  h1 {
-    align-self: center;
-    font-size: 3rem;
-  }
+`;
+
+const Title = styled.h1`
+  align-self: center;
+  font-size: 3rem;
+  color: black;
 `;
 
 const Ul = styled.ul`
@@ -95,16 +123,21 @@ const Ul = styled.ul`
     align-content: center;
     gap: 1rem;
     padding: 10px 20px;
-    width: 100%;
+    color: black;
+    background-color: hsla(200, 29%, 67%, 0.702);
     img {
-      border-radius: 40%;
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
+      flex: 1;
     }
     div {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      flex: 9;
+      button {
+        width: 150px;
+      }
     }
     h3 {
       font-size: 2rem;
@@ -118,19 +151,5 @@ const Ul = styled.ul`
         }
       }
     }
-  }
-`;
-
-const Button = styled.button`
-  font-size: 1.5rem;
-  width: 100px;
-  height: 40px;
-  border: none;
-  border-radius: 10px;
-  background-color: blanchedalmond;
-  &:hover {
-    color: white;
-    background: darkblue;
-    cursor: pointer;
   }
 `;

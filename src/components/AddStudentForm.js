@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { fetchAllCampuses, selectCampuses } from "../features/CampusesSlice";
 import { addStudentAsync, fetchAllStudents } from "../features/StudentsSlice";
 import {
@@ -33,12 +32,14 @@ const AddStudentForm = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      await dispatch(addStudentAsync({ firstName, lastName, email, gpa, campusId }));
-      alert("Successfully added a new student!");
+      await dispatch(
+        addStudentAsync({ firstName, lastName, email, gpa, campusId })
+      );
+      alert("successfully added a new student");
       setFirstName("");
       setLastName("");
       setEmail("");
-      setGpa(0)
+      setGpa(0);
       setCampusId("");
     } catch (err) {
       console.log(err.message);
@@ -46,7 +47,7 @@ const AddStudentForm = () => {
   };
 
   const handleChange = (e) => {
-      setCampusId(e.target.value);
+    setCampusId(e.target.value);
   };
 
   return (

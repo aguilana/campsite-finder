@@ -24,6 +24,9 @@ const Div = styled.div`
   font-size: 3rem;
   justify-content: center;
   align-content: center;
+  h1{
+    color: black;
+  }
   h2 {
     border: 1px solid black;
     width: 300px;

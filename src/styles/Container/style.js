@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const Title = styled.h1` 
     align-self: center;
     font-size: 3rem;
+    color: black;
 `
 
 export const DeleteBtn = styled.button` 
@@ -36,7 +37,7 @@ export const DeleteBtn = styled.button`
 export const Ul = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  gap: 1rem;
+  gap: 7px;
   justify-content: center;
   align-content: center;
   li {
@@ -46,8 +47,10 @@ export const Ul = styled.ul`
     justify-content: center;
     align-content: center;
     gap: 1rem;
+    background-color: hsla(200, 29%, 67%, 0.702);
+    padding: 10px 5px;
+    color: black;
     img {
-      border-radius: 40%;
       align-self: center;
     }
   }

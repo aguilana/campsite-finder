@@ -26,14 +26,16 @@ export const Li = styled.li`
     color: blanchedalmond;
     height: 100%;
     width: 150px;
-    &:hover {
-    background-color: blanchedalmond;
-    color: rgb(66, 66, 66);
-    }
-    &:focus,
-    &:active {
+    a{
+        &:hover {
         background-color: blanchedalmond;
         color: rgb(66, 66, 66);
-        transition: 500ms;
+        }
+        /* &:focus,
+        &:active {
+            background-color: blanchedalmond;
+            color: rgb(66, 66, 66,);
+            transition: 500ms;
+        } */
     }
 `

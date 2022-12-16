@@ -11,7 +11,7 @@ module.exports = db.define('campus', {
     },
     imageUrl: {
         type: Sequelize.STRING(1000),
-        defaultValue: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.yourcampusimage.com%2Fwp-content%2Fuploads%2F2013%2F06%2Fsmallblogtampa26dsc_1350_1_2_fused.jpg&f=1&nofb=1&ipt=aed4313de1f1ea2241092018f11ef715818181cfe012f9948147aba7e5ffc59f&ipo=images",
+        defaultValue: "https://images.unsplash.com/photo-1508302882073-8af6be4c6688?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
         validate: {
             isUrl: true
         }

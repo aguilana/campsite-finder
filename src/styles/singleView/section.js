@@ -16,6 +16,7 @@ export const DivInfo = styled.div`
   gap: 2rem;
   width: 100%;
   h1,h2,h4{
+    color: black;
     align-self: center;
   }
 `;
@@ -26,10 +27,12 @@ export const Container = styled.div`
   gap: 3rem;
   padding: 50px;
   height: 100%;
+  color: black
 `;
 
 export const Span = styled.span`
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   padding: 5px;
 `;

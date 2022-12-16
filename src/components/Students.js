@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteStudentAsync,
@@ -17,11 +17,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const Students = () => {
   const dispatch = useDispatch();
 
+  const [showForm, setShowForm] = useState(false);
+  const [btnText, setBtnText] = useState("Add Student Here")
+
   const students = useSelector(selectStudents);
 
-
   useEffect(() => {
-    console.log("use effect")
+    console.log("use effect");
     dispatch(fetchAllStudents());
   }, [dispatch]);
 
@@ -29,11 +31,28 @@ const Students = () => {
     dispatch(deleteStudentAsync(id));
   };
 
+  const handleClick = () => {
+    if (showForm === false) {
+      setShowForm(!showForm);
+      setBtnText("Collapse");
+    } else {
+      setShowForm(false)
+      setBtnText("Add Student Here")
+      }
+  };
+
   return (
     <Container>
       <Title>All Students</Title>
+      <Button
+        onClick={handleClick}
+        variant="contained"
+        style={{width: 250}}
+      >
+        {btnText}
+      </Button>
+      {showForm ? <AddStudentForm /> : ""}
 
-      <AddStudentForm />
       <Ul>
         {students && students.length ? (
           students.map((student) => {
@@ -45,14 +64,14 @@ const Students = () => {
                   style={{ width: 300, height: 250 }}
                 />
                 <Span>
-                  <h3>
+                  <h2>
                     <Link to={`/students/${student.id}`}>
                       {student.firstName} {student.lastName}
                     </Link>
-                  </h3>
+                  </h2>
                   <Button
                     onClick={() => handleDelete(student.id)}
-                    variant="outlined"
+                    variant="contained"
                     startIcon={<DeleteIcon />}
                   >
                     ✖
@@ -64,8 +83,7 @@ const Students = () => {
               </li>
             );
           })
-        ) 
-        : (
+        ) : (
           <Backdrop
             sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
             open
