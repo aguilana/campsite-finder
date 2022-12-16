@@ -1,84 +1,136 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { addStudentAsync } from '../features/StudentsSlice';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchAllCampuses, selectCampuses } from "../features/CampusesSlice";
+import { addStudentAsync, fetchAllStudents } from "../features/StudentsSlice";
+import {
+  WindowContainer,
+  FormContainer,
+  Form,
+  Title,
+  Input,
+  Label,
+  InputGroup,
+  FormButton,
+} from "../styles/Form/form";
 
 const AddStudentForm = () => {
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [gpa, setGpa] = useState()
+  const [gpa, setGpa] = useState("");
+  const [campusId, setCampusId] = useState("");
+  console.log("campus", campusId);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
+  const campuses = useSelector(selectCampuses);
+  console.log("campuses on add student", campuses);
+
+  useEffect(() => {
+    dispatch(fetchAllStudents());
+    dispatch(fetchAllCampuses());
+  }, []);
 
   const handleSubmit = async (e) => {
-    try{e.preventDefault();
-    console.log("form submitted");
-    await dispatch(addStudentAsync({ firstName, lastName, email, gpa }));
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setGpa(0)
-    navigate("/students")}
-    catch(err){
-      console.log(err.message)
+    try {
+      e.preventDefault();
+      await dispatch(addStudentAsync({ firstName, lastName, email, campusId }));
+      alert("Successfully added a new student!");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setCampusId("");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleChange = (e) => {
+    if (e.target.value === "unselected") {
+      setCampusId(null);
+    } else {
+      setCampusId(e.target.value);
+      console.log(e.target.value);
     }
   };
 
   return (
-    <Form id="create-student-form" onSubmit={handleSubmit}>
-    <label htmlFor="firstName">First Name: </label>
-    <input
-      type="text"
-      value={firstName}
-      onChange={(e)=>{setFirstName(e.target.value)}}
-      name="firstName"
-      placeholder="First Name"
-    />
-    <label htmlFor="lastName">Last Name: </label>
-    <input
-      type="text"
-      value={lastName}
-      onChange={(e)=>{setLastName(e.target.value)}}
-      name="lastName"
-      placeholder="Last Name"
-    />
-    <label htmlFor="email">Email: </label>
-    <input type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}} name="email" placeholder="Email" />
-    <label htmlFor="gpa">GPA: </label>
-    <input type="number" step="any" placeholder="cumulative gpa" value={gpa} onChange={(e)=>{setGpa(e.target.value)}}  name='gpa' />
-    <button type="submit">Create Student</button>
-  </Form>
-  )
-}
+    <WindowContainer>
+      <FormContainer>
+        <Title>Add Student</Title>
+        <Form id="create-student-form" onSubmit={handleSubmit}>
+          <InputGroup>
+            <Label htmlFor="firstName">First Name: </Label>
+            <Input
+              type="text"
+              value={firstName}
+              onChange={(e) => {
+                setFirstName(e.target.value);
+              }}
+              name="firstName"
+              placeholder="First Name"
+              required
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="lastName">Last Name: </Label>
+            <Input
+              type="text"
+              value={lastName}
+              onChange={(e) => {
+                setLastName(e.target.value);
+              }}
+              name="lastName"
+              placeholder="Last Name"
+              required
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="email">Email: </Label>
+            <Input
+              type="text"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="gpa">GPA: </Label>
+            <Input
+              type="number"
+              step="any"
+              value={gpa}
+              name="gpa"
+              placeholder="GPA"
+              onChange={(e) => setGpa(e.target.value)}
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label> Select Campus </Label>
+            <select onChange={handleChange}>
+              <option defaultValue value="unselected">
+                {" "}
+                -- select a campus --{" "}
+              </option>
+              {campuses
+                ? campuses.map((campus) => (
+                    <option key={campus.id} value={campus.id}>
+                      {campus.name}
+                    </option>
+                  ))
+                : ""}
+            </select>
+          </InputGroup>
+          <FormButton type="submit">Create Student</FormButton>
+        </Form>
+      </FormContainer>
+    </WindowContainer>
+  );
+};
 
-export default AddStudentForm
-
-const Form = styled.form`
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  gap: 0.8rem;
-  width: 300px;
-  input {
-    height: 20px;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  button {
-    border: none;
-    width: 100px;
-    height: 25px;
-    align-self: center;
-    background-color: blanchedalmond;
-    border-radius: 10px;
-    &:hover {
-      color: white;
-      background: darkblue;
-      cursor: pointer;
-    }
-  }
-`;
+export default AddStudentForm;

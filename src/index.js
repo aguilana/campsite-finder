@@ -9,9 +9,11 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-  <Provider store={store}>
-    <Router>
-      <Main />
-    </Router>
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <Main />
+      </Router>
+    </Provider>
+  </React.StrictMode>
 );

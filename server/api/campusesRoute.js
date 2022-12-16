@@ -41,12 +41,18 @@ campusRouter.get("/:id", async (req, res, next) => {
             "email",
             "imageUrl",
             "gpa",
-            "campusId"
+            "campusId",
           ],
         },
       ],
     });
-    res.status(200).send(campus);
+    if (!campus) {
+      let err = new Error("No campus found with that ID");
+      err.status = 404;
+      next(err);
+    } else {
+      res.status(200).send(campus);
+    }
   } catch (err) {
     next(err);
   }
@@ -55,36 +61,38 @@ campusRouter.get("/:id", async (req, res, next) => {
 // POST /api/campuses
 campusRouter.post("/", async (req, res, next) => {
   try {
-    res.status(201).send(await Campus.create(req.body))
-  }
-  catch(err){
-    next(err)
+    res.status(201).send(await Campus.create(req.body));
+  } catch (err) {
+    next(err);
   }
 });
 
 //  DELETE /api/campuses/:id
 campusRouter.delete("/:id", async (req, res, next) => {
-  try{
-    const campus = await Campus.findByPk(req.params.id)
-    campus.destroy();
-    res.status(200).send(campus)
+  try {
+    const campus = await Campus.findByPk(req.params.id);
+    if (!campus) {
+      let err = new Error(
+        "Cannot remove campus - no campus found with that id"
+      );
+      next(err);
+    } else {
+      await campus.destroy();
+      res.status(200).send(campus);
+    }
+  } catch (err) {
+    next(err);
   }
-  catch(err){
-    next(err)
-    console.log(err)
-  }
-})
+});
 
 // PUT /api/campuses/:id
 campusRouter.put("/:id", async (req, res, next) => {
   try {
     const campus = await Campus.findByPk(req.params.id);
-    console.log('req.body in server', req.body)
-    res.status(200).send( await campus.update(req.body))
+    res.status(200).send(await campus.update(req.body));
+  } catch (err) {
+    next(err);
   }
-  catch(err){
-    next(err)
-  }
-})
+});
 
 module.exports = campusRouter;

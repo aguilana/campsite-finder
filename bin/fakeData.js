@@ -26,7 +26,7 @@ function createRandomUser() {
       min: 0,
       precision: 0.01,
     }),
-    campusId: faker.datatype.number({ max: 100, min: 1 }),
+    campusId: faker.datatype.number({ max: 10, min: 1 }),
   };
 }
 
@@ -52,8 +52,6 @@ const createStudentDataBase = (num) => {
   return arr;
 };
 
-// console.log("RANDOM STUDENT GENERATOR: ", createStudentDataBase(5));
-
 // loop to create array of Campuses
 const createCampusDataBase = (num) => {
   const arr = [];
@@ -63,8 +61,6 @@ const createCampusDataBase = (num) => {
   }
   return arr;
 };
-
-// console.log("RANDOM CAMPUS GENERATOR: ", createCampusDataBase(5))
 
 module.exports = {
   loremHipsum,

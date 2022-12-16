@@ -328,10 +328,10 @@
 
 <details>
 
-- [ ] If a user attempts to add a new student or campus without a required field, a helpful message should be displayed
-- [ ] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
+- [x] If a user attempts to add a new student or campus without a required field, a helpful message should be displayed
+- [x] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
 - [ ] If a user attempts to view a student/campus that doesn't exist, a helpful message should be displayed
-- [ ] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
+- [x] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
 - [ ] Overall, the app is spectacularly styled and visually stunning
 
 </details>
@@ -359,7 +359,7 @@
 
 <details>
 
-- [ ] Seed 100+ students and 100+ campuses
+- [x] Seed 100+ students and 100+ campuses
 - [ ] Implement _front-end_ pagination for the students view (e.g. `/students?page=1` renders the first ten students, and `/students?page=2` renders students 11-20)
 - [ ] Implement _front-end_ pagination for the campuses view (e.g. `/campuses?page=1` renders the first ten campuses, and `/campuses?page=2` renders campuses 11-20)
 - [ ] Implement _back-end_ pagination for students (e.g. `/api/students?page=1` returns the first ten students' data, and `/api/students?page=2` returns students 11-20)

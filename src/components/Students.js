@@ -4,125 +4,77 @@ import {
   deleteStudentAsync,
   fetchAllStudents,
   selectStudents,
+  // loadingStudents,
 } from "../features/StudentsSlice";
-import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
 import AddStudentForm from "./AddStudentForm";
+import { Container, Ul, Title, Span } from "../styles/Container/style";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Students = () => {
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const students = useSelector(selectStudents);
-  console.log("STUDENTS IN STATE: ", students)
+  console.log("STUDENTS", students)
 
   useEffect(() => {
-      dispatch(fetchAllStudents());
-  }, []);
+    console.log("use effect")
+    dispatch(fetchAllStudents());
+  }, [dispatch]);
 
-  const handleClick = async (e) => {
-    try{
-      await dispatch(deleteStudentAsync(e.target.value))
-      navigate("/students")
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
+  const handleDelete = (id) => {
+    dispatch(deleteStudentAsync(id));
+  };
 
   return (
     <Container>
-      <h1>All Students</h1>
-      < AddStudentForm />
+      <Title>All Students</Title>
+
+      <AddStudentForm />
       <Ul>
-        {students && students.length
-          ? students.map((student) => {
-              return (
-                <li key={student.id}>
-                  <img
-                    src={student.imageUrl}
-                    alt={student.firstName}
-                    style={{ width: 300, height: 250 }}
-                  />
-                  <span>
-                    <h3>
-                      <Link to={`/students/${student.id}`}>
-                        {student.firstName} {student.lastName}
-                      </Link>
-                    </h3>
-                  <Button value={student.id} onClick={handleClick}>✖</Button>
-                  </span>
-                </li>
-              );
-            })
-          : <h4 style={{fontSize: 40}}>Oops...no students to display 😦 </h4>}
+        {students && students.length ? (
+          students.map((student) => {
+            return (
+              <li key={student.id}>
+                <img
+                  src={student.imageUrl}
+                  alt={student.firstName}
+                  style={{ width: 300, height: 250 }}
+                />
+                <Span>
+                  <h3>
+                    <Link to={`/students/${student.id}`}>
+                      {student.firstName} {student.lastName}
+                    </Link>
+                  </h3>
+                  <Button
+                    onClick={() => handleDelete(student.id)}
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                  >
+                    ✖
+                  </Button>
+                </Span>
+                {student.campus ? <h5>Attending: {student.campus.name}</h5> : <h5>Attending: </h5>}
+                {student.gpa ? <h5>GPA: {student.gpa}</h5> : <h5>GPA: </h5>}
+                <h5>Email: {student.email}</h5>
+              </li>
+            );
+          })
+        ) : (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        )}
       </Ul>
     </Container>
   );
 };
 
 export default Students;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 80px;
-  width: 100%;
-  h1 {
-    align-self: center;
-    font-size: 3rem;
-  }
-`;
-
-const Ul = styled.ul`
-  display: flex;
-  flex-flow: row wrap;
-  gap: 1rem;
-  justify-content: center;
-  align-content: center;
-  li {
-    flex-grow: 1 0 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    gap: 1rem;
-    height: 350px;
-    width: 350px;
-    img {
-      border-radius: 40%;
-      align-self: center;
-    }
-    span {
-      h3 {
-        font-size: 2rem;
-        height: 100%;
-        a {
-          color: black;
-          text-decoration: none;
-        }
-        a:hover {
-          color: red;
-        }
-      }
-    }
-  }
-  span {
-    align-self: center;
-  }
-`;
-
-const Button = styled.button`
-  font-size: 1.5rem;
-  width: 100px;
-  height: 30px;
-  border: none;
-  border-radius: 10px;
-  background-color: blanchedalmond;
-  &:hover {
-    color: white;
-    background: darkblue;
-    cursor: pointer;
-  }
-`;

@@ -1,14 +1,22 @@
 import React from "react";
 /* Imported Components */
-import { Home, NavBar, Campuses, Students, Campus, Student } from "./";
-
+import {
+  Home,
+  NavBar,
+  Campuses,
+  Students,
+  Campus,
+  Student,
+  NotFound,
+} from "./";
 import { Route, Routes } from "react-router-dom";
+
 
 const Main = () => {
   return (
     <>
       {/* ---- NavBar ---- */}
-      <NavBar />
+      <NavBar/>
       {/* ---- Components and Routes ----  */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -16,6 +24,7 @@ const Main = () => {
         <Route path="/students" element={<Students />} />
         <Route path="/campuses/:theCampusId" element={<Campus />} />
         <Route path="/students/:studentId" element={<Student />} />
+        <Route path="/*" element={ <NotFound />} />
       </Routes>
     </>
   );

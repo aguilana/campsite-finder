@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleStudent, selectStudent } from "../features/StudentSlice";
-import styled from "styled-components";
 import EditStudentForm from "./EditStudentForm";
+import { Section, DivInfo, Container } from "../styles/singleView/section";
 
 const Student = () => {
   const { studentId } = useParams();
@@ -20,18 +20,6 @@ const Student = () => {
 
   return (
     <Container>
-      <h1>
-        {firstName} {lastName}
-      </h1>
-      <h2>
-        {student.campus ? (
-          <Link to={`/campuses/${campus.id}`}>
-            {firstName} {lastName} attends {student.campus.name}
-          </Link>
-        ) : (
-          `${firstName} is currently not associated with any campus!`
-        )}
-      </h2>
       <Section>
         <img
           src={imageUrl}
@@ -39,10 +27,24 @@ const Student = () => {
           style={{ width: 350, height: 350, borderRadius: 50 }}
         />
         <DivInfo>
+          <h1>
+            {firstName} {lastName}
+          </h1>
+          <h2>
+            {student.campus ? (
+              <Link to={`/campuses/${campus.id}`}>
+                {firstName} {lastName} attends {student.campus.name}
+              </Link>
+            ) : (
+              `${firstName} is currently not associated with any campus!`
+            )}
+          </h2>
+
           <h2>EMAIL: {email}</h2>
           <h2>GPA: {gpa}</h2>
+
           {/* ---- edit student form ---- */}
-          <EditStudentForm studentId={studentId}/>
+          <EditStudentForm studentId={studentId}  />
         </DivInfo>
       </Section>
     </Container>
@@ -50,27 +52,3 @@ const Student = () => {
 };
 
 export default Student;
-
-const Section = styled.section`
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-`;
-const DivInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  gap: 2rem;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 50px;
-  height: 100%;
-  h1,h2 {
-    align-self: center;
-  }
-`;

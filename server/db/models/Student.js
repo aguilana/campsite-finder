@@ -26,9 +26,9 @@ module.exports = db.define("student", {
     },
   },
   gpa: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.FLOAT,
     validate: {
-      isDecimal: true,
+      isFloat: true,
       min: 0,
       max: 4,
     },

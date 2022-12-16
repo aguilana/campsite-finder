@@ -1,20 +1,45 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { editSingleStudent } from "../features/StudentSlice";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCampuses } from "../features/CampusesSlice";
+import {
+  editSingleStudent,
+  fetchSingleStudent,
+  selectStudent,
+} from "../features/StudentSlice";
+import {
+  WindowContainer,
+  FormContainer,
+  Form,
+  Title,
+  Input,
+  Label,
+  InputGroup,
+  FormButton,
+} from "../styles/Form/form";
 
 const EditStudentForm = ({ studentId }) => {
-  const [firstName, setFirstName] = useState("");
+  const campuses = useSelector(selectCampuses);
+  console.log("selector edit student form", campuses);
+
+  const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [gpa, setGpa] = useState();
+  const [campusId, setCampusId] = useState();
 
   const dispatch = useDispatch();
 
-  const handleChange = async (e) => {
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const updatedStudent = { studentId, firstName, lastName, email, gpa };
+      const updatedStudent = {
+        studentId,
+        firstName,
+        lastName,
+        email,
+        gpa,
+        campusId,
+      };
       await dispatch(editSingleStudent(updatedStudent));
       setFirstName("");
       setLastName("");
@@ -25,71 +50,83 @@ const EditStudentForm = ({ studentId }) => {
     }
   };
 
+  const handleChange = (e) => {
+    if (e.target.value === "unselected") {
+      setCampusId(null);
+    } else {
+      setCampusId(e.target.value);
+      console.log(e.target.value);
+    }
+  };
+
   return (
-    <Form onSubmit={handleChange}>
-      <h2>Edit Campus</h2>
-      <label htmlFor="firstname">First Name: </label>
-      <input
-        type="text"
-        value={firstName}
-        name="firstname"
-        placeholder="firstname"
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      <label htmlFor="lastname">Last Name: </label>
-      <input
-        type="text"
-        value={lastName}
-        name="lastname"
-        placeholder="last name"
-        onChange={(e) => setLastName(e.target.value)}
-      />
-      <label htmlFor="email">Email: </label>
-      <input
-        type="text"
-        value={email}
-        name="email"
-        placeholder="email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="gpa">GPA: </label>
-      <input
-        type="number"
-        step="any"
-        value={gpa}
-        name="gpa"
-        placeholder="GPA"
-        onChange={(e) => setGpa(e.target.value)}
-      />
-      <button type="submit">Update</button>
-    </Form>
+    <WindowContainer>
+      <FormContainer>
+        <Title>Edit Campus</Title>
+        <Form onSubmit={handleSubmit}>
+          <InputGroup>
+            <Label htmlFor="firstname">First Name: </Label>
+            <Input
+              type="text"
+              value={firstName}
+              name="firstname"
+              placeholder="firstname"
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="lastname">Last Name: </Label>
+            <Input
+              type="text"
+              value={lastName}
+              name="lastname"
+              placeholder="last name"
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="email">Email: </Label>
+            <Input
+              type="text"
+              value={email}
+              name="email"
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="gpa">GPA: </Label>
+            <Input
+              type="number"
+              step="any"
+              value={gpa}
+              name="gpa"
+              placeholder="GPA"
+              onChange={(e) => setGpa(e.target.value)}
+            />
+          </InputGroup>
+
+          <InputGroup>
+            <Label> Select Campus </Label>
+            <select onChange={handleChange}>
+              <option defaultValue value="unselected">
+                -- select a campus --
+              </option>
+              {campuses
+                ? campuses.map((campus) => (
+                    <option key={campus.id} value={campus.id}>
+                      {campus.name}
+                    </option>
+                  ))
+                : ""}
+            </select>
+          </InputGroup>
+
+          <FormButton type="submit">Update</FormButton>
+        </Form>
+      </FormContainer>
+    </WindowContainer>
   );
 };
 
 export default EditStudentForm;
-
-const Form = styled.form`
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  gap: 0.8rem;
-  width: 300px;
-  input {
-    height: 20px;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  button {
-    border: none;
-    width: 100px;
-    height: 25px;
-    align-self: center;
-    background-color: blanchedalmond;
-    border-radius: 10px;
-    &:hover {
-      color: white;
-      background: darkblue;
-      cursor: pointer;
-    }
-  }
-`;

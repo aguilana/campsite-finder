@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { addCampusAsync } from "../features/CampusesSlice";
+import {
+  WindowContainer,
+  FormContainer,
+  Form,
+  Title,
+  Input,
+  Label,
+  InputGroup,
+  FormButton,
+} from "../styles/Form/form";
 
 const AddCampusForm = () => {
   const [name, setName] = useState("");
@@ -15,6 +24,7 @@ const AddCampusForm = () => {
     try {
       e.preventDefault();
       await dispatch(addCampusAsync({ name, address }));
+      alert("Successfully added a new campus!")
       setName("");
       setAddress("");
       navigate("/campuses");
@@ -24,56 +34,41 @@ const AddCampusForm = () => {
   };
 
   return (
-    <Form id="create-campus-form" onSubmit={handleSubmit}>
-      <label htmlFor="name">Campus Name: </label>
-      <input
-        type="text"
-        placeholder="name of campus"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-        name="name"
-      />
-      <label htmlFor="address">Address: </label>
-      <input
-        type="text"
-        placeholder="address of campus"
-        value={address}
-        onChange={(e) => {
-          setAddress(e.target.value);
-        }}
-        name="address"
-      />
-      <button type="submit">Create Campus</button>
-    </Form>
+    <WindowContainer>
+      <FormContainer>
+        <Title>Add Campus</Title>
+        <Form id="create-campus-form" onSubmit={handleSubmit}>
+          <InputGroup>
+            <Label htmlFor="name">Campus Name: </Label>
+            <Input
+              type="text"
+              placeholder="name of campus"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              name="name"
+              required
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="address">Address: </Label>
+            <Input
+              type="text"
+              placeholder="address of campus"
+              value={address}
+              onChange={(e) => {
+                setAddress(e.target.value);
+              }}
+              name="address"
+              required
+            />
+          </InputGroup>
+          <FormButton type="submit">Create Campus</FormButton>
+        </Form>
+      </FormContainer>
+    </WindowContainer>
   );
 };
 
 export default AddCampusForm;
-
-const Form = styled.form`
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  gap: 0.8rem;
-  width: 300px;
-  input {
-    height: 20px;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  button {
-    border: none;
-    width: 100px;
-    height: 25px;
-    align-self: center;
-    background-color: blanchedalmond;
-    border-radius: 10px;
-    &:hover {
-      color: white;
-      background: darkblue;
-      cursor: pointer;
-    }
-  }
-`;

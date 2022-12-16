@@ -9,11 +9,7 @@ const google = new Scraper({
 
 // async func from the docs explaining how to get the images
 (async () => {
-  const results = await google.scrape('campus', 200);
-  const image = results.map(result=>result.url)[Math.floor(Math.random()*200)]
-  console.log(results.map(result=>result.url))
-  console.log(image)
-  return image
+  await google.scrape('campus', 200);
 })()
 
 // copy and paste the image urls in the array

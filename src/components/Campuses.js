@@ -8,50 +8,61 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AddCampusForm from "./AddCampusForm";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Campuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
-  console.log(campuses);
 
   useEffect(() => {
     dispatch(fetchAllCampuses());
   }, [dispatch]);
 
-  const handleClick = async (e) => {
-    try {
-      await dispatch(deleteCampusAsync(e.target.value));
-    } catch (err) {
-      console.log(err);
-    }
+  const handleDelete = (id) => {
+    dispatch(deleteCampusAsync(id));
   };
 
   return (
-    <Container>
-      <h1>ALL CAMPUSES</h1>
-      <AddCampusForm />
-      <Ul>
-        {campuses && campuses.length
-          ? campuses.map((campus) => {
-              return (
-                <li key={campus.id}>
-                  <img src={campus.imageUrl} alt={campus.name} />
-                  <div>
-                    <h3>
-                      <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
-                    </h3>
-                    <h4>Address: {campus.address}</h4>
-                    <p>{campus.description}</p>
-                    <Button value={campus.id} onClick={handleClick}>
-                      ✖
-                    </Button>
-                  </div>
-                </li>
-              );
-            })
-          : "Oops...no campuses listed"}
-      </Ul>
-    </Container>
+    <>
+      {
+        <Container>
+          <h1>ALL CAMPUSES</h1>
+          <AddCampusForm />
+          <Ul>
+            {campuses && campuses.length ? (
+              campuses.map((campus) => {
+                return (
+                  <li key={campus.id}>
+                    <img src={campus.imageUrl} alt={campus.name} />
+                    <div>
+                      <h3>
+                        <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
+                      </h3>
+                      <h4>Address: {campus.address}</h4>
+                      <p>{campus.description}</p>
+                      <Button value={campus.id} onClick={()=>handleDelete(campus.id)}>
+                        ✖
+                      </Button>
+                    </div>
+                  </li>
+                );
+              })
+            ) : (
+              <Backdrop
+                sx={{
+                  color: "#fff",
+                  zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
+                open
+              >
+                <CircularProgress color="inherit" />
+              </Backdrop>
+            )}
+          </Ul>
+        </Container>
+      }
+    </>
   );
 };
 

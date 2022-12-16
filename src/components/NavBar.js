@@ -1,23 +1,28 @@
-import React, { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-
-  const dispatch = useDispatch()
-
-  useEffect
-  
-
   return (
-    <nav id='navbar'>
-        <ul id='nav-list'>
-                <li className="nav-item"><NavLink to="/" className='nav-item'> Home </NavLink></li>
-                <li className="nav-item"><NavLink to="/campuses" className='nav-item'> Campuses </NavLink></li>
-                <li className="nav-item"><NavLink to="/students" className='nav-item'> Students </NavLink></li>
-        </ul>
+    <nav id="navbar">
+      <ul id="nav-list">
+        <li className="nav-item">
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/campuses" className="nav-link">
+            Campuses
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/students" className="nav-link">
+            Students
+          </NavLink>
+        </li>
+      </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

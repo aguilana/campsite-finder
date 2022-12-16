@@ -7,8 +7,8 @@ import {
   unregisterStudentAsync,
 } from "../features/CampusSlice";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import EditCampusForm from "./EditCampusForm";
+import { Section, DivInfo, Container, Span } from "../styles/singleView/section";
 
 const Campus = () => {
   const { theCampusId } = useParams();
@@ -17,8 +17,6 @@ const Campus = () => {
 
   const campus = useSelector(selectCampus);
   const { name, imageUrl, address, description, students } = campus;
-  // console.log("THIS IS THE CAMPUS", campus);
-  // console.log("THESE ARE ATTENDEES: ", campus.students);
 
   // function to handle un-assigning students to the campus with this view
   const unregisterStudent = async (student) => {
@@ -77,29 +75,3 @@ const Campus = () => {
 
 export default Campus;
 
-const Section = styled.section`
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-`;
-const DivInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  gap: 2rem;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 50px;
-  height: 100%;
-`;
-
-const Span = styled.span`
-  display: flex;
-  gap: 1rem;
-  padding: 5px;
-`;
