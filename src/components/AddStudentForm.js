@@ -18,14 +18,12 @@ const AddStudentForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [gpa, setGpa] = useState("");
+  const [gpa, setGpa] = useState();
   const [campusId, setCampusId] = useState("");
-  console.log("campus", campusId);
 
   const dispatch = useDispatch();
 
   const campuses = useSelector(selectCampuses);
-  console.log("campuses on add student", campuses);
 
   useEffect(() => {
     dispatch(fetchAllStudents());
@@ -35,11 +33,12 @@ const AddStudentForm = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      await dispatch(addStudentAsync({ firstName, lastName, email, campusId }));
+      await dispatch(addStudentAsync({ firstName, lastName, email, gpa, campusId }));
       alert("Successfully added a new student!");
       setFirstName("");
       setLastName("");
       setEmail("");
+      setGpa(0)
       setCampusId("");
     } catch (err) {
       console.log(err.message);
@@ -47,12 +46,7 @@ const AddStudentForm = () => {
   };
 
   const handleChange = (e) => {
-    if (e.target.value === "unselected") {
-      setCampusId(null);
-    } else {
       setCampusId(e.target.value);
-      console.log(e.target.value);
-    }
   };
 
   return (
@@ -113,13 +107,9 @@ const AddStudentForm = () => {
           <InputGroup>
             <Label> Select Campus </Label>
             <select onChange={handleChange}>
-              <option defaultValue value="unselected">
-                {" "}
-                -- select a campus --{" "}
-              </option>
               {campuses
                 ? campuses.map((campus) => (
-                    <option key={campus.id} value={campus.id}>
+                    <option required key={campus.id} value={campus.id}>
                       {campus.name}
                     </option>
                   ))

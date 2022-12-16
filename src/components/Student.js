@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleStudent, selectStudent } from "../features/StudentSlice";
 import EditStudentForm from "./EditStudentForm";
 import { Section, DivInfo, Container } from "../styles/singleView/section";
+import { fetchAllCampuses } from "../features/CampusesSlice";
 
 const Student = () => {
   const { studentId } = useParams();
@@ -16,7 +17,9 @@ const Student = () => {
 
   useEffect(() => {
     dispatch(fetchSingleStudent(studentId));
+    dispatch(fetchAllCampuses())
   }, [dispatch]);
+
 
   return (
     <Container>
@@ -35,11 +38,12 @@ const Student = () => {
               <Link to={`/campuses/${campus.id}`}>
                 {firstName} {lastName} attends {student.campus.name}
               </Link>
-            ) : (
+            ) 
+            : (
               `${firstName} is currently not associated with any campus!`
-            )}
+            )
+            }
           </h2>
-
           <h2>EMAIL: {email}</h2>
           <h2>GPA: {gpa}</h2>
 

@@ -6,7 +6,6 @@ export const fetchSingleStudent = createAsyncThunk(
   async (id) => {
     try {
       const { data } = await axios.get(`/api/students/${id}`);
-      console.log("THIS IS DATA: ", data)
       if(!data){
         let err = new Error("uhoh, no user with this data")
         err.message

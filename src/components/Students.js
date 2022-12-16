@@ -18,7 +18,7 @@ const Students = () => {
   const dispatch = useDispatch();
 
   const students = useSelector(selectStudents);
-  console.log("STUDENTS", students)
+
 
   useEffect(() => {
     console.log("use effect")
@@ -58,13 +58,14 @@ const Students = () => {
                     ✖
                   </Button>
                 </Span>
-                {student.campus ? <h5>Attending: {student.campus.name}</h5> : <h5>Attending: </h5>}
+                {student.campus && <h5>Attending: {student.campus.name}</h5>}
                 {student.gpa ? <h5>GPA: {student.gpa}</h5> : <h5>GPA: </h5>}
                 <h5>Email: {student.email}</h5>
               </li>
             );
           })
-        ) : (
+        ) 
+        : (
           <Backdrop
             sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
             open

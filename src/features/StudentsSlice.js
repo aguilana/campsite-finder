@@ -16,13 +16,14 @@ export const fetchAllStudents = createAsyncThunk(
 
 export const addStudentAsync = createAsyncThunk(
   "students/addStudent",
-  async ({ firstName, lastName, email, campusId }) => {
+  async ({ firstName, lastName, email, gpa, campusId }) => {
     console.log("FORM DATA", firstName, lastName, email)
     try {
       const { data } = await axios.post("/api/students", {
         firstName,
         lastName,
         email,
+        gpa,
         campusId: campusId
       });
       return data;

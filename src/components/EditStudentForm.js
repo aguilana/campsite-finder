@@ -19,7 +19,7 @@ import {
 
 const EditStudentForm = ({ studentId }) => {
   const campuses = useSelector(selectCampuses);
-  console.log("selector edit student form", campuses);
+
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
@@ -44,7 +44,7 @@ const EditStudentForm = ({ studentId }) => {
       setFirstName("");
       setLastName("");
       setEmail("");
-      setGpa();
+      setGpa(0);
     } catch (err) {
       console.log(err);
     }
@@ -109,9 +109,6 @@ const EditStudentForm = ({ studentId }) => {
           <InputGroup>
             <Label> Select Campus </Label>
             <select onChange={handleChange}>
-              <option defaultValue value="unselected">
-                -- select a campus --
-              </option>
               {campuses
                 ? campuses.map((campus) => (
                     <option key={campus.id} value={campus.id}>

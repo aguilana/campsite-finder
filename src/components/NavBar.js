@@ -1,28 +1,42 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Navbar, Ul, Li } from "../styles/NavBar/navbar";
+import styled from "styled-components";
 
 const NavBar = () => {
   return (
-    <nav id="navbar">
-      <ul id="nav-list">
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link">
+    <Navbar>
+      <Ul>
+        <Li className="nav-item">
+          <NavLinkStyle to="/" className="nav-link">
             Home
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/campuses" className="nav-link">
+          </NavLinkStyle>
+        </Li>
+        <Li className="nav-item">
+          <NavLinkStyle to="/campuses" className="nav-link">
             Campuses
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/students" className="nav-link">
+          </NavLinkStyle>
+        </Li>
+        <Li className="nav-item">
+          <NavLinkStyle to="/students" className="nav-link">
             Students
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+          </NavLinkStyle>
+        </Li>
+      </Ul>
+    </Navbar>
   );
 };
+
+const NavLinkStyle = styled(NavLink)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    color: blanchedalmond;
+    height: 100%;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-decoration: none;
+`
 
 export default NavBar;
