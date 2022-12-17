@@ -12,7 +12,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Pets } from "@mui/icons-material";
+import { Select } from "../styles/Select/Select.style";
 
 const Students = () => {
   const dispatch = useDispatch();
@@ -68,11 +68,11 @@ const Students = () => {
       </Button>
       {showForm ? <AddStudentForm /> : ""}
 
-      <select onChange={handleChange} style={{width: 200, height: 30, alignSelf: "center"}}>
+      <Select onChange={handleChange}>
         <option value="all">See All Students</option>
         <option value="unregistered">See Unregistered Students</option>
         <option value="registered">See Registered Students</option>
-      </select>
+      </Select>
 
       <Ul>
         {students && students.length ? (

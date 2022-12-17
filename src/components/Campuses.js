@@ -12,6 +12,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Select } from "../styles/Select/Select.style";
 
 const Campuses = () => {
   const dispatch = useDispatch();
@@ -71,7 +72,8 @@ const Campuses = () => {
           </Button>
           {showForm ? <AddCampusForm /> : ""}
 
-          <select
+
+          <Select
             onChange={handleChange}
             style={{ width: 400, height: 30, alignSelf: "center" }}
           >
@@ -81,7 +83,7 @@ const Campuses = () => {
               See Campuses with no Enrollees
             </option>
             <option value="enrollees"> See Campuses with Enrollees</option>
-          </select>
+          </Select>
           <Ul>
             {campuses && campuses.length ? (
               filterByEnrollees.map((campus) => {
