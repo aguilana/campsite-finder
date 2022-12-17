@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCampuses } from "../features/CampusesSlice";
-import {
-  editSingleStudent,
-  fetchSingleStudent,
-  selectStudent,
-} from "../features/StudentSlice";
+import { editSingleStudent } from "../features/StudentSlice";
 import {
   WindowContainer,
   FormContainer,
@@ -18,9 +14,10 @@ import {
 } from "../styles/Form/form";
 
 const EditStudentForm = ({ studentId }) => {
+  
   const campuses = useSelector(selectCampuses);
 
-
+  // multiple states for editing form
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
@@ -55,7 +52,6 @@ const EditStudentForm = ({ studentId }) => {
       setCampusId(null);
     } else {
       setCampusId(e.target.value);
-      console.log(e.target.value);
     }
   };
 
@@ -65,21 +61,21 @@ const EditStudentForm = ({ studentId }) => {
         <Title>Edit Campus</Title>
         <Form onSubmit={handleSubmit}>
           <InputGroup>
-            <Label htmlFor="firstname">First Name: </Label>
+            <Label htmlFor="firstName">First Name: </Label>
             <Input
               type="text"
               value={firstName}
-              name="firstname"
-              placeholder="firstname"
+              name="firstName"
+              placeholder="firstName"
               onChange={(e) => setFirstName(e.target.value)}
             />
           </InputGroup>
           <InputGroup>
-            <Label htmlFor="lastname">Last Name: </Label>
+            <Label htmlFor="lastName">Last Name: </Label>
             <Input
               type="text"
               value={lastName}
-              name="lastname"
+              name="lastName"
               placeholder="last name"
               onChange={(e) => setLastName(e.target.value)}
             />

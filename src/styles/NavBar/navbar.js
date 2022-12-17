@@ -28,11 +28,5 @@ export const Li = styled.li`
       background: rgb(202, 202, 202);
       color: rgb(66, 66, 66);
     }
-    /* &:focus,
-        &:active {
-            background-color: blanchedalmond;
-            color: rgb(66, 66, 66,);
-            transition: 500ms;
-        } */
   }
 `;

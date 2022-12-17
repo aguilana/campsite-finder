@@ -24,26 +24,26 @@ const Campus = () => {
   const [showForm, setShowForm] = useState(false);
   const [btnText, setBtnText] = useState("Edit Campus");
 
-
   const campus = useSelector(selectCampus);
   const { name, imageUrl, address, description, students } = campus;
 
   // function to handle un-assigning students to the campus with this view
   const unregisterStudent = async (student) => {
-    alert(`${student.firstName} is now unregistered`)
+    alert(`${student.firstName} is now unregistered`);
     await dispatch(unregisterStudentAsync(student));
     dispatch(fetchSingleCampus(theCampusId));
   };
 
-  const handleClick = () =>{
-    if (showForm===false){
-      setShowForm(!showForm)
-      setBtnText("Collapse")
+  // handleClick for collapsable form
+  const handleClick = () => {
+    if (showForm === false) {
+      setShowForm(!showForm);
+      setBtnText("Collapse");
     } else {
-      setShowForm(!showForm)
-      setBtnText("Edit Campus")
+      setShowForm(!showForm);
+      setBtnText("Edit Campus");
     }
-  }
+  };
 
   useEffect(() => {
     dispatch(fetchSingleCampus(theCampusId));

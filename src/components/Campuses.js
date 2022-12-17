@@ -18,6 +18,13 @@ const Campuses = () => {
   const campuses = useSelector(selectCampuses);
   const [showForm, setShowForm] = useState(false);
   const [btnText, setBtnText] = useState("Add A Campus");
+  const [value, setValue] = useState("all");
+
+  console.log("all campuses: ", campuses);
+  console.log(
+    "filtered without students: ",
+    campuses.filter((campus) => !campus.students.length)
+  );
 
   useEffect(() => {
     dispatch(fetchAllCampuses());
@@ -27,6 +34,7 @@ const Campuses = () => {
     dispatch(deleteCampusAsync(id));
   };
 
+  //handleClick for UI collapsable form
   const handleClick = () => {
     if (showForm === false) {
       setShowForm(!showForm);
@@ -37,6 +45,18 @@ const Campuses = () => {
     }
   };
 
+  // handling the filter change
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  // function for filtering
+  const filterByEnrollees = campuses.filter((campus) => {
+    if (value === "all") return campus;
+    if (value === "no-enrollees") return !campus.students.length;
+    if (value === "enrollees") return campus.students.length;
+  });
+
   return (
     <>
       {
@@ -45,14 +65,26 @@ const Campuses = () => {
           <Button
             onClick={handleClick}
             variant="contained"
-            style={{ width: 250, alignSelf: "center"}}
+            style={{ width: 250, alignSelf: "center" }}
           >
             {btnText}
           </Button>
           {showForm ? <AddCampusForm /> : ""}
+
+          <select
+            onChange={handleChange}
+            style={{ width: 400, height: 30, alignSelf: "center" }}
+          >
+            <option value="all"> See All Campuses</option>
+            <option value="no-enrollees">
+              {" "}
+              See Campuses with no Enrollees
+            </option>
+            <option value="enrollees"> See Campuses with Enrollees</option>
+          </select>
           <Ul>
             {campuses && campuses.length ? (
-              campuses.map((campus) => {
+              filterByEnrollees.map((campus) => {
                 return (
                   <li key={campus.id}>
                     <img src={campus.imageUrl} alt={campus.name} />

@@ -6,7 +6,7 @@ export { default as NavBar } from "./NavBar";
 export { default as Student } from "./Student";
 export { default as Campus } from "./Campus";
 export { default as AddStudentForm } from "./AddStudentForm";
-export { default as AddCampusForm } from  "./AddCampusForm";
+export { default as AddCampusForm } from "./AddCampusForm";
 export { default as EditCampusForm } from "./EditCampusForm";
 export { default as EditStudentForm } from "./EditStudentForm";
-export { default as PageNotFound } from "./PageNotFound"
+export { default as PageNotFound } from "./PageNotFound";

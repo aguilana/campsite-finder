@@ -4,7 +4,6 @@ import {
   deleteStudentAsync,
   fetchAllStudents,
   selectStudents,
-  // loadingStudents,
 } from "../features/StudentsSlice";
 import { Link } from "react-router-dom";
 import AddStudentForm from "./AddStudentForm";
@@ -13,17 +12,19 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Pets } from "@mui/icons-material";
 
 const Students = () => {
   const dispatch = useDispatch();
 
+  // form states
   const [showForm, setShowForm] = useState(false);
-  const [btnText, setBtnText] = useState("Add Student Here")
+  const [btnText, setBtnText] = useState("Add Student Here");
+  const [value, setValue] = useState("all")
 
   const students = useSelector(selectStudents);
 
   useEffect(() => {
-    console.log("use effect");
     dispatch(fetchAllStudents());
   }, [dispatch]);
 
@@ -31,15 +32,29 @@ const Students = () => {
     dispatch(deleteStudentAsync(id));
   };
 
+  // collapsable form functionality
   const handleClick = () => {
     if (showForm === false) {
       setShowForm(!showForm);
       setBtnText("Collapse");
     } else {
-      setShowForm(false)
-      setBtnText("Add Student Here")
-      }
+      setShowForm(false);
+      setBtnText("Add Student Here");
+    }
   };
+
+  // change for filtering students
+  const handleChange = (e) => {
+    setValue(e.target.value)
+    // students.filter(student=>student.campus === null)
+  }
+
+  // filtering registration function
+  const filterByRegistration = students.filter((student) => {
+    if (value === 'all') return student;
+    if (value === 'unregistered') return student.campus === null;
+    if (value === 'registered') return student.campus
+  })
 
   return (
     <Container>
@@ -47,15 +62,21 @@ const Students = () => {
       <Button
         onClick={handleClick}
         variant="contained"
-        style={{width: 250, alignSelf: "center"}}
+        style={{ width: 250, alignSelf: "center" }}
       >
         {btnText}
       </Button>
       {showForm ? <AddStudentForm /> : ""}
 
+      <select onChange={handleChange} style={{width: 200, height: 30, alignSelf: "center"}}>
+        <option value="all">See All Students</option>
+        <option value="unregistered">See Unregistered Students</option>
+        <option value="registered">See Registered Students</option>
+      </select>
+
       <Ul>
         {students && students.length ? (
-          students.map((student) => {
+          filterByRegistration.map((student) => {
             return (
               <li key={student.id}>
                 <img
@@ -66,7 +87,9 @@ const Students = () => {
                 <Span>
                   <h2>
                     <Link to={`/students/${student.id}`}>
-                      {student.firstName} {student.lastName}
+                      {student.firstName}
+                      <br />
+                      {student.lastName}
                     </Link>
                   </h2>
                   <Button

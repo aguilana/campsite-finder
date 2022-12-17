@@ -24,7 +24,7 @@ const Div = styled.div`
   font-size: 3rem;
   justify-content: center;
   align-content: center;
-  h1{
+  h1 {
     color: black;
   }
   h2 {
@@ -33,9 +33,9 @@ const Div = styled.div`
     border-radius: 15px;
     align-self: center;
     cursor: pointer;
-    a{
+    a {
       text-decoration: none;
-      color: #000
+      color: #000;
     }
     &:hover {
       background-color: #fff;

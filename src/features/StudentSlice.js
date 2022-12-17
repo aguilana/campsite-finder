@@ -6,13 +6,10 @@ export const fetchSingleStudent = createAsyncThunk(
   async (id) => {
     try {
       const { data } = await axios.get(`/api/students/${id}`);
-      if(!data){
-        let err = new Error("uhoh, no user with this data")
-        err.message
-      } else {return data};
+      return data;
     } catch (err) {
       console.log(err);
-      throw err
+      throw err;
     }
   }
 );
@@ -26,7 +23,7 @@ export const editSingleStudent = createAsyncThunk(
         lastName,
         email,
         gpa,
-        campusId: campusId
+        campusId: campusId,
       });
       return data;
     } catch (err) {
@@ -39,19 +36,17 @@ export const editSingleStudent = createAsyncThunk(
 export const singleStudentSlice = createSlice({
   name: "student",
   initialState: {},
-  reducers: {},
   extraReducers: (builder) => {
-
     builder.addCase(fetchSingleStudent.fulfilled, (state, { payload }) => {
       return payload;
-    })
+    });
     builder.addCase(fetchSingleStudent.rejected, (state, { payload }) => {
-      return payload
+      return payload;
     });
 
     builder.addCase(editSingleStudent.fulfilled, (state, { payload }) => {
-        return payload
-    })
+      return payload;
+    });
   },
 });
 

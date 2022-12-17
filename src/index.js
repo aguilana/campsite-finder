@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-          <Main />
+        <Main />
       </Router>
     </Provider>
   </React.StrictMode>

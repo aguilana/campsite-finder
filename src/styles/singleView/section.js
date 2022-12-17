@@ -4,7 +4,7 @@ export const Section = styled.section`
   display: flex;
   justify-content: space-evenly;
   align-content: center;
-  img{
+  img {
     align-self: center;
   }
 `;
@@ -15,9 +15,19 @@ export const DivInfo = styled.div`
   align-content: center;
   gap: 2rem;
   width: 100%;
-  h1,h2,h4{
+  h1,
+  h2,
+  h4 {
     color: black;
     align-self: center;
+  }
+  a {
+    color: rgb(0,0,0,.8);
+    text-decoration: none;
+    &:hover {
+      background: rgb(202, 202, 202, 0.1);
+      color: red;
+    }
   }
 `;
 
@@ -27,7 +37,7 @@ export const Container = styled.div`
   gap: 3rem;
   padding: 50px;
   height: 100%;
-  color: black
+  color: black;
 `;
 
 export const Span = styled.span`
@@ -35,4 +45,12 @@ export const Span = styled.span`
   justify-content: space-between;
   gap: 1rem;
   padding: 5px;
+  a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+      background: rgb(202, 202, 202, 0.1);
+      color: red;
+    }
+  }
 `;

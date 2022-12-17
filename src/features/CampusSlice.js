@@ -17,10 +17,11 @@ export const unregisterStudentAsync = createAsyncThunk(
   "campus/unregisterStudent",
   async (student) => {
     try {
-    const { id } = student
-      const { data } = await axios.put(`/api/students/${id}`, {campusId: null
+      const { id } = student;
+      const { data } = await axios.put(`/api/students/${id}`, {
+        campusId: null,
       });
-      return data
+      return data;
     } catch (err) {
       console.log(err);
       return err.message;
@@ -46,15 +47,19 @@ export const editSingleCampus = createAsyncThunk(
 export const singleCampusSlice = createSlice({
   name: "campus",
   initialState: {},
-  reducer: {},
   extraReducers: (builder) => {
+    builder
+      .addCase(fetchSingleCampus.fulfilled, (state, { payload }) => {
+        return payload;
+      })
+      .addCase(fetchSingleCampus.rejected, (state, { error }) => {
+        return error;
+      });
 
-    builder.addCase(fetchSingleCampus.fulfilled, (state, { payload }) => {
-      return payload;
-    });
-
-    builder.addCase(unregisterStudentAsync.fulfilled, (state, { payload }) => {
-    });
+    builder.addCase(
+      unregisterStudentAsync.fulfilled,
+      (state, { payload }) => {}
+    );
 
     builder.addCase(editSingleCampus.fulfilled, (state, { payload }) => {
       return payload;

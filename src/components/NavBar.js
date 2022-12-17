@@ -28,15 +28,15 @@ const NavBar = () => {
 };
 
 const NavLinkStyle = styled(NavLink)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    color: blanchedalmond;
-    height: 100%;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    text-decoration: none;
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  color: blanchedalmond;
+  height: 100%;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  text-decoration: none;
+`;
 
 export default NavBar;

@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
-
-  //   useEffect(() =>
-  //     setTimeout(() => {
-  //       navigate(-1)
-  //     }, 2000));
 
   const handleClick = () => {
     navigate("/");

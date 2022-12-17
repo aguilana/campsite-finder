@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { addCampusAsync } from "../features/CampusesSlice";
 import {
   WindowContainer,
@@ -11,23 +10,25 @@ import {
   Label,
   InputGroup,
   FormButton,
+  TextArea,
 } from "../styles/Form/form";
 
 const AddCampusForm = () => {
+  // various states for form
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [description, setDescription] = useState("");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      await dispatch(addCampusAsync({ name, address }));
-      alert("Successfully added a new campus!")
+      await dispatch(addCampusAsync({ name, address, description }));
+      alert("Successfully added a new campus!");
       setName("");
       setAddress("");
-      navigate("/campuses");
+      setDescription("");
     } catch (err) {
       console.log(err.message);
     }
@@ -42,7 +43,7 @@ const AddCampusForm = () => {
             <Label htmlFor="name">Campus Name: </Label>
             <Input
               type="text"
-              placeholder="name of campus"
+              placeholder="...name of campus..."
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
@@ -55,7 +56,7 @@ const AddCampusForm = () => {
             <Label htmlFor="address">Address: </Label>
             <Input
               type="text"
-              placeholder="address of campus"
+              placeholder="...address of campus..."
               value={address}
               onChange={(e) => {
                 setAddress(e.target.value);
@@ -63,6 +64,20 @@ const AddCampusForm = () => {
               name="address"
               required
             />
+          </InputGroup>
+          <InputGroup>
+            <Label htmlFor="description">Description: </Label>
+            <TextArea
+              type="text-area"
+              placeholder="...description..."
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+              name="description"
+              cols="5"
+              required
+            ></TextArea>
           </InputGroup>
           <FormButton type="submit">Create Campus</FormButton>
         </Form>

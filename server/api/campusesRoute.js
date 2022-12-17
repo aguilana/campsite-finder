@@ -50,7 +50,9 @@ campusRouter.get("/:id", async (req, res, next) => {
       let err = new Error("No campus found with that ID");
       err.status = 404;
       next(err);
-    } else {
+    } 
+    else 
+    {
       res.status(200).send(campus);
     }
   } catch (err) {
@@ -91,6 +93,7 @@ campusRouter.put("/:id", async (req, res, next) => {
     const campus = await Campus.findByPk(req.params.id);
     res.status(200).send(await campus.update(req.body));
   } catch (err) {
+    console.error(err.message)
     next(err);
   }
 });

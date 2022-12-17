@@ -14,14 +14,16 @@ import {
 } from "../styles/Form/form";
 
 const AddStudentForm = () => {
+  // form states
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [gpa, setGpa] = useState();
+  const [gpa, setGpa] = useState("");
   const [campusId, setCampusId] = useState("");
 
   const dispatch = useDispatch();
 
+  // need to map over campuses in DB for option selection
   const campuses = useSelector(selectCampuses);
 
   useEffect(() => {

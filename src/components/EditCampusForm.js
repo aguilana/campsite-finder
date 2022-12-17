@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
 import { editSingleCampus } from "../features/CampusSlice";
 import {
   WindowContainer,
@@ -14,7 +13,6 @@ import {
 } from "../styles/Form/form";
 
 const EditCampusForm = ({ theCampusId }) => {
-  console.log("campus id", theCampusId)
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
@@ -24,7 +22,6 @@ const EditCampusForm = ({ theCampusId }) => {
     try {
       e.preventDefault();
       const updatedCampus = { theCampusId, name, address };
-      console.log(updatedCampus)
       await dispatch(editSingleCampus(updatedCampus));
       setName("");
       setAddress("");
@@ -46,6 +43,7 @@ const EditCampusForm = ({ theCampusId }) => {
               name="name"
               placeholder="campus name"
               onChange={(e) => setName(e.target.value)}
+              required
             />
           </InputGroup>
           <InputGroup>
@@ -56,6 +54,7 @@ const EditCampusForm = ({ theCampusId }) => {
               name="address"
               placeholder="address"
               onChange={(e) => setAddress(e.target.value)}
+              required
             />
             <FormButton type="submit">Update</FormButton>
           </InputGroup>

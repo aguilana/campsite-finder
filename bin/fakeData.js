@@ -1,7 +1,7 @@
 const { faker } = require("@faker-js/faker");
 const hipsum = require("lorem-hipsum");
 const casual = require("casual");
-const imagesArray = require("./imageUrl")
+const { campusArray, studentArray } = require("./imageUrl")
 
 
 
@@ -20,13 +20,13 @@ function createRandomUser() {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    imageUrl: faker.image.people(250, 250, true),
+    imageUrl: studentArray[Math.floor(Math.random()*150)],
     gpa: faker.datatype.number({
       max: 4,
       min: 0,
       precision: 0.01,
     }),
-    campusId: faker.datatype.number({ max: 10, min: 1 }),
+    campusId: faker.datatype.number({ max: 110, min: 1 }),
   };
 }
 
@@ -36,7 +36,7 @@ const college = ["University", "College", "State", "Community College"];
 function createRandomCampus() {
   return {
     name: casual.state + " " + college[Math.floor(Math.random() * 4)],
-    imageUrl: imagesArray[Math.floor(Math.random()*100)],
+    imageUrl: campusArray[Math.floor(Math.random()*110)],
     address: casual.address,
     description: loremHipsum(),
   };

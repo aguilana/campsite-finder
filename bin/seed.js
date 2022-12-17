@@ -15,8 +15,8 @@ const Campus = require("../server/db/models/Campus");
 // -------------------------------------------
 const seed = async () => {
 
-  const campuses = createCampusDataBase(10)
-  const students = createStudentDataBase(20)
+  const campuses = createCampusDataBase(110)
+  const students = createStudentDataBase(150)
   try {
     await db.sync({ force: true });
 

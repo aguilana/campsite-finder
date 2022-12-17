@@ -6,10 +6,10 @@ export const fetchAllStudents = createAsyncThunk(
   async () => {
     try {
       const { data } = await axios.get("/api/students");
-        return data;
+      return data;
     } catch (err) {
       console.log(err);
-      throw err
+      throw err;
     }
   }
 );
@@ -17,14 +17,13 @@ export const fetchAllStudents = createAsyncThunk(
 export const addStudentAsync = createAsyncThunk(
   "students/addStudent",
   async ({ firstName, lastName, email, gpa, campusId }) => {
-    console.log("FORM DATA", firstName, lastName, email)
     try {
       const { data } = await axios.post("/api/students", {
         firstName,
         lastName,
         email,
         gpa,
-        campusId: campusId
+        campusId: campusId,
       });
       return data;
     } catch (err) {
@@ -33,40 +32,38 @@ export const addStudentAsync = createAsyncThunk(
   }
 );
 
-export const deleteStudentAsync = createAsyncThunk("students/deleteStudent", async (id) => {
-  try{
-
-    const { data } = await axios.delete(`/api/students/${id}`)
-    return data;
+export const deleteStudentAsync = createAsyncThunk(
+  "students/deleteStudent",
+  async (id) => {
+    try {
+      const { data } = await axios.delete(`/api/students/${id}`);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   }
-  catch(err){
-    console.log(err)
-  }
-})
-
+);
 
 export const studentsSlice = createSlice({
   name: "students",
   initialState: [],
   extraReducers: (builder) => {
-
     builder.addCase(fetchAllStudents.fulfilled, (state, { payload }) => {
-      return payload
-    })
+      return payload;
+    });
 
     builder.addCase(addStudentAsync.fulfilled, (state, { payload }) => {
-      console.log("FORM PAYLOAD: ", payload)
-      state.push(payload)
+      state.push(payload);
     });
 
     builder.addCase(deleteStudentAsync.fulfilled, (state, { payload }) => {
-      return state.filter(student=>student.id !== payload.id)
-    })
+      return state.filter((student) => student.id !== payload.id);
+    });
   },
 });
 
 export const selectStudents = (state) => {
-  return state.students
-}
+  return state.students;
+};
 
 export default studentsSlice.reducer;

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleStudent, selectStudent } from "../features/StudentSlice";
 import EditStudentForm from "./EditStudentForm";
 import { Section, DivInfo, Container } from "../styles/singleView/section";
-import { fetchAllCampuses } from "../features/CampusesSlice";
 import Button from "@mui/material/Button";
 
 const Student = () => {
@@ -12,9 +11,11 @@ const Student = () => {
 
   const dispatch = useDispatch();
 
+  // states for showing form and button text
   const [showForm, setShowForm] = useState(false);
   const [btnText, setBtnText] = useState("Edit Student");
 
+  // collapsable form click functionality
   const handleClick = () => {
     if (showForm === false) {
       setShowForm(!showForm);
@@ -31,7 +32,6 @@ const Student = () => {
 
   useEffect(() => {
     dispatch(fetchSingleStudent(studentId));
-    dispatch(fetchAllCampuses());
   }, [dispatch]);
 
   return (
