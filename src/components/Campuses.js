@@ -21,12 +21,6 @@ const Campuses = () => {
   const [btnText, setBtnText] = useState("Add A Campus");
   const [value, setValue] = useState("all");
 
-  console.log("all campuses: ", campuses);
-  console.log(
-    "filtered without students: ",
-    campuses.filter((campus) => !campus.students.length)
-  );
-
   useEffect(() => {
     dispatch(fetchAllCampuses());
   }, [dispatch]);
@@ -94,6 +88,7 @@ const Campuses = () => {
                       <h3>
                         <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
                       </h3>
+                      <p>Enrollees: <span>{campus.students.length}</span></p>
                       <h4>Address: {campus.address}</h4>
                       <p>{campus.description}</p>
                       <Button
