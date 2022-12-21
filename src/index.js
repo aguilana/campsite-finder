@@ -10,10 +10,10 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Router>
+    <Router>
+      <Provider store={store}>
         <Main />
-      </Router>
-    </Provider>
+      </Provider>
+    </Router>
   </React.StrictMode>
 );

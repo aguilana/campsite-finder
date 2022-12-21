@@ -3,10 +3,6 @@ import React from "react";
 import {
   Home,
   NavBar,
-  Campuses,
-  Students,
-  Campus,
-  Student,
   PageNotFound,
 } from "./";
 import { Route, Routes } from "react-router-dom";
@@ -19,11 +15,6 @@ const Main = () => {
       {/* ---- Components and Routes ----  */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route exact path="/campuses" element={<Campuses />} />
-        <Route exact path="/students" element={<Students />} />
-        <Route exact path="/campuses/:theCampusId" element={<Campus />} />
-        <Route exact path="/students/:studentId" element={<Student />} />
-        {/* Page navigation when back url is typed in...however doesn't work with /students/:id or campuses/:id */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
