@@ -1,16 +1,11 @@
 const db = require('./database')
 
-// DEFINED MODELS
-const Student = require('./models/Student')
-const Campus = require('./models/Campus')
-
+// REQUIRE DEFINED MODELS HERE
 
 // MODEL ASSOCIATIONS
-Campus.hasMany(Student)
-Student.belongsTo(Campus)
 
+
+// export db and models
 module.exports = {
     db,
-    Student,
-    Campus
 }

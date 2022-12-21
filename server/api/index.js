@@ -2,10 +2,9 @@
 const router = require('express').Router()
 
 // /api/students
-router.use('/students', require('./studentsRoute'))
-
+// router.use('/someroute', require('./file1'))
 // /api/campuses
-router.use('/campuses', require('./campusesRoute'))
+// router.use('/anotherroute', require('./file2'))
 
 
 // middleware to generate 404 if making request with /api and no routes match proceeding

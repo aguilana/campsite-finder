@@ -11,11 +11,9 @@ const Main = () => {
   return (
     <>
       {/* ---- NavBar ---- */}
-      <NavBar />
       {/* ---- Components and Routes ----  */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

@@ -2,12 +2,9 @@
 
 const { db } = require("../server/db");
 const { green, red } = require("chalk");
-const { createStudentDataBase, createCampusDataBase } = require("./fakeData");
+
 
 // require models here
-
-const Student = require("../server/db/models/Student");
-const Campus = require("../server/db/models/Campus");
 
 
 // -------------------------------------------
@@ -15,13 +12,9 @@ const Campus = require("../server/db/models/Campus");
 // -------------------------------------------
 const seed = async () => {
 
-  const campuses = createCampusDataBase(110)
-  const students = createStudentDataBase(150)
   try {
     await db.sync({ force: true });
 
-    await Promise.all(campuses.map(campus=>Campus.create(campus)))
-    await Promise.all(students.map(student=>Student.create(student)))
 
 
     console.log(green(" 🌱🌱🌱 ---- Seeding success!! ---- 🌱🌱🌱"));
