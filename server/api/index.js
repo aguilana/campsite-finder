@@ -1,8 +1,8 @@
 // MAIN HUB OF ROUTES
 const router = require('express').Router()
 
-// /api/students
-// router.use('/someroute', require('./file1'))
+// /api/campgrounds
+router.use('/campgrounds', require('./campgroundRoute'))
 // /api/campuses
 // router.use('/anotherroute', require('./file2'))
 

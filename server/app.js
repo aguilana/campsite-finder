@@ -2,7 +2,6 @@ const express = require('express')
 const path = require('path')
 const cors = require('cors')
 const volleyball = require('volleyball')
-const morgan = require('morgan')
 
 const app = express()
 
@@ -13,7 +12,6 @@ app.use(cors())
 
 // logging middleware
 app.use(volleyball)
-app.use(morgan('development'))
 
 // body parsing middleware
 app.use(express.json())
