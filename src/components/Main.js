@@ -2,22 +2,23 @@ import React from "react";
 /* Imported Components */
 import {
   Home,
-  NavBar,
-  PageNotFound,
 } from "./";
 import { Campgrounds, SingleCampground } from "./pages";
+import { CreateCampground, EditSingleCampground, NavBar } from "./features";
 import { Route, Routes } from "react-router-dom";
 
 const Main = () => {
   return (
     <>
       {/* ---- NavBar ---- */}
-      {/* ---- Components and Routes ----  */}
+      <NavBar/>
       {/* <Home/> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/campgrounds" element={<Campgrounds />} />
+        <Route path="/campgrounds/create" element={<CreateCampground/>} />
         <Route path="/campgrounds/:id" element={<SingleCampground/>}/>
+        <Route path="/campgrounds/:id/edit" element={<EditSingleCampground/>}/>
       </Routes>
     </>
   );

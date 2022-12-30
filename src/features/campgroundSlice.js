@@ -11,18 +11,57 @@ export const fetchAllCampgrounds = createAsyncThunk('campgrounds/fetchAll', asyn
     }
 })
 
+// create campground
+export const createCampgroundAsync = createAsyncThunk('campgrounds/createCampground', async({ name, price, description, location }) => {
+    try {
+        const { data } = await axios.post('/api/campgrounds/create', {
+            name,
+            price,
+            description,
+            location
+        })
+        return data
+    }
+    catch(err){
+        console.log("error: ", err)
+    }
+})
+
+export const deleteCampgroundAsync = createAsyncThunk('campgrounds/deleteCampgground', async (id)=>{
+    try {
+        const { data } = await axios.delete(`/api/campgrounds/${id}`)
+        return data
+    }
+    catch(err) {
+        next(err)
+    }
+})
+
+const initialState = {
+    campsiteList: [],
+    loading: false,
+    error: null
+}
+
 export const campgroundsSlice = createSlice({
     name: "campgrounds",
-    initialState: [],
+    initialState,
     extraReducers: (builder) => {
-        builder.addCase(fetchAllCampgrounds.fulfilled, (state, { payload }) => {
-            return payload
+        builder.addCase(fetchAllCampgrounds.fulfilled, (state, action) => {
+            state.campsiteList = action.payload
+        })
+        builder.addCase(createCampgroundAsync.fulfilled, (state, action) => {
+            state.campsiteList.push(action.payload)
+        })
+        builder.addCase(deleteCampgroundAsync.fulfilled, (state, { payload }) => {
+            state.campsiteList = state.campsiteList.filter((campsite)=> campsite.id !== payload.id)
         })
     }
 })
 
 export const selectCampgrounds = (state) => {
-    return state.campgrounds
+    console.log("THE CURRENT STATE OF THE STORE --->", state)
+    return state.campgrounds.campsiteList
 }
 
 export default campgroundsSlice.reducer

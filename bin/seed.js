@@ -32,7 +32,7 @@ const seed = async () => {
         name: `${descriptors[rand17]} ${places[rand20]}`,
         price: `$${Math.floor(Math.random() * 25 + 10)}`,
         description: 'this is the description',
-        location: `${cities[random1000].city}. ${cities[random1000].state}`,
+        location: `${cities[random1000].city}, ${cities[random1000].state}`,
       });
       await camp;
     }
