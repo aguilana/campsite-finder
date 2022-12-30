@@ -8,6 +8,7 @@ const CreateCampground = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+  const [image, setImage] = useState("")
 
   const dispatch = useDispatch();
 
@@ -16,6 +17,7 @@ const CreateCampground = () => {
     if (e.target.name === "price") setPrice(e.target.value);
     if (e.target.name === "description") setDescription(e.target.value);
     if (e.target.name === "location") setLocation(e.target.value);
+    if (e.target.name === "image") setImage(e.target.value);
   };
 
   const handleClick = () => {
@@ -69,6 +71,16 @@ const CreateCampground = () => {
             type="text"
             name="location"
             value={location}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="image">Image</label>
+          <input
+            type="text"
+            name="image"
+            value={image}
+            src=""
             onChange={handleChange}
           />
         </div>

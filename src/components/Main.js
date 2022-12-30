@@ -4,7 +4,7 @@ import {
   Home,
 } from "./";
 import { Campgrounds, SingleCampground } from "./pages";
-import { CreateCampground, EditSingleCampground, NavBar } from "./features";
+import { CreateCampground, EditSingleCampground, Footer, NavBar } from "./features";
 import { Route, Routes } from "react-router-dom";
 
 const Main = () => {
@@ -20,6 +20,8 @@ const Main = () => {
         <Route path="/campgrounds/:id" element={<SingleCampground/>}/>
         <Route path="/campgrounds/:id/edit" element={<EditSingleCampground/>}/>
       </Routes>
+      {/* FOOTER */}
+      <Footer/>
     </>
   );
 };

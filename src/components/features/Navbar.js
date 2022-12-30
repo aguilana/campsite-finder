@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav style={{backgroundColor: "gray"}}>
         <h2>YelpCamp</h2>
         <ul>
             <li><Link to="/">Home</Link></li>

@@ -14,6 +14,7 @@ const EditSingleCampground = () => {
   const [price, setPrice] = useState(campground.price);
   const [description, setDescription] = useState(campground.description);
   const [location, setLocation] = useState(campground.location);
+  const [image, setImage] = useState(campground.imageUrl)
 
   const dispatch = useDispatch();
 
@@ -22,6 +23,7 @@ const EditSingleCampground = () => {
     if (e.target.name === "price") setPrice(e.target.value);
     if (e.target.name === "description") setDescription(e.target.value);
     if (e.target.name === "location") setLocation(e.target.value);
+    if (e.target.name === "image") setImage(e.target.value);
   };
 
   const handleClick = () => {
@@ -50,11 +52,11 @@ const EditSingleCampground = () => {
       <h1>EDIT CAMPGROUND</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name: </label>
           <input type="text" name="name" value={name} onChange={handleChange} />
         </div>
         <div>
-          <label htmlFor="price">Price</label>
+          <label htmlFor="price">Price: $</label>
           <input
             type="text"
             name="price"
@@ -63,7 +65,7 @@ const EditSingleCampground = () => {
           />
         </div>
         <div>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Description: </label>
           <input
             type="text"
             name="description"
@@ -72,11 +74,21 @@ const EditSingleCampground = () => {
           />
         </div>
         <div>
-          <label htmlFor="location">Location</label>
+          <label htmlFor="location">Location: </label>
           <input
             type="text"
             name="location"
             value={location}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="image">Image Url: </label>
+          <input
+            type="text"
+            name="image"
+            src=""
+            value={image}
             onChange={handleChange}
           />
         </div>

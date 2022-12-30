@@ -7,15 +7,21 @@ module.exports = db.define('campground', {
         allowNull: false
     },
     price: {
-        type: Sequelize.STRING,
+        type: Sequelize.DECIMAL,
         allowNull: false
     },
     description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
     },
     location: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    imageUrl: {
+        type: Sequelize.STRING(1000),
+        validate: {
+            isUrl: true
+        }
     }
 })

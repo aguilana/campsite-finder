@@ -30,9 +30,10 @@ const seed = async () => {
       const rand20 = Math.floor(Math.random() * 20);
       const camp = Campground.create({
         name: `${descriptors[rand17]} ${places[rand20]}`,
-        price: `$${Math.floor(Math.random() * 25 + 10)}`,
-        description: 'this is the description',
+        price: `${Math.floor(Math.random() * 25 + 10)}`,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus pretium quam vulputate dignissim. Commodo ullamcorper a lacus vestibulum sed arcu non odio. Gravida cum sociis natoque penatibus et magnis dis parturient montes. Tellus molestie nunc non blandit massa enim nec dui.',
         location: `${cities[random1000].city}, ${cities[random1000].state}`,
+        imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d29vZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'
       });
       await camp;
     }
