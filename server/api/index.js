@@ -11,7 +11,7 @@ router.use('/campgrounds', require('./campgroundRoute'))
 router.use((req, res, next) => {
     const error = new Error('API route not found');
     error.status = 404;
-    next(err)
+    next(error)
 })
 
 module.exports = router

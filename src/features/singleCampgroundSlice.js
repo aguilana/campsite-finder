@@ -11,9 +11,20 @@ export const fetchSingleCampground = createAsyncThunk("campground/fetchSingle", 
     }
 });
 
-export const editSingleCampgroundAsync = createAsyncThunk("campground/editCampground", async({ id, name, price, description, location })=>{
+export const addReviewToCampgroundAsync = createAsyncThunk("campground/addReview", async (id, { body, rating })=> {
+    try {
+        const { data } = await axios.post(`/api/campgrounds/${id}/review`, { body, rating })
+        console.log(data)
+        return data
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+export const editSingleCampgroundAsync = createAsyncThunk("campground/editCampground", async({ id, name, price, description, location, imageUrl })=>{
     try{
-        const { data } = await axios.put(`/api/campgrounds/${id}/edit`, { name, price, description, location })
+        const { data } = await axios.put(`/api/campgrounds/${id}/edit`, { name, price, description, location, imageUrl })
         return data
     }
     catch(err){
@@ -33,6 +44,9 @@ export const singleCampgroundSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchSingleCampground.fulfilled,  (state, { payload }) => {
             state.campsite = payload
+        })
+        builder.addCase(addReviewToCampgroundAsync.fulfilled, (state, { payload }) => {
+            state.campsite.reviews.push(payload)
         })
     }
 })

@@ -8,7 +8,7 @@ const CreateCampground = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [image, setImage] = useState("")
+  const [imageUrl, setImage] = useState("");
 
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const CreateCampground = () => {
     if (e.target.name === "price") setPrice(e.target.value);
     if (e.target.name === "description") setDescription(e.target.value);
     if (e.target.name === "location") setLocation(e.target.value);
-    if (e.target.name === "image") setImage(e.target.value);
+    if (e.target.name === "imageUrl") setImage(e.target.value);
   };
 
   const handleClick = () => {
@@ -25,16 +25,28 @@ const CreateCampground = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      await dispatch(
-        createCampgroundAsync({ name, price, description, location })
-      );
-      setName("");
-      setPrice("");
-      setDescription("");
-      setLocation("");
-      alert("new campground created. We will redirect you to that campground");
+      if (name == "" || price == "" || description == "" || location == "") {
+        alert("can't create campground. Please fill out required fields");
+      } else {
+        await dispatch(
+          createCampgroundAsync({
+            name,
+            price,
+            description,
+            location,
+            imageUrl,
+          })
+        );
+        setName("");
+        setPrice("");
+        setDescription("");
+        setLocation("");
+        alert(
+          "new campground created. We will redirect you to that campground"
+        );
+      }
     } catch (err) {
       throw new Error("Error: ", err);
     }
@@ -44,42 +56,56 @@ const CreateCampground = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" value={name} onChange={handleChange} />
+          <label htmlFor="name">Name: </label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div>
-          <label htmlFor="price">Price</label>
+          <label htmlFor="price">Price: $</label>
           <input
             type="text"
             name="price"
             value={price}
             onChange={handleChange}
+            required
           />
         </div>
         <div>
-          <label htmlFor="description">Description</label>
-          <input
+          <label htmlFor="description">Description: </label>
+
+          <textarea
             type="text"
             name="description"
             value={description}
             onChange={handleChange}
+            required
+            cols="50"
+            rows="10"
+            style={{ maxHeight: "100px", maxWidth: "350px" }}
+            placeholder="description"
           />
         </div>
         <div>
-          <label htmlFor="location">Location</label>
+          <label htmlFor="location">Location: </label>
           <input
             type="text"
             name="location"
             value={location}
             onChange={handleChange}
+            required
           />
         </div>
         <div>
-          <label htmlFor="image">Image</label>
+          <label htmlFor="imageUrl">Image Url: </label>
           <input
             type="text"
-            name="image"
-            value={image}
+            name="imageUrl"
+            value={imageUrl}
             src=""
             onChange={handleChange}
           />

@@ -13,7 +13,7 @@ app.use(cors())
 
 // logging middleware
 app.use(volleyball);
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 
 // body parsing middleware
 app.use(express.json())

@@ -8,6 +8,7 @@ const hipsum = require("lorem-hipsum");
 
 // require models here
 const Campground = require("../server/db/models/campground");
+const Review = require('../server/db/models/review')
 
 // -------------------------------------------
 // --------- SEED ASYNC CALL -----------------
@@ -24,6 +25,7 @@ const seed = async () => {
         format: "plain",
       });
     };
+
     for (let i = 0; i < 50; i++) {
       const random1000 = Math.floor(Math.random() * 1000);
       const rand17 = Math.floor(Math.random() * 17);
@@ -37,6 +39,12 @@ const seed = async () => {
       });
       await camp;
     }
+    const review = Review.create({
+      body: "This was a great campsite",
+      rating: 3,
+      campgroundId: 2
+    })
+    await review
 
 
     console.log(green(" 🌱🌱🌱 ---- Seeding success!! ---- 🌱🌱🌱"));

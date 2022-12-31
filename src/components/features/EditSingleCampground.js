@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editSingleCampgroundAsync, selectSingleCampground } from "../../features/singleCampgroundSlice";
+import {
+  editSingleCampgroundAsync,
+  selectSingleCampground,
+} from "../../features/singleCampgroundSlice";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const EditSingleCampground = () => {
@@ -8,13 +11,13 @@ const EditSingleCampground = () => {
   console.log("ID: ", id);
   const navigate = useNavigate();
 
-  const campground = useSelector(selectSingleCampground)
-  console.log("campground: ", campground)
+  const campground = useSelector(selectSingleCampground);
+  console.log("campground: ", campground);
   const [name, setName] = useState(campground.name);
   const [price, setPrice] = useState(campground.price);
   const [description, setDescription] = useState(campground.description);
   const [location, setLocation] = useState(campground.location);
-  const [image, setImage] = useState(campground.imageUrl)
+  const [imageUrl, setImageUrl] = useState(campground.imageUrl);
 
   const dispatch = useDispatch();
 
@@ -23,25 +26,33 @@ const EditSingleCampground = () => {
     if (e.target.name === "price") setPrice(e.target.value);
     if (e.target.name === "description") setDescription(e.target.value);
     if (e.target.name === "location") setLocation(e.target.value);
-    if (e.target.name === "image") setImage(e.target.value);
-  };
-
-  const handleClick = () => {
-    console.log("submitted");
+    if (e.target.name === "imageUrl") setImageUrl(e.target.value);
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      await dispatch(
-        editSingleCampgroundAsync({ id, name, price, description, location })
-      );
-      setName("");
-      setPrice("");
-      setDescription("");
-      setLocation("");
-      alert("edited the campground");
-      navigate(`/campgrounds/${id}`)
+      if (price === "" || price < 0 || isNaN(price)) {
+        alert("Enter valid price. If free then enter 0");
+        // return next()
+      } else {
+        await dispatch(
+          editSingleCampgroundAsync({
+            id,
+            name,
+            price,
+            description,
+            location,
+            imageUrl,
+          })
+        );
+        setName("");
+        setPrice("");
+        setDescription("");
+        setLocation("");
+        alert("edited the campground");
+        navigate(`/campgrounds/${id}`);
+      }
     } catch (err) {
       throw new Error("Error: ", err);
     }
@@ -83,16 +94,16 @@ const EditSingleCampground = () => {
           />
         </div>
         <div>
-          <label htmlFor="image">Image Url: </label>
+          <label htmlFor="imageUrl">Image Url: </label>
           <input
             type="text"
-            name="image"
+            name="imageUrl"
             src=""
-            value={image}
+            value={imageUrl}
             onChange={handleChange}
           />
         </div>
-        <button type="submit" onClick={handleClick}>
+        <button type="submit">
           Update Campground
         </button>
       </form>
