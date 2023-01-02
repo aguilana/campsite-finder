@@ -4,6 +4,7 @@ const db = require("../database");
 module.exports = db.define("review", {
     body: {
         type: Sequelize.STRING(255),
+        allowNull: false,
     },
     rating: {
         type: Sequelize.INTEGER,

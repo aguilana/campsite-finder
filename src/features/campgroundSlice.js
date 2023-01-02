@@ -12,14 +12,14 @@ export const fetchAllCampgrounds = createAsyncThunk('campgrounds/fetchAll', asyn
 })
 
 // create campground
-export const createCampgroundAsync = createAsyncThunk('campgrounds/createCampground', async({ name, price, description, location, image }) => {
+export const createCampgroundAsync = createAsyncThunk('campgrounds/createCampground', async({ name, price, description, location, imageUrl }) => {
     try {
         const { data } = await axios.post('/api/campgrounds/create', {
             name,
             price,
             description,
             location,
-            image
+            imageUrl
         })
         return data
     }

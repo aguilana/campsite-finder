@@ -48,7 +48,7 @@ campgroundRouter.get("/:id", async (req, res, next) => {
       include: [
         {
           model: Review,
-        }
+        },
       ],
     });
     if (!singleCampground) {
@@ -63,19 +63,21 @@ campgroundRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-// POST /api/campgrounds/:id/review
-campgroundRouter.post("/:id/review", async (req, res, next) => {
-  const id = req.params.id
+// POST /api/campgrounds/:id/reviews
+campgroundRouter.post("/:id/reviews", async (req, res, next) => {
+  const id = req.params.id;
   try {
-    const campground = await Campground.findByPk(id)
-    const addReview = await Review.create(req.body);
-    console.log("REVIEW: ", addReview)
-    res.status(201).send(campground.createReview(addReview))
+    const campground = await Campground.findByPk(id);
+    const addReview = await Review.create({
+      body: req.body.body,
+      rating: req.body.rating,
+      campgroundId: id
+    });
+    res.status(201).send(addReview);
+  } catch (err) {
+    next(err);
   }
-  catch(err){
-    next(err)
-  }
-})
+});
 
 // POST /api/campgrounds/create
 campgroundRouter.post("/create", async (req, res, next) => {

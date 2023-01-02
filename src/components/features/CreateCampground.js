@@ -20,10 +20,6 @@ const CreateCampground = () => {
     if (e.target.name === "imageUrl") setImage(e.target.value);
   };
 
-  const handleClick = () => {
-    console.log("submitted");
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -46,6 +42,7 @@ const CreateCampground = () => {
         alert(
           "new campground created. We will redirect you to that campground"
         );
+        // navigate to the /campgrounds/:id
       }
     } catch (err) {
       throw new Error("Error: ", err);
@@ -106,7 +103,6 @@ const CreateCampground = () => {
             type="text"
             name="imageUrl"
             value={imageUrl}
-            src=""
             onChange={handleChange}
           />
         </div>

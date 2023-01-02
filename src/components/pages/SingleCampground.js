@@ -15,7 +15,7 @@ const SingleCampground = () => {
 
   const [body, setBody] = useState("");
   const [rating, setRating] = useState(null);
-  console.log({ body, rating });
+  console.log("single campground ln18: ", { body, rating, id: Number(id) });
 
   useEffect(() => {
     dispatch(fetchSingleCampground(id));
@@ -24,12 +24,16 @@ const SingleCampground = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     // send post request to /api/campgrounds/:id
-    await dispatch(addReviewToCampgroundAsync(id, { body, rating }));
+    if (body == "" || rating == "") {
+      alert("fill out appropriate fields to leave a review");
+    } else {
+      await dispatch(addReviewToCampgroundAsync({ body, rating, id }));
+    }
   };
 
   const handleChange = (e) => {
-    console.log(e.target.name)
-    console.log(e.target.value)
+    console.log(e.target.name);
+    console.log(e.target.value);
     if (e.target.name === "rating") setRating(Number(e.target.value));
     if (e.target.name === "review") setBody(e.target.value);
   };
@@ -56,11 +60,24 @@ const SingleCampground = () => {
           </div>
           <div>
             <section>
-              <h5>Reviews</h5>
+              <h5>
+                Reviews
+                <span>
+                  (
+                  {singleCampground.reviews && singleCampground.reviews.length
+                    ? singleCampground.reviews.length
+                    : 0}
+                  )
+                </span>
+              </h5>
               <ol>
-                {singleCampground.reviews ? (
+                {singleCampground.reviews && singleCampground.reviews.length ? (
                   singleCampground.reviews.map((review) => {
-                    return <li key={review.body}>{review.body}</li>;
+                    return (
+                      <li key={review.id}>
+                        {review.body} <span>Rating: {review.rating}</span>
+                      </li>
+                    );
                   })
                 ) : (
                   <p>No Reviews</p>
