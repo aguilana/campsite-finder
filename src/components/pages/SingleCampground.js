@@ -24,7 +24,7 @@ const SingleCampground = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     // send post request to /api/campgrounds/:id
-    if (body == "" || rating == "") {
+    if (body == "" || rating == null) {
       alert("fill out appropriate fields to leave a review");
     } else {
       await dispatch(addReviewToCampgroundAsync({ body, rating, id }));
@@ -37,6 +37,10 @@ const SingleCampground = () => {
     if (e.target.name === "rating") setRating(Number(e.target.value));
     if (e.target.name === "review") setBody(e.target.value);
   };
+
+  const handleDelete = (reviewId) => {
+
+  }
 
   return (
     <>
@@ -74,9 +78,14 @@ const SingleCampground = () => {
                 {singleCampground.reviews && singleCampground.reviews.length ? (
                   singleCampground.reviews.map((review) => {
                     return (
+                      <>
+                      
                       <li key={review.id}>
                         {review.body} <span>Rating: {review.rating}</span>
                       </li>
+
+                      <button onClick={()=>handleClick(review.id)}>Delete Review</button>
+                      </>
                     );
                   })
                 ) : (

@@ -71,11 +71,71 @@ campgroundRouter.post("/:id/reviews", async (req, res, next) => {
     const addReview = await Review.create({
       body: req.body.body,
       rating: req.body.rating,
-      campgroundId: id
+      campgroundId: id,
     });
     res.status(201).send(addReview);
   } catch (err) {
     next(err);
+  }
+});
+
+campgroundRouter.get("/:id/reviews", async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const campgroundReviews = await Review.findAll({
+      where: {
+        campgroundId: id,
+      },
+      include: {
+        model: Campground,
+      },
+    });
+    res.send(campgroundReviews);
+  } catch (err) {
+    next(err);
+  }
+});
+
+campgroundRouter.get("/:id/reviews/:reviewId", async (req, res, next) => {
+  const id = req.params.id;
+  const reviewId = req.params.reviewId;
+  try {
+    const campgroundReview = await Review.findByPk(reviewId, {
+      include: {
+        model: Campground,
+        where: {
+          id: id,
+        },
+      },
+    });
+    res.send(campgroundReview);
+  } catch (err) {
+    next(err);
+  }
+});
+
+campgroundRouter.delete("/:id/reviews/:reviewId", async (req, res, next) => {
+  const id = req.params.id;
+  const reviewId = req.params.reviewId;
+  try {
+    const deletedCampgroundReview = await Review.findByPk(reviewId, {
+      include: {
+        model: Campground,
+        where: {
+          id: id,
+        },
+      },
+    });
+    console.log("campground from API: ", deletedCampgroundReview);
+    if (!deletedCampgroundReview) {
+      let err = new Error("Cannot remove campground review");
+      next(err);
+    } else {
+      await deletedCampgroundReview.destroy();
+      res.status(200).send(deletedCampgroundReview);
+    }
+  } catch (err) {
+    console.log(err);
   }
 });
 

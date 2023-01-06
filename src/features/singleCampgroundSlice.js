@@ -33,6 +33,16 @@ export const addReviewToCampgroundAsync = createAsyncThunk(
   }
 );
 
+export const deleteReviewAsync = createAsyncThunk("campground/deleteReview", async({id, reviewId})=>{
+  try{
+    const { data } = await axios.delete(`api/campgrounds/${id}/reviews/${reviewId}`)
+    return data
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
 export const editSingleCampgroundAsync = createAsyncThunk(
   "campground/editCampground",
   async ({ id, name, price, description, location, imageUrl }) => {
