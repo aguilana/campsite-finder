@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import {
   addReviewToCampgroundAsync,
+  deleteReviewAsync,
   fetchSingleCampground,
   selectSingleCampground,
 } from "../../features/singleCampgroundSlice";
@@ -38,8 +39,9 @@ const SingleCampground = () => {
     if (e.target.name === "review") setBody(e.target.value);
   };
 
-  const handleDelete = (reviewId) => {
-
+  const handleDelete = ({singleCampgroundId, reviewId}) => {
+    console.log('handle Delete: ', singleCampgroundId, reviewId, {singleCampgroundId, reviewId})
+    dispatch(deleteReviewAsync({singleCampgroundId, reviewId}))
   }
 
   return (
@@ -84,7 +86,7 @@ const SingleCampground = () => {
                         {review.body} <span>Rating: {review.rating}</span>
                       </li>
 
-                      <button onClick={()=>handleClick(review.id)}>Delete Review</button>
+                      <button onClick={()=>handleDelete({singleCampgroundId: singleCampground.id, reviewId: review.id})}>Delete Review</button>
                       </>
                     );
                   })

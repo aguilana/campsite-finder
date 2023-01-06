@@ -117,6 +117,7 @@ campgroundRouter.get("/:id/reviews/:reviewId", async (req, res, next) => {
 campgroundRouter.delete("/:id/reviews/:reviewId", async (req, res, next) => {
   const id = req.params.id;
   const reviewId = req.params.reviewId;
+  console.log(reviewId)
   try {
     const deletedCampgroundReview = await Review.findByPk(reviewId, {
       include: {

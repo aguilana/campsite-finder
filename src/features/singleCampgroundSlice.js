@@ -16,9 +16,9 @@ export const fetchSingleCampground = createAsyncThunk(
 export const addReviewToCampgroundAsync = createAsyncThunk(
   "campground/addReview",
   async ({ body, rating, id }) => {
-    console.log("BODY IN SLICE: ", body)
-    console.log("rating in slice: ", rating)
-    console.log("ID in slice: ", id)
+    console.log("BODY IN SLICE: ", body);
+    console.log("rating in slice: ", rating);
+    console.log("ID in slice: ", id);
     try {
       const { data } = await axios.post(`/api/campgrounds/${id}/reviews`, {
         body,
@@ -33,15 +33,22 @@ export const addReviewToCampgroundAsync = createAsyncThunk(
   }
 );
 
-export const deleteReviewAsync = createAsyncThunk("campground/deleteReview", async({id, reviewId})=>{
-  try{
-    const { data } = await axios.delete(`api/campgrounds/${id}/reviews/${reviewId}`)
-    return data
+export const deleteReviewAsync = createAsyncThunk(
+  "campground/deleteReview",
+  async ({singleCampgroundId, reviewId}) => {
+    console.log("delete async thunk: ", singleCampgroundId, "review Id:", reviewId);
+
+    try {
+      const { data } = await axios.delete(
+        `/api/campgrounds/${singleCampgroundId}/reviews/${reviewId}`
+      );
+      console.log("delete data: ", data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   }
-  catch(err){
-    console.log(err)
-  }
-})
+);
 
 export const editSingleCampgroundAsync = createAsyncThunk(
   "campground/editCampground",
@@ -78,9 +85,17 @@ export const singleCampgroundSlice = createSlice({
         state.campsite.reviews.push(payload);
       }
     );
+    builder.addCase(deleteReviewAsync.fulfilled, (state, { payload }) => {
+      console.log("PAYLOAD: ", payload)
+      state.campsite.reviews = state.campsite.reviews.filter(
+        (review) => review.id !== payload.id
+      );
+    });
   },
 });
 
-export const selectSingleCampground = (state) => state.campground.campsite;
+export const selectSingleCampground = (state) => {
+  console.log("state: ", state)
+  return state.campground.campsite};
 
 export default singleCampgroundSlice.reducer;
