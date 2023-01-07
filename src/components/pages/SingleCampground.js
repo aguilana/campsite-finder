@@ -7,6 +7,7 @@ import {
   fetchSingleCampground,
   selectSingleCampground,
 } from "../../features/singleCampgroundSlice";
+import { CreateReviewForm } from "../features";
 
 const SingleCampground = () => {
   const { id } = useParams();
@@ -40,12 +41,12 @@ const SingleCampground = () => {
   };
 
   const handleDelete = ({singleCampgroundId, reviewId}) => {
-    console.log('handle Delete: ', singleCampgroundId, reviewId, {singleCampgroundId, reviewId})
     dispatch(deleteReviewAsync({singleCampgroundId, reviewId}))
   }
 
   return (
     <>
+    {/* if there is an Id and singleCampground then show...singleCampground...make separate component for campground? */}
       {id && singleCampground ? (
         <div
           style={{
@@ -56,6 +57,7 @@ const SingleCampground = () => {
             alignItems: "center",
           }}
         >
+          {/* single campground card layout... */}
           <h1>Welcome to {singleCampground.name}</h1>
           <img src={singleCampground.imageUrl} alt={singleCampground.name} />
           <p>Located in {singleCampground.location}</p>
@@ -65,6 +67,7 @@ const SingleCampground = () => {
             <p>{singleCampground.description}</p>
           </div>
           <div>
+            {/* single campground REVIEWS SECTION...own component? */}
             <section>
               <h5>
                 Reviews
@@ -96,7 +99,9 @@ const SingleCampground = () => {
               </ol>
             </section>
             <section>
-              <form onSubmit={handleSubmit}>
+              <CreateReviewForm/>
+              {/* single component for REVIEWS FORM */}
+              {/* <form onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="rating">Rating </label>
                   <select name="rating" id="rating" onChange={handleChange}>
@@ -120,7 +125,7 @@ const SingleCampground = () => {
                   />
                   <button type="submit">Leave Review</button>
                 </div>
-              </form>
+              </form> */}
             </section>
           </div>
           <p>

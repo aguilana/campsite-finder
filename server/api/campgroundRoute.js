@@ -117,7 +117,6 @@ campgroundRouter.get("/:id/reviews/:reviewId", async (req, res, next) => {
 campgroundRouter.delete("/:id/reviews/:reviewId", async (req, res, next) => {
   const id = req.params.id;
   const reviewId = req.params.reviewId;
-  console.log(reviewId)
   try {
     const deletedCampgroundReview = await Review.findByPk(reviewId, {
       include: {
@@ -127,7 +126,6 @@ campgroundRouter.delete("/:id/reviews/:reviewId", async (req, res, next) => {
         },
       },
     });
-    console.log("campground from API: ", deletedCampgroundReview);
     if (!deletedCampgroundReview) {
       let err = new Error("Cannot remove campground review");
       next(err);
@@ -135,8 +133,11 @@ campgroundRouter.delete("/:id/reviews/:reviewId", async (req, res, next) => {
       await deletedCampgroundReview.destroy();
       res.status(200).send(deletedCampgroundReview);
     }
-  } catch (err) {
-    console.log(err);
+  } 
+  // error handling
+  catch (err) {
+    console.log("error", err);
+    next(err)
   }
 });
 
