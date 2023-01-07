@@ -100,32 +100,6 @@ const SingleCampground = () => {
             </section>
             <section>
               <CreateReviewForm/>
-              {/* single component for REVIEWS FORM */}
-              {/* <form onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="rating">Rating </label>
-                  <select name="rating" id="rating" onChange={handleChange}>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="review">Leave a Review: </label>
-                  <textarea
-                    name="review"
-                    value={body}
-                    id="review"
-                    cols="30"
-                    rows="3"
-                    style={{ maxHeight: "80px", maxWidth: "300px" }}
-                    onChange={handleChange}
-                  />
-                  <button type="submit">Leave Review</button>
-                </div>
-              </form> */}
             </section>
           </div>
           <p>
