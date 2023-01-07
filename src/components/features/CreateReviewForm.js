@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addReviewToCampgroundAsync } from "../../features/singleCampgroundSlice";
+import { addReviewToCampgroundAsync, deleteReviewAsync, selectSingleCampground } from "../../features/singleCampgroundSlice";
 
 const CreateReviewForm = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const singleCampground = useSelector(selectSingleCampground);
 
   const [body, setBody] = useState("");
   const [rating, setRating] = useState(null);
@@ -29,8 +30,43 @@ const CreateReviewForm = () => {
     if (e.target.name === "review") setBody(e.target.value);
   };
 
+  const handleDelete = ({singleCampgroundId, reviewId}) => {
+    dispatch(deleteReviewAsync({singleCampgroundId, reviewId}))
+  }
+  
+
   return (
     <>
+                <section>
+              <h5>
+                Reviews
+                <span>
+                  (
+                  {singleCampground.reviews && singleCampground.reviews.length
+                    ? singleCampground.reviews.length
+                    : 0}
+                  )
+                </span>
+              </h5>
+              <ol>
+                {singleCampground.reviews && singleCampground.reviews.length ? (
+                  singleCampground.reviews.map((review) => {
+                    return (
+                      <>
+                      
+                      <li key={review.id}>
+                        {review.body} <span>Rating: {review.rating}</span>
+                      </li>
+
+                      <button onClick={()=>handleDelete({singleCampgroundId: singleCampground.id, reviewId: review.id})}>Delete Review</button>
+                      </>
+                    );
+                  })
+                ) : (
+                  <p>No Reviews</p>
+                )}
+              </ol>
+            </section>
       {/* single component for REVIEWS FORM */}
       <form onSubmit={handleSubmit}>
         <div>
