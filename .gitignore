@@ -1,8 +1,7 @@
 # Ignore all node_modules
 node_modules/*
-
+node_modules
 dist/
-
 public/bundle.js
 public/bundle.js.map
 
@@ -19,3 +18,7 @@ npm-debug.log
 
 package.lock.json
 package-lock.json
+
+# env and local
+.env
+.env.local
