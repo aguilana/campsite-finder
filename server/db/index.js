@@ -1,16 +1,16 @@
-const db = require('./database')
+const db = require('./database');
 
 // REQUIRE DEFINED MODELS HERE
-    const Campground = require('./models/campground')
-    const Review = require('./models/review')
+const Campground = require('./models/campground');
+const Review = require('./models/review');
 // MODEL ASSOCIATIONS
 
-Review.belongsTo(Campground)
-Campground.hasMany(Review)
+Review.belongsTo(Campground); // review will have campgroundId
+Campground.hasMany(Review); // campgroundId will be on Review as a FK
 
 // export db and models
 module.exports = {
-    db,
-    Campground,
-    Review
-}
+  db,
+  Campground,
+  Review,
+};
