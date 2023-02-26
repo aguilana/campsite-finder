@@ -1,8 +1,8 @@
-const campgroundRouter = require("express").Router();
-const { Campground, Review } = require("../db");
+const campgroundRouter = require('express').Router();
+const { Campground, Review } = require('../db');
 
 // GET /api/campgrounds
-campgroundRouter.get("/", async (req, res, next) => {
+campgroundRouter.get('/', async (req, res, next) => {
   try {
     const campgrounds = await Campground.findAll({
       include: [
@@ -13,13 +13,13 @@ campgroundRouter.get("/", async (req, res, next) => {
     });
     res.status(200).send(campgrounds);
   } catch (err) {
-    console.log("Error: ", err);
+    console.log('Error: ', err);
     next(err);
   }
 });
 
 // DELETE /api/campgrounds/:id
-campgroundRouter.delete("/:id", async (req, res, next) => {
+campgroundRouter.delete('/:id', async (req, res, next) => {
   try {
     const deletedCampground = await Campground.findByPk(req.params.id, {
       include: [
@@ -29,7 +29,7 @@ campgroundRouter.delete("/:id", async (req, res, next) => {
       ],
     });
     if (!deletedCampground) {
-      let err = new Error("Cannot remove campground");
+      let err = new Error('Cannot remove campground');
       next(err);
     } else {
       await deletedCampground.destroy();
@@ -41,7 +41,7 @@ campgroundRouter.delete("/:id", async (req, res, next) => {
 });
 
 // GET /api/campgrounds/:id
-campgroundRouter.get("/:id", async (req, res, next) => {
+campgroundRouter.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
     const singleCampground = await Campground.findByPk(id, {
@@ -52,7 +52,7 @@ campgroundRouter.get("/:id", async (req, res, next) => {
       ],
     });
     if (!singleCampground) {
-      let err = new Error("Sorry no campground found");
+      let err = new Error('Sorry no campground found');
       err.status = 404;
       next(err);
     } else {
@@ -64,7 +64,7 @@ campgroundRouter.get("/:id", async (req, res, next) => {
 });
 
 // POST /api/campgrounds/:id/reviews
-campgroundRouter.post("/:id/reviews", async (req, res, next) => {
+campgroundRouter.post('/:id/reviews', async (req, res, next) => {
   const id = req.params.id;
   try {
     const campground = await Campground.findByPk(id);
@@ -79,7 +79,7 @@ campgroundRouter.post("/:id/reviews", async (req, res, next) => {
   }
 });
 
-campgroundRouter.get("/:id/reviews", async (req, res, next) => {
+campgroundRouter.get('/:id/reviews', async (req, res, next) => {
   const id = req.params.id;
   try {
     const campgroundReviews = await Review.findAll({
@@ -96,7 +96,7 @@ campgroundRouter.get("/:id/reviews", async (req, res, next) => {
   }
 });
 
-campgroundRouter.get("/:id/reviews/:reviewId", async (req, res, next) => {
+campgroundRouter.get('/:id/reviews/:reviewId', async (req, res, next) => {
   const id = req.params.id;
   const reviewId = req.params.reviewId;
   try {
@@ -114,7 +114,7 @@ campgroundRouter.get("/:id/reviews/:reviewId", async (req, res, next) => {
   }
 });
 
-campgroundRouter.delete("/:id/reviews/:reviewId", async (req, res, next) => {
+campgroundRouter.delete('/:id/reviews/:reviewId', async (req, res, next) => {
   const id = req.params.id;
   const reviewId = req.params.reviewId;
   try {
@@ -127,22 +127,21 @@ campgroundRouter.delete("/:id/reviews/:reviewId", async (req, res, next) => {
       },
     });
     if (!deletedCampgroundReview) {
-      let err = new Error("Cannot remove campground review");
+      let err = new Error('Cannot remove campground review');
       next(err);
     } else {
       await deletedCampgroundReview.destroy();
       res.status(200).send(deletedCampgroundReview);
     }
-  } 
-  // error handling
-  catch (err) {
-    console.log("error", err);
-    next(err)
+  } catch (err) {
+    // error handling
+    console.log('error', err);
+    next(err);
   }
 });
 
 // POST /api/campgrounds/create
-campgroundRouter.post("/create", async (req, res, next) => {
+campgroundRouter.post('/create', async (req, res, next) => {
   try {
     const createCampground = await Campground.create(req.body);
     res.status(201).send(createCampground);
@@ -152,7 +151,7 @@ campgroundRouter.post("/create", async (req, res, next) => {
 });
 
 // PUT /api/campgrounds/:id/edit
-campgroundRouter.put("/:id/edit", async (req, res, next) => {
+campgroundRouter.put('/:id/edit', async (req, res, next) => {
   try {
     const editCampground = await Campground.findByPk(req.params.id);
     res.status(200).send(await editCampground.update(req.body));
