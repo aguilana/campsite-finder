@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createCampgroundAsync } from '../../features/campgroundSlice';
+import { createCampgroundAsync } from '../../features/slices/campgroundSlice';
 import { Link } from 'react-router-dom';
 
 const CreateCampground = () => {

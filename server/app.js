@@ -48,6 +48,7 @@ app.use(session(sessionOptions));
 }); */
 
 app.use('/api', require('./api'));
+app.use('/auth', require('./auth'));
 
 // send index.html for any other requests
 app.use('*', (req, res) => {

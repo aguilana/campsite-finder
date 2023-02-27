@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
 import {
   addReviewToCampgroundAsync,
   deleteReviewAsync,
   fetchSingleCampground,
   selectSingleCampground,
-} from "../../features/singleCampgroundSlice";
-import { Campground, CreateReviewForm } from "../features";
+} from '../../features/slices/singleCampgroundSlice';
+import { Campground, CreateReviewForm } from '../features';
 
 const SingleCampground = () => {
   const { id } = useParams();
@@ -15,9 +15,9 @@ const SingleCampground = () => {
   console.log(singleCampground);
   const dispatch = useDispatch();
 
-  const [body, setBody] = useState("");
+  const [body, setBody] = useState('');
   const [rating, setRating] = useState(null);
-  console.log("single campground ln18: ", { body, rating, id: Number(id) });
+  console.log('single campground ln18: ', { body, rating, id: Number(id) });
 
   useEffect(() => {
     dispatch(fetchSingleCampground(id));
@@ -33,11 +33,11 @@ const SingleCampground = () => {
       {id && singleCampground ? (
         <div
           style={{
-            fontSize: "1.5rem",
-            width: "100vw",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            fontSize: '1.5rem',
+            width: '100vw',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
         >
           {/* single campground card layout... */}
@@ -56,7 +56,7 @@ const SingleCampground = () => {
         <h1> Campground does not exist </h1>
       )}
       <footer>
-        <Link to="/campgrounds">All Campgrounds</Link>
+        <Link to='/campgrounds'>All Campgrounds</Link>
       </footer>
     </>
   );

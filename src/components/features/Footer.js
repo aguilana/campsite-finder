@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const Footer = () => {
   return (
-    <div style={{backgroundColor: "gray"}}>
-        <span> &copy; Yelp Camp 2023</span>
+    <div className='h-24'>
+      <span> &copy; Yelp Camp 2023</span>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

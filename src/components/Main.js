@@ -1,28 +1,20 @@
-import React from "react";
+import React from 'react';
+import { useSelector } from 'react-redux';
 /* Imported Components */
-import {
-  Home,
-} from "./";
-import { Campgrounds, SingleCampground } from "./pages";
-import { CreateCampground, EditSingleCampground, Footer, NavBar } from "./features";
-import { Route, Routes } from "react-router-dom";
+import { Footer, NavBar } from './features';
+import AppRoutes from './AppRoutes';
 
 const Main = () => {
+  const isAdmin = useSelector((state) => state.auth.me.isAdmin);
+
   return (
-    <>
+    <div className='flex flex-col min-h-screen'>
       {/* ---- NavBar ---- */}
-      <NavBar/>
-      {/* <Home/> */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/campgrounds" element={<Campgrounds />} />
-        <Route path="/campgrounds/create" element={<CreateCampground/>} />
-        <Route path="/campgrounds/:id" element={<SingleCampground/>}/>
-        <Route path="/campgrounds/:id/edit" element={<EditSingleCampground/>}/>
-      </Routes>
+      <NavBar isAdmin={isAdmin} />
+      <AppRoutes />
       {/* FOOTER */}
-      <Footer/>
-    </>
+      <Footer />
+    </div>
   );
 };
 

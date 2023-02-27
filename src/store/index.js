@@ -1,11 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import campgroundReducer from "../features/campgroundSlice"
-import singleCampgroundReducer from "../features/singleCampgroundSlice"
+import { configureStore } from '@reduxjs/toolkit';
+import campgroundReducer from '../features/slices/campgroundSlice';
+import singleCampgroundReducer from '../features/slices/singleCampgroundSlice';
+import authReducer from '../features/auth/authSlice';
 
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     campgrounds: campgroundReducer,
-    campground: singleCampgroundReducer
+    campground: singleCampgroundReducer,
   },
 });
 

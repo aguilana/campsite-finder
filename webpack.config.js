@@ -1,4 +1,7 @@
 const Dotenv = require('dotenv-webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+
 module.exports = {
   mode: 'development',
   entry: ['./src/index.js'],
@@ -18,13 +21,39 @@ module.exports = {
     new Dotenv({
       path: '.env', // or '.env.local', '.env.[mode]', etc.
     }),
+    new MiniCssExtractPlugin(),
   ],
   module: {
     rules: [
       {
         // this allows css styling loader
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [require('tailwindcss'), require('autoprefixer')],
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/[path]',
+              publicPath: '/assets/[path]',
+              context: path.resolve(__dirname, 'src'),
+            },
+          },
+        ],
       },
       {
         test: /jsx?$/,

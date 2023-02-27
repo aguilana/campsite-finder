@@ -5,7 +5,7 @@ import {
   addReviewToCampgroundAsync,
   deleteReviewAsync,
   selectSingleCampground,
-} from '../../features/singleCampgroundSlice';
+} from '../../features/slices/singleCampgroundSlice';
 
 const CreateReviewForm = () => {
   const { id } = useParams();

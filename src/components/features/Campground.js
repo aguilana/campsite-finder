@@ -1,23 +1,20 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   fetchSingleCampground,
   selectSingleCampground,
-} from "../../features/singleCampgroundSlice";
+} from '../../features/slices/singleCampgroundSlice';
 
 const Campground = () => {
-
   const { id } = useParams();
   const singleCampground = useSelector(selectSingleCampground);
-
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchSingleCampground(id));
   }, []);
-
 
   return (
     <>
