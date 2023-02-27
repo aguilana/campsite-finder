@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   editSingleCampgroundAsync,
   selectSingleCampground,
-} from '../../features/slices/singleCampgroundSlice';
+} from '../../../features/slices/singleCampgroundSlice';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const EditSingleCampground = () => {

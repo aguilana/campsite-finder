@@ -7,6 +7,8 @@ import {
   deleteCampgroundAsync,
 } from '../../features/slices/campgroundSlice';
 
+import { CampgroundCard } from '../features';
+
 const Campgrounds = () => {
   const campgrounds = useSelector(selectCampgrounds);
   const dispatch = useDispatch();
@@ -15,46 +17,17 @@ const Campgrounds = () => {
     dispatch(fetchAllCampgrounds());
   }, []);
 
-  const handleDelete = (id) => {
-    alert('Deleting campground');
-    dispatch(deleteCampgroundAsync(id));
-  };
-
   return (
     <div className='mt-20'>
-      <h1>All Campgrounds</h1>
-      <section>
-        <Link to='/campgrounds/create'>Add Campground</Link>
-      </section>
-      <ul>
-        {campgrounds && campgrounds.length ? (
-          campgrounds.map((campground) => {
-            return (
-              <li key={campground.id}>
-                <h3>
-                  <Link
-                    to={`/campgrounds/${campground.id}`}
-                    style={{
-                      listStyle: 'none',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    {campground.name}
-                  </Link>
-                  <span>
-                    {' '}
-                    <button onClick={() => handleDelete(campground.id)}>
-                      Delete
-                    </button>
-                  </span>
-                </h3>
-              </li>
-            );
-          })
-        ) : (
-          <h1> Loading ...</h1>
-        )}
-      </ul>
+      <div className='flex flex-col md:flex items-center justify-center py-4 md:px-10 px-7 max-w-6xl mx-auto gap-3'>
+        <div className='border-b'>
+          <h1 className='text-4xl'>All Campgrounds ({campgrounds.length})</h1>
+        </div>
+        <section>
+          <Link to='/campgrounds/create'>Add Campground</Link>
+        </section>
+      </div>
+      <CampgroundCard />
     </div>
   );
 };

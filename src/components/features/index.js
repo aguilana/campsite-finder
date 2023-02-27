@@ -1,6 +1,6 @@
-export { default as CreateCampground } from './CreateCampground';
-export { default as EditSingleCampground } from './EditSingleCampground';
+export { default as EditSingleCampground } from './campground/EditSingleCampground';
 export { default as NavBar } from './navbar/Navbar';
-export { default as Footer } from './Footer';
+export { default as Footer } from './footer/Footer';
 export { default as CreateReviewForm } from './CreateReviewForm';
-export { default as Campground } from './Campground';
+export { default as Campground } from './campground/Campground';
+export { default as CampgroundCard } from './card/CampgroundCard';

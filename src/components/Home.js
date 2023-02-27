@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <div className={'relative p-5 bg-scroll flex-1'}>
       <img
-        className='absolute inset-0 object-cover w-full h-full z-[-1]'
+        className='absolute inset-0 object-cover w-full h-full z-[-1] filter blur-[1px]'
         src={LakeAloha}
         alt=''
       />

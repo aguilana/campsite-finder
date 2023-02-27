@@ -1,8 +1,8 @@
 import React from 'react';
 /* Imported Components */
 import { Home } from './';
-import { Campgrounds, SingleCampground } from './pages';
-import { CreateCampground, EditSingleCampground } from './features';
+import { Campgrounds, SingleCampground, CreateCampground } from './pages';
+import { EditSingleCampground } from './features';
 import { Route, Routes } from 'react-router-dom';
 
 const AppRoutes = () => {

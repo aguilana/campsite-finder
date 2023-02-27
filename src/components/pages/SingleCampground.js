@@ -28,7 +28,7 @@ const SingleCampground = () => {
   };
 
   return (
-    <>
+    <div className='mt-20'>
       {/* if there is an Id and singleCampground then show...singleCampground...make separate component for campground? */}
       {id && singleCampground ? (
         <div
@@ -58,7 +58,7 @@ const SingleCampground = () => {
       <footer>
         <Link to='/campgrounds'>All Campgrounds</Link>
       </footer>
-    </>
+    </div>
   );
 };
 
