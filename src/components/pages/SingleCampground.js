@@ -8,6 +8,7 @@ import {
   selectSingleCampground,
 } from '../../features/slices/singleCampgroundSlice';
 import { Campground, CreateReviewForm } from '../features';
+import Fire from '../../assets/images/fire.jpg';
 
 const SingleCampground = () => {
   const { id } = useParams();
@@ -28,36 +29,48 @@ const SingleCampground = () => {
   };
 
   return (
-    <div className='mt-20'>
+    <div className='relative bg-scroll mt-20 mx-auto pt-4 flex-1 flex justify-center items-center w-full'>
       {/* if there is an Id and singleCampground then show...singleCampground...make separate component for campground? */}
-      {id && singleCampground ? (
-        <div
-          style={{
-            fontSize: '1.5rem',
-            width: '100vw',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          {/* single campground card layout... */}
-          <Campground />
-          <section>
-            <CreateReviewForm />
-          </section>
-
-          <p>
-            <Link to={`/campgrounds/${singleCampground.id}/edit`}>
-              Edit Campground
-            </Link>
-          </p>
-        </div>
-      ) : (
-        <h1> Campground does not exist </h1>
-      )}
-      <footer>
-        <Link to='/campgrounds'>All Campgrounds</Link>
-      </footer>
+      <img
+        className='absolute inset-0 object-cover w-screen h-full z-[-1] filter blur-[6px] opacity-60'
+        src={Fire}
+        alt='campfire'
+      />
+      <div className='flex flex-1 justify-between items-center max-w-7xl'>
+        {id && singleCampground ? (
+          <div className='flex'>
+            <div className='flex-1 p-10'>
+              {/* single campground card layout... */}
+              <Campground />
+            </div>
+            <div className='flex flex-col flex-1 p-10 bg-gray-700 bg-opacity-70 rounded-xl'>
+              <section>
+                <CreateReviewForm />
+              </section>
+              <div className='flex justify-between items-center py-4'>
+                <p className='hover:bg-gray-600 rounded-lg max-w-[200px] h-10 flex items-center transition-all ease-in-out duration-500 bg-gray-800'>
+                  <Link
+                    className='py-1 px-2'
+                    to={`/campgrounds/${singleCampground.id}/edit`}
+                  >
+                    Edit Campground
+                  </Link>
+                </p>
+                <p className='hover:bg-gray-600 rounded-lg max-w-[200px] h-10 flex items-center transition-all ease-in-out duration-500 bg-gray-800'>
+                  <Link className='py-1 px-2' to='/campgrounds'>
+                    All Campgrounds
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <h1 className='mx-auto text-7xl font-bold'>
+            {' '}
+            Campground does not exist 😇{' '}
+          </h1>
+        )}
+      </div>
     </div>
   );
 };
