@@ -46,7 +46,7 @@ const Navbar = ({ isAdmin }) => {
   return (
     <nav
       className={`w-full fixed top-0 left-0 bg-transparent h-20 z-20 text-[#f5f5f5] transition-all duration-300 ease-in ${
-        hideNavBar ? '-top-24' : ''
+        hideNavBar ? '-top-96' : ''
       }`}
     >
       <div className='md:flex items-center justify-between py-4 md:px-10 px-7 max-w-6xl mx-auto gap-3'>
@@ -59,7 +59,7 @@ const Navbar = ({ isAdmin }) => {
 
         <div
           onClick={() => setOpen(!open)}
-          className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'
+          className='text-3xl absolute right-8 top-5 cursor-pointer md:hidden items-center'
         >
           {open ? (
             <AiOutlineClose size={30} name={open ? 'close' : 'menu'} />
