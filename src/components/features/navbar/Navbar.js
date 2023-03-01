@@ -46,7 +46,7 @@ const Navbar = ({ isAdmin }) => {
   return (
     <nav
       className={`w-full fixed top-0 left-0 bg-transparent h-20 z-20 text-[#f5f5f5] transition-all duration-300 ease-in ${
-        hideNavBar ? '-top-96' : ''
+        hideNavBar ? '-top-20' : ''
       }`}
     >
       <div className='md:flex items-center justify-between py-4 md:px-10 px-7 max-w-6xl mx-auto gap-3'>

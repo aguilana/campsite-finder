@@ -2,9 +2,11 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const volleyball = require('volleyball');
+const passport = require('./config/passport');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+require('dotenv').config();
 
 const app = express();
 
@@ -21,6 +23,7 @@ app.use(volleyball);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // can put a secret in the ()
+app.use(passport.initialize());
 
 // session
 const sessionOptions = {

@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const bcrypt = require('bcrypt');
 
-module.exports = db.define('user', {
+const User = db.define('user', {
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -31,3 +32,15 @@ module.exports = db.define('user', {
     type: Sequelize.ENUM(['CUSTOMER', 'ADMIN']),
   },
 });
+
+// static method to find user by email
+User.findByEmail = async function (email) {
+  return await this.findOne({ where: { email } });
+};
+
+// check if password is correct
+User.prototype.correctPassword = function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
+module.exports = User;

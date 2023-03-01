@@ -7,8 +7,8 @@ import {
   deleteCampgroundAsync,
 } from '../../../features/slices/campgroundSlice';
 
-const CampgroundCard = () => {
-  const campgrounds = useSelector(selectCampgrounds);
+const CampgroundCard = ({ campgrounds }) => {
+  // const campgrounds = useSelector(selectCampgrounds);
   const isAdmin = useSelector((state) => state.auth.me.isAdmin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,13 +24,13 @@ const CampgroundCard = () => {
   };
 
   return (
-    <ul className='flex flex-wrap px-20 py-10'>
+    <ul className='flex flex-wrap px-20 py-10 w-full'>
       {campgrounds && campgrounds.length
         ? campgrounds.map((campground) => {
             return (
               <li
                 key={campground.id}
-                className='w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-2'
+                className='w-4/5 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5 p-2'
               >
                 <div
                   onClick={() => navigate(`/campgrounds/${campground.id}`)}

@@ -4,6 +4,7 @@ const router = require('express').Router();
 // /api/campgrounds
 router.use('/campgrounds', require('./campgroundRoute'));
 router.use('/reviews', require('./reviewRoute'));
+router.use('/users', require('./userRoute'));
 
 // middleware to generate 404 if making request with /api and no routes match proceeding
 router.use((req, res, next) => {

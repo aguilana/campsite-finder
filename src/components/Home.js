@@ -5,7 +5,6 @@ import {
   fetchAllCampgrounds,
   selectCampgrounds,
 } from '../features/slices/campgroundSlice';
-import { Campgrounds } from './pages';
 import LakeAloha from '../assets/images/lake-aloha.jpg';
 
 const Home = () => {

@@ -10,6 +10,7 @@ campgroundRouter.get('/', async (req, res, next) => {
           model: Review,
         },
       ],
+      order: [['id', 'ASC']],
     });
     res.status(200).send(campgrounds);
   } catch (err) {

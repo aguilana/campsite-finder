@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   editSingleCampgroundAsync,
+  fetchSingleCampground,
   selectSingleCampground,
 } from '../../../features/slices/singleCampgroundSlice';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -24,10 +25,6 @@ const EditSingleCampground = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(editSingleCampgroundAsync(id)), [dispatch];
-  });
 
   const handleChange = (e) => {
     if (e.target.name === 'name') setName(e.target.value);

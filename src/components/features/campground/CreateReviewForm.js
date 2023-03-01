@@ -39,8 +39,8 @@ const CreateReviewForm = () => {
 
   const [body, setBody] = useState('');
   const [rating, setRating] = useState(3);
-  console.log('rating ln17: ', rating);
-  console.log('single campground ln18: ', { body, rating, id: Number(id) });
+  const [charCount, setCharCount] = useState(0);
+  const MAX_CHAR_COUNT = 500;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,17 +48,25 @@ const CreateReviewForm = () => {
     if (body == '' || rating == null) {
       alert('fill out appropriate fields to leave a review');
     } else {
-      await dispatch(addReviewToCampgroundAsync({ body, rating, id }));
+      await dispatch(
+        addReviewToCampgroundAsync({ body, rating, id: parseInt(id) })
+      );
       setRating(3);
       setBody('');
+      setCharCount(0);
+    }
+  };
+
+  const handleBodyChange = (e) => {
+    const input = e.target.value;
+    if (input.length <= MAX_CHAR_COUNT) {
+      setBody(input);
+      setCharCount(input.length);
     }
   };
 
   const handleChange = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
     if (e.target.name === 'rating') setRating(Number(e.target.value));
-    if (e.target.name === 'review') setBody(e.target.value);
   };
 
   const handleDelete = ({ singleCampgroundId, reviewId }) => {
@@ -94,12 +102,12 @@ const CreateReviewForm = () => {
           <TextField
             label='Leave a Review'
             value={body}
-            onChange={handleChange}
+            onChange={handleBodyChange}
             name='review'
             variant='filled'
             color='success'
             multiline
-            maxRows={4}
+            // maxRows={10}
             fullWidth
             inputProps={{
               style: { color: '#f7f7f7' },
@@ -108,6 +116,9 @@ const CreateReviewForm = () => {
               style: { color: '#f7f7f7' },
             }}
           />
+          <p className='text-sm text-right mt-1'>
+            {charCount} / 500 characters
+          </p>
           <div className='pt-4'>
             <Button variant='contained' color='success' type='submit'>
               Leave Review
@@ -127,7 +138,11 @@ const CreateReviewForm = () => {
           </span>
         </h5>
       </section>
-      <ol className='flex flex-wrap flex-col gap-4'>
+      <ol
+        className={`max-h-[400px] w-100 flex flex-col gap-4 ${
+          singleCampground?.reviews?.length > 0 && 'overflow-y-scroll'
+        } pr-4`}
+      >
         {singleCampground.reviews && singleCampground.reviews.length ? (
           singleCampground.reviews.map((review) => {
             return (
