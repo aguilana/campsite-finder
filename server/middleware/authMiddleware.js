@@ -12,20 +12,6 @@ const facebookAuthCallback = passport.authenticate('facebook', {
   session: false,
 });
 
-const requireToken = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization;
-    if (!token) {
-      return res.status(401).send('Access denied');
-    }
-    const user = await User.findByToken(token);
-    req.user = user;
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
-
 const isAdmin = (req, res, next) => {
   if (req.user.role !== 'ADMIN') {
     return res.status(401).json({ message: 'Unauthorized' });
@@ -34,7 +20,6 @@ const isAdmin = (req, res, next) => {
 };
 
 module.exports = {
-  requireToken,
   requireAuth,
   googleAuth,
   googleAuthCallback,

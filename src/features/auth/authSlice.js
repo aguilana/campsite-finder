@@ -9,7 +9,7 @@ const TOKEN = 'token';
 /*
   THUNKS
 */
-export const me = createAsyncThunk('auth/me', async () => {
+export const me = createAsyncThunk('auth/local/me', async () => {
   const token = window.localStorage.getItem(TOKEN);
   try {
     if (token) {
@@ -39,7 +39,7 @@ export const authenticate = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      const res = await axios.post(`/auth/${method}`, {
+      const res = await axios.post(`/auth/local/${method}`, {
         role,
         firstName,
         lastName,
