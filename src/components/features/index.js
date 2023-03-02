@@ -6,3 +6,4 @@ export { default as Campground } from './campground/Campground';
 export { default as CampgroundCard } from './card/CampgroundCard';
 export { default as ReviewCard } from './reviews/ReviewCard';
 export { default as EditAndAllCampgrounds } from './buttons/EditAndAllCampgrounds';
+export { default as AuthForm } from './login/AuthForm';

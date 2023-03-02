@@ -13,9 +13,10 @@ export const me = createAsyncThunk('auth/local/me', async () => {
   const token = window.localStorage.getItem(TOKEN);
   try {
     if (token) {
-      const res = await axios.get('/auth/me', {
+      console.log('token is: ', `JWT ${token}`);
+      const res = await axios.get('/auth/local/me', {
         headers: {
-          authorization: token,
+          authorization: `JWT ${token}`,
         },
       });
       return res.data;
@@ -34,17 +35,12 @@ export const me = createAsyncThunk('auth/local/me', async () => {
 // create a thunk to authenticate signup
 export const authenticate = createAsyncThunk(
   'auth/authenticate',
-  async (
-    { role, firstName, lastName, bio, mobileNumber, email, password, method },
-    thunkAPI
-  ) => {
+  async ({ firstName, lastName, email, password, method }, thunkAPI) => {
     try {
+      console.log('method is: ', method);
       const res = await axios.post(`/auth/local/${method}`, {
-        role,
         firstName,
         lastName,
-        bio,
-        mobileNumber,
         email,
         password,
       });

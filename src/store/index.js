@@ -12,7 +12,7 @@ const store = configureStore({
     campground: singleCampgroundReducer,
   },
   // middleware is an array of functions that can modify the actions before they reach the reducers
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export default store;

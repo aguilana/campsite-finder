@@ -7,6 +7,7 @@ require('dotenv').config();
 
 // START
 // local authentication route
+// POST /auth/local/login
 router.post(
   '/login',
   passport.authenticate('local', { session: false }),
@@ -22,11 +23,14 @@ router.post(
 );
 
 // JWT authentication route
+// GET /auth/local/me
 router.get(
   '/me',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     try {
+      console.log('req', req);
+      console.log('req.user', req.user);
       res.json(req.user);
     } catch (error) {
       res.status(500).json({ error: error.message });
