@@ -2,10 +2,11 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const { User } = require('../db');
 require('dotenv').config();
 
-console.log('process.env in passport', process.env.JWT_SECRET);
 // Local authentication strategy
 passport.use(
   new LocalStrategy(
@@ -34,7 +35,7 @@ passport.use(
 
 // jwt authentication strategy
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('JWT'),
   secretOrKey: process.env.JWT_SECRET,
 };
 
@@ -55,6 +56,73 @@ passport.use(
       done(err, false);
     }
   })
+);
+
+/* google auth */
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: '/auth/google/callback',
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        const [user, created] = await User.findOrCreate({
+          where: { googleId: profile.id },
+          defaults: {
+            email: profile.emails[0].value,
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+          },
+        });
+
+        if (created) {
+          console.log('New user created');
+        } else {
+          console.log('Existing user found');
+        }
+
+        done(null, user);
+      } catch (err) {
+        done(err, false);
+      }
+    }
+  )
+);
+
+// facebook auth
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+      callbackURL: '/auth/facebook/callback',
+      profileFields: ['id', 'email', 'name'],
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        const [user, created] = await User.findOrCreate({
+          where: { facebookId: profile.id },
+          defaults: {
+            email: profile.emails[0].value,
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+          },
+        });
+
+        if (created) {
+          console.log('New user created');
+        } else {
+          console.log('Existing user found');
+        }
+
+        done(null, user);
+      } catch (err) {
+        done(err, false);
+      }
+    }
+  )
 );
 
 module.exports = passport;

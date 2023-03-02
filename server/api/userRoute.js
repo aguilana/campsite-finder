@@ -1,6 +1,6 @@
 const userRoute = require('express').Router();
 const { User } = require('../db');
-const { requireAuth } = require('../middleware/authMiddleware');
+const { requireAuth, requireToken } = require('../middleware/authMiddleware');
 
 // Middleware to restrict endpoint to only admin users
 const requireAdmin = (req, res, next) => {
@@ -11,6 +11,8 @@ const requireAdmin = (req, res, next) => {
   }
 };
 
+console.log('requireAuth', requireAuth);
+
 // GET /api/users
 userRoute.get('/', requireAuth, requireAdmin, async (req, res, next) => {
   try {
@@ -18,6 +20,10 @@ userRoute.get('/', requireAuth, requireAdmin, async (req, res, next) => {
       attributes: {
         exclude: ['password'],
       },
+      order: [
+        ['role', 'ASC'],
+        ['id', 'ASC'],
+      ],
     });
     res.status(200).send(users);
   } catch (err) {
