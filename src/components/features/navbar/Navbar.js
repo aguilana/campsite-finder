@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import LoginIcon from '../../../assets/icons/loginIcon.png';
+import { useSelector } from 'react-redux';
+import { logout } from '../../../features/auth/authSlice';
 
 const Navbar = ({ isAdmin }) => {
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const LOGIN = (
     <img
       src={LoginIcon}
@@ -15,10 +18,9 @@ const Navbar = ({ isAdmin }) => {
     { name: 'Home', path: '/' },
     { name: 'Campgrounds', path: '/campgrounds' },
     { name: 'Create Site', path: '/campgrounds/create' },
-    {
-      name: 'Login',
-      path: '/login',
-    },
+    isLoggedIn
+      ? { name: 'Logout', path: '/' }
+      : { name: 'Login', path: '/login' },
   ].filter(Boolean);
 
   // state for the navbar open and close functionality
@@ -42,6 +44,10 @@ const Navbar = ({ isAdmin }) => {
     };
   }, []);
   console.log('hideNavBar: ', hideNavBar);
+
+  const handleLogout = () => {
+    dispatch(logout()).then(() => navigate('/') && setOpen(false));
+  };
 
   return (
     <nav
@@ -77,12 +83,16 @@ const Navbar = ({ isAdmin }) => {
               key={link.name}
               className='md:ml-8 text-xl md:my-0 my-7 xl:text-2xl lg:text-xl md:text-base z-20'
             >
-              <Link
-                to={link.path}
-                className='text-[#f5f5f5] hover:text-[#f5f5f550] duration-500'
-              >
-                {link.name}
-              </Link>
+              {link.name === 'Logout' ? (
+                <Link onClick={handleLogout}>Logout</Link>
+              ) : (
+                <Link
+                  to={link.path}
+                  className='text-[#f5f5f5] hover:text-[#f5f5f550] duration-500'
+                >
+                  {link.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
